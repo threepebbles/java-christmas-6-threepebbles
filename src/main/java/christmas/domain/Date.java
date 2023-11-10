@@ -11,7 +11,9 @@ public class Date {
     }
 
     public void validate(int day) {
-        if (day < 1 || day > 31) {
+        int FIRST_DAY_OF_DECEMBER = 1;
+        int LAST_DAY_OF_DECEMBER = 31;
+        if (day < FIRST_DAY_OF_DECEMBER || day > LAST_DAY_OF_DECEMBER) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY_FORMAT.getMessage());
         }
     }
