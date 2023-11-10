@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Date;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Menu;
@@ -7,6 +8,8 @@ import christmas.domain.Order;
 import christmas.domain.discount.Discount;
 import christmas.view.OutputView;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +22,14 @@ public class OutputController {
     }
 
     // 헤더
-    public void printEventStatisticsHeader() {
-        outputView.printEventStatisticsHeader();
+    public void printEventStatisticsHeader(Date date) {
+        outputView.printEventStatisticsHeader(createDateText(date));
+    }
+
+    private String createDateText(Date date) {
+        LocalDate localDate = date.getDate();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M월 d일");
+        return localDate.format(dateTimeFormatter);
     }
 
     // 주문 메뉴

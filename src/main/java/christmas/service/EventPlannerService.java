@@ -29,7 +29,7 @@ public class EventPlannerService {
     }
 
     private void planningEvent(Order order, Date date) {
-        outputController.printEventStatisticsHeader();
+        outputController.printEventStatisticsHeader(date);
         // 1. 주문 받은 메뉴 목록 출력
         outputController.printOrder(order);
 

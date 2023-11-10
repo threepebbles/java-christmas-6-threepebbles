@@ -35,4 +35,8 @@ public class Date {
     public DayOfWeek getDayOfWeek() {
         return date.getDayOfWeek();
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
 }
