@@ -16,4 +16,8 @@ public class InputView {
         System.out.println(ENTER_ORDER_TEXT);
         return Console.readLine();
     }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
 }
