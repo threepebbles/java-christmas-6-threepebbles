@@ -1,14 +1,17 @@
 package christmas.domain;
 
 import christmas.constant.ErrorMessage;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Order {
     Map<Menu, Integer> menuCounter;
 
     public Order() {
-        menuCounter = new HashMap<>();
+        menuCounter = new TreeMap<>(
+                Comparator.comparing(Menu::getName)
+        );
     }
 
     public void addMenu(String name, int count) {
