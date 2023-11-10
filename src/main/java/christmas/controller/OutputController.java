@@ -44,8 +44,8 @@ public class OutputController {
         StringBuilder sb = new StringBuilder();
         Map<Menu, Integer> menuCounter = order.getMenuCounter();
         menuCounter.forEach((menu, count) -> {
-            sb.append(LINE_SEPARATOR).
-                    append(String.format("%s %d개", menu.getName(), count));
+            sb.append(String.format("%s %d개", menu.getName(), count))
+                    .append(LINE_SEPARATOR);
         });
         return sb.toString();
     }
@@ -59,7 +59,7 @@ public class OutputController {
     private String createTotalPriceBeforeDiscountText(int amount) {
         return String.format("%s%s",
                 Converter.intToLocaleString(amount),
-                Menu.CURRENCY_UNIT);
+                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
     }
 
     // 증정 메뉴
@@ -70,9 +70,9 @@ public class OutputController {
 
     private String createGiftText(Gift gift) {
         if (gift == Gift.NOTHING) {
-            return NOTHING;
+            return NOTHING + LINE_SEPARATOR;
         }
-        return String.format("%s 1개", gift.getName());
+        return String.format("%s 1개", gift.getName()) + LINE_SEPARATOR;
     }
 
     // 혜택 내역
@@ -83,14 +83,15 @@ public class OutputController {
 
     private String createDiscountDetailsText(List<Discount> discounts) {
         if (discounts.isEmpty()) {
-            return NOTHING;
+            return NOTHING + LINE_SEPARATOR;
         }
         StringBuilder sb = new StringBuilder();
-        discounts.forEach(discount -> sb.append(LINE_SEPARATOR)
-                .append(String.format("%s: -%s%s",
-                        discount.getName(),
-                        Converter.intToLocaleString(discount.getAmount()),
-                        Menu.CURRENCY_UNIT)));
+        discounts.forEach(discount ->
+                sb.append(String.format("%s: -%s%s",
+                                discount.getName(),
+                                Converter.intToLocaleString(discount.getAmount()),
+                                Menu.CURRENCY_UNIT))
+                        .append(LINE_SEPARATOR));
         return sb.toString();
     }
 
@@ -103,7 +104,7 @@ public class OutputController {
     private String createTotalDiscountText(int totalDiscount) {
         return String.format("%s%s",
                 Converter.intToLocaleString(-totalDiscount),
-                Menu.CURRENCY_UNIT);
+                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
     }
 
     // 할인 후 예상 결제 금액
@@ -115,7 +116,7 @@ public class OutputController {
     private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
         return String.format("%s%s",
                 Converter.intToLocaleString(expectedPayAfterDiscount),
-                Menu.CURRENCY_UNIT);
+                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
     }
 
     // 12월 이벤트 배지
@@ -126,8 +127,8 @@ public class OutputController {
 
     private String createEventBadgeText(EventBadge eventBadge) {
         if (eventBadge == EventBadge.NOTHING) {
-            return NOTHING;
+            return NOTHING + LINE_SEPARATOR;
         }
-        return String.format(eventBadge.getName());
+        return String.format(eventBadge.getName()) + LINE_SEPARATOR;
     }
 }
