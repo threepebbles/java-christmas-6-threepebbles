@@ -1,11 +1,11 @@
 package christmas.controller;
 
 import christmas.domain.Date;
+import christmas.domain.Discount;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.Order;
-import christmas.domain.discount.Discount;
 import christmas.view.OutputView;
 import java.text.DecimalFormat;
 import java.time.LocalDate;

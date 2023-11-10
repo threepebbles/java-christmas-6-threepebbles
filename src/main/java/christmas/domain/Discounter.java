@@ -1,10 +1,5 @@
-package christmas.domain.discount;
+package christmas.domain;
 
-import christmas.domain.Date;
-import christmas.domain.Gift;
-import christmas.domain.Menu;
-import christmas.domain.MenuType;
-import christmas.domain.Order;
 import java.util.List;
 
 public class Discounter {

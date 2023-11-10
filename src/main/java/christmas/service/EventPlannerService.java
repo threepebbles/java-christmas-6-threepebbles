@@ -3,12 +3,12 @@ package christmas.service;
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
 import christmas.domain.Date;
+import christmas.domain.Discount;
+import christmas.domain.DiscountType;
+import christmas.domain.Discounter;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Order;
-import christmas.domain.discount.Discount;
-import christmas.domain.discount.DiscountType;
-import christmas.domain.discount.Discounter;
 import java.util.List;
 
 public class EventPlannerService {

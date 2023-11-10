@@ -1,4 +1,4 @@
-package christmas.domain.discount;
+package christmas.domain;
 
 public class Discount {
     private final DiscountType discountType;
