@@ -22,5 +22,10 @@ public class EventPlannerService {
             System.out.print("menu: " + menu.toString());
             System.out.println(", count: " + count);
         });
+
+        // 이벤트 적용하기
+        outputController.printEventStatisticsHeader();
+        // 1. 주문 받은 메뉴 목록 출력
+        outputController.printOrder(order);
     }
 }
