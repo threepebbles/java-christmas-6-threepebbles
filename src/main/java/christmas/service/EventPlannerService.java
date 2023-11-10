@@ -2,9 +2,12 @@ package christmas.service;
 
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
-import christmas.domain.Calculator;
 import christmas.domain.Date;
+import christmas.domain.Menu;
 import christmas.domain.Order;
+import christmas.domain.discount.Discount;
+import christmas.domain.discount.Discounter;
+import java.util.List;
 
 public class EventPlannerService {
     InputController inputController;
@@ -24,8 +27,26 @@ public class EventPlannerService {
         outputController.printEventStatisticsHeader();
         // 1. 주문 받은 메뉴 목록 출력
         outputController.printOrder(order);
+        
         // 2. 할인 전 총 주문 금액 계산 및 출력
-        Calculator calculator = new Calculator();
-        outputController.printTotalPriceBeforeDiscount(calculator.calculateTotalPriceBeforeDiscount(order));
+        int totalPriceBeforeDiscount = order.calculateTotalPriceBeforeDiscount();
+        outputController.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
+
+        // 3. 증정 메뉴 존재 유무 판단 출력
+        Menu gift = requestGift(totalPriceBeforeDiscount);
+        outputController.printGift(gift);
+
+        // 4. 할인 혜택 내역 계산 및 출력
+        Discounter discounter = new Discounter();
+        List<Discount> discounts = discounter.calculateAllDiscounts(date, order);
+        outputController.printDiscountDetails(discounts);
+    }
+
+    private Menu requestGift(int totalPriceBeforeDiscount) {
+        final int THRESHOLD = 120000;
+        if (totalPriceBeforeDiscount >= THRESHOLD) {
+            return Menu.CHAMPAGNE;
+        }
+        return null;
     }
 }

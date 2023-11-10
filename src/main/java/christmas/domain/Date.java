@@ -1,13 +1,15 @@
 package christmas.domain;
 
 import christmas.constant.ErrorMessage;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class Date {
-    private final int day;
+    LocalDate date;
 
     public Date(int day) {
         validate(day);
-        this.day = day;
+        date = LocalDate.of(2023, 12, day);
     }
 
     public void validate(int day) {
@@ -18,7 +20,19 @@ public class Date {
         }
     }
 
+    public boolean isWeekDay() {
+        return !isWeekend();
+    }
+
+    public boolean isWeekend() {
+        return date.getDayOfWeek() == DayOfWeek.FRIDAY || date.getDayOfWeek() == DayOfWeek.SATURDAY;
+    }
+
     public int getDay() {
-        return day;
+        return date.getDayOfMonth();
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        return date.getDayOfWeek();
     }
 }

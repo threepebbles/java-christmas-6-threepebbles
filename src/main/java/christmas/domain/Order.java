@@ -31,6 +31,24 @@ public class Order {
         }
     }
 
+    public int countByMenuType(MenuType menuType) {
+        int count = 0;
+        for (Menu menu : menuCounter.keySet()) {
+            if (menu.getMenuType() == menuType) {
+                count += menuCounter.get(menu);
+            }
+        }
+        return count;
+    }
+
+    public int calculateTotalPriceBeforeDiscount() {
+        int sum = 0;
+        for (Menu menu : menuCounter.keySet()) {
+            sum += menu.getPrice() * menuCounter.get(menu);
+        }
+        return sum;
+    }
+
     public Map<Menu, Integer> getMenuCounter() {
         return menuCounter;
     }
