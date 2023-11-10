@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.EventBadge;
+import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.discount.Discount;
@@ -37,15 +38,15 @@ public class OutputController {
     }
 
     // 증정 메뉴
-    public void printGift(Menu menu) {
-        outputView.printGift(createGiftText(menu));
+    public void printGift(Gift gift) {
+        outputView.printGift(createGiftText(gift));
     }
 
-    private String createGiftText(Menu menu) {
-        if (menu == Menu.NOTHING) {
-            return "";
+    private String createGiftText(Gift gift) {
+        if (gift == Gift.NOTHING) {
+            return NOTHING;
         }
-        return String.format("%s 1개\n", menu.getName());
+        return String.format("%s 1개\n", gift.getName());
     }
 
     // 할인 전 총 주문 금액

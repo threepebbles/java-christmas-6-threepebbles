@@ -4,6 +4,7 @@ import christmas.controller.InputController;
 import christmas.controller.OutputController;
 import christmas.domain.Date;
 import christmas.domain.EventBadge;
+import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.discount.Discount;
@@ -24,7 +25,10 @@ public class EventPlannerService {
         Date date = inputController.askDayOfVisit();
         Order order = inputController.askOrder();
 
-        // 이벤트 적용하기
+        planningEvent(order, date);
+    }
+
+    private void planningEvent(Order order, Date date) {
         outputController.printEventStatisticsHeader();
         // 1. 주문 받은 메뉴 목록 출력
         outputController.printOrder(order);
@@ -34,7 +38,7 @@ public class EventPlannerService {
         outputController.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
 
         // 3. 증정 메뉴 존재 유무 판단 출력
-        Menu gift = requestGift(totalPriceBeforeDiscount);
+        Gift gift = Gift.valueOf(totalPriceBeforeDiscount);
         outputController.printGift(gift);
 
         // 4. 할인 혜택 내역 계산 및 출력

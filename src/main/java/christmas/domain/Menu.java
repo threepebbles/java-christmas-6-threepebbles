@@ -21,9 +21,9 @@ public enum Menu {
     NOTHING(MenuType.NOTHING, "", 0);
 
     public static final String CURRENCY_UNIT = "원";
-    private MenuType menuType;
-    private String name;
-    private int price;
+    private final MenuType menuType;
+    private final String name;
+    private final int price;
 
     Menu(MenuType menuType, String name, int price) {
         this.menuType = menuType;
