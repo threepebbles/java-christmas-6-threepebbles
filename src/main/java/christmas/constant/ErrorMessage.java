@@ -4,7 +4,9 @@ public enum ErrorMessage {
     NOT_PROPER_DAY_FORMAT("유효하지 않은 날짜입니다."),
     NOT_PROPER_ORDER_FORMAT("유효하지 않은 주문입니다.");
 
-    public static final String HEADER = "[Error] ";
+    public static final String WHITE_SPACE = " ";
+    public static final String HEADER = "[ERROR]";
+    public static final String RETRY = "다시 입력해 주세요.";
     private final String message;
 
     ErrorMessage(String message) {
@@ -12,6 +14,8 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return HEADER + message;
+        return HEADER + WHITE_SPACE
+                + message + WHITE_SPACE
+                + RETRY;
     }
 }
