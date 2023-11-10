@@ -3,13 +3,10 @@ package christmas.service;
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
 import christmas.domain.Date;
-import christmas.domain.Discount;
-import christmas.domain.DiscountType;
-import christmas.domain.Discounter;
+import christmas.domain.DiscountDetails;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Order;
-import java.util.List;
 
 public class EventPlannerService {
     InputController inputController;
@@ -41,32 +38,19 @@ public class EventPlannerService {
         outputController.printGift(gift);
 
         // 4. 할인 혜택 내역 계산 및 출력
-        List<Discount> discountDetails = Discounter.getInstance().calculateDiscountDetails(date, order);
+        DiscountDetails discountDetails = DiscountDetails.createDiscountDetails(date, order);
         outputController.printDiscountDetails(discountDetails);
 
         // 5. 총 혜택 금액 계산 및 출력
-        int totalDiscount = calculateTotalDiscount(discountDetails);
+        int totalDiscount = discountDetails.calculateTotalDiscount();
         outputController.printTotalDiscount(totalDiscount);
 
         // 6. 할인 후 예상 결제 금액
-        int expectedPayAfterDiscount = totalPriceBeforeDiscount - calculateTotalDiscountWithoutGift(discountDetails);
+        int expectedPayAfterDiscount = totalPriceBeforeDiscount - discountDetails.calculateTotalDiscountWithoutGift();
         outputController.printExpectedPayAfterDiscount(expectedPayAfterDiscount);
 
         // 7. 12월 이벤트 배지
         EventBadge eventBadge = EventBadge.valueOf(totalDiscount);
         outputController.printEventBadge(eventBadge);
-    }
-
-    private int calculateTotalDiscountWithoutGift(List<Discount> discounts) {
-        return discounts.stream()
-                .filter(discount -> discount.getDiscountType() != DiscountType.GIFT)
-                .mapToInt(Discount::getAmount)
-                .sum();
-    }
-
-    private int calculateTotalDiscount(List<Discount> discounts) {
-        return discounts.stream()
-                .mapToInt(Discount::getAmount)
-                .sum();
     }
 }

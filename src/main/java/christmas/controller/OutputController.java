@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Date;
 import christmas.domain.Discount;
+import christmas.domain.DiscountDetails;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Menu;
@@ -76,8 +77,8 @@ public class OutputController {
     }
 
     // 혜택 내역
-    public void printDiscountDetails(List<Discount> details) {
-        String detailsText = createDiscountDetailsText(details);
+    public void printDiscountDetails(DiscountDetails details) {
+        String detailsText = createDiscountDetailsText(details.getDetails());
         outputView.printDiscountDetails(detailsText);
     }
 
