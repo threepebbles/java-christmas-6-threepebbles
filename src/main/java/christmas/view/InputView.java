@@ -14,6 +14,8 @@ import java.util.function.Function;
 
 public class InputView {
     public static final String LINE_SEPARATOR = System.lineSeparator();
+    public static final String COMMA = ",";
+    public static final String HYPHEN = "-";
     public static final String ENTER_DAY_OF_VISIT_TEXT = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."
             + LINE_SEPARATOR
             + "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
@@ -58,9 +60,9 @@ public class InputView {
 
     private Map<Menu, Integer> convertToMenuCounter(String userInput) {
         Map<Menu, Integer> menuCounter = new HashMap<>();
-        List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, ",");
+        List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, COMMA);
         menuCountFormats.forEach(menuCountFormat -> {
-            List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, "-");
+            List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
             String menuName = menuCountBundle.get(0);
             int count = Integer.parseInt(menuCountBundle.get(1));
             menuCounter.put(Menu.findMenuByName(menuName), count);
