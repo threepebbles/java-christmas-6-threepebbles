@@ -1,6 +1,6 @@
-package christmas.domain;
+package christmas.model;
 
-import christmas.domain.validator.OrderValidator;
+import christmas.model.validator.OrderValidator;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;

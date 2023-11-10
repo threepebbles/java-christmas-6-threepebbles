@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.model;
 
 public enum Gift {
     CHAMPAGNE("샴페인", 25000),

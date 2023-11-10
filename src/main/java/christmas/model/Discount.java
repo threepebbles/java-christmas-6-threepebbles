@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.model;
 
 import java.util.List;
 

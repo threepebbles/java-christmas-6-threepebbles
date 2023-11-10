@@ -1,4 +1,4 @@
-package christmas.controller.validator;
+package christmas.view.validator;
 
 import christmas.constant.ErrorMessage;
 import christmas.utils.Parser;

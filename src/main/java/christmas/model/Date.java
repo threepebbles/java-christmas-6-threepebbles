@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.model;
 
 import christmas.constant.ErrorMessage;
 import java.time.DayOfWeek;
