@@ -2,13 +2,13 @@ package christmas.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.Date;
-import christmas.domain.Discount;
-import christmas.domain.DiscountDetails;
-import christmas.domain.DiscountType;
-import christmas.domain.EventBadge;
-import christmas.domain.Gift;
-import christmas.domain.Order;
+import christmas.model.Date;
+import christmas.model.Discount;
+import christmas.model.DiscountDetails;
+import christmas.model.DiscountType;
+import christmas.model.EventBadge;
+import christmas.model.Gift;
+import christmas.model.Order;
 import christmas.view.OutputView;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
