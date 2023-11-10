@@ -32,21 +32,16 @@ public class Order {
     }
 
     public int countByMenuType(MenuType menuType) {
-        int count = 0;
-        for (Menu menu : menuCounter.keySet()) {
-            if (menu.getMenuType() == menuType) {
-                count += menuCounter.get(menu);
-            }
-        }
-        return count;
+        return menuCounter.keySet().stream()
+                .filter(menu -> menu.getMenuType() == menuType)
+                .mapToInt(menu -> menuCounter.get(menu))
+                .sum();
     }
 
     public int calculateTotalPriceBeforeDiscount() {
-        int sum = 0;
-        for (Menu menu : menuCounter.keySet()) {
-            sum += menu.getPrice() * menuCounter.get(menu);
-        }
-        return sum;
+        return menuCounter.keySet().stream()
+                .mapToInt(menu -> menu.getPrice() * menuCounter.get(menu))
+                .sum();
     }
 
     public Map<Menu, Integer> getMenuCounter() {
