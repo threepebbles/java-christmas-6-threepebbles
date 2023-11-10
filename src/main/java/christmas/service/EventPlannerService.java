@@ -20,7 +20,6 @@ public class EventPlannerService {
 
     public void run() {
         Date date = inputController.askDayOfVisit();
-        System.out.println("day: " + date.getDay());
         Order order = inputController.askOrder();
 
         // 이벤트 적용하기

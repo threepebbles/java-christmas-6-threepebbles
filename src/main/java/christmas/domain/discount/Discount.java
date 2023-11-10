@@ -1,16 +1,20 @@
 package christmas.domain.discount;
 
 public class Discount {
-    private final String name;
+    private final DiscountType discountType;
     private final int amount;
 
-    public Discount(String name, int amount) {
-        this.name = name;
+    public Discount(DiscountType discountType, int amount) {
+        this.discountType = discountType;
         this.amount = amount;
     }
 
     public String getName() {
-        return name;
+        return discountType.getName();
+    }
+
+    public DiscountType getDiscountType() {
+        return discountType;
     }
 
     public int getAmount() {

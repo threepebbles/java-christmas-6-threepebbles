@@ -63,6 +63,9 @@ public class OutputController {
     }
 
     private String createDiscountDetailsText(List<Discount> discounts) {
+        if (discounts.isEmpty()) {
+            return "";
+        }
         DecimalFormat decFormat = new DecimalFormat("###,###");
         StringBuilder sb = new StringBuilder();
         discounts.forEach(discount -> {
