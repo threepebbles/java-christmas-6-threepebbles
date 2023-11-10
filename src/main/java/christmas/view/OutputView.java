@@ -17,42 +17,41 @@ public class OutputView {
 
     public void printOrder(String orderText) {
         printLineSpacing(2);
-        printByFormat(ORDER_FORMAT, orderText);
+        printByFormat(ORDER_FORMAT, LINE_SEPARATOR + orderText);
     }
 
     public void printTotalPriceBeforeDiscount(String amountText) {
         printLineSpacing(2);
-        printByFormat(TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT, amountText);
+        printByFormat(TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT, LINE_SEPARATOR + amountText);
     }
 
     public void printGift(String giftText) {
         printLineSpacing(2);
-        printByFormat(GIFT_FORMAT, giftText);
+        printByFormat(GIFT_FORMAT, LINE_SEPARATOR + giftText);
     }
 
     public void printDiscountDetails(String detailsText) {
         printLineSpacing(2);
-        printByFormat(DISCOUNT_DETAILS_FORMAT, detailsText);
+        printByFormat(DISCOUNT_DETAILS_FORMAT, LINE_SEPARATOR + detailsText);
     }
 
     public void printTotalDiscount(String totalDiscountText) {
         printLineSpacing(2);
-        printByFormat(TOTAL_DISCOUNT_FORMAT, totalDiscountText);
+        printByFormat(TOTAL_DISCOUNT_FORMAT, LINE_SEPARATOR + totalDiscountText);
     }
 
     public void printExpectedPayAfterDiscount(String expectedPayText) {
         printLineSpacing(2);
-        printByFormat(EXPECTED_PAY_AFTER_DISCOUNT_FORMAT, expectedPayText);
+        printByFormat(EXPECTED_PAY_AFTER_DISCOUNT_FORMAT, LINE_SEPARATOR + expectedPayText);
     }
 
     public void printEventBadge(String eventBadgeText) {
         printLineSpacing(2);
-        printByFormat(EVENT_BADGE_FORMAT, eventBadgeText);
+        printByFormat(EVENT_BADGE_FORMAT, LINE_SEPARATOR + eventBadgeText);
     }
 
 
     public void printByFormat(String format, String... args) {
-        printLineSpacing(2);
         System.out.printf(format, args);
     }
 

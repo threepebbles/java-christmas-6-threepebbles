@@ -57,7 +57,7 @@ public class OutputController {
     }
 
     private String createTotalPriceBeforeDiscountText(int amount) {
-        return LINE_SEPARATOR + String.format("%s%s",
+        return String.format("%s%s",
                 Converter.intToLocaleString(amount),
                 Menu.CURRENCY_UNIT);
     }
@@ -70,9 +70,9 @@ public class OutputController {
 
     private String createGiftText(Gift gift) {
         if (gift == Gift.NOTHING) {
-            return LINE_SEPARATOR + NOTHING;
+            return NOTHING;
         }
-        return LINE_SEPARATOR + String.format("%s 1개", gift.getName());
+        return String.format("%s 1개", gift.getName());
     }
 
     // 혜택 내역
@@ -83,7 +83,7 @@ public class OutputController {
 
     private String createDiscountDetailsText(List<Discount> discounts) {
         if (discounts.isEmpty()) {
-            return LINE_SEPARATOR + NOTHING;
+            return NOTHING;
         }
         StringBuilder sb = new StringBuilder();
         discounts.forEach(discount -> sb.append(LINE_SEPARATOR)
@@ -101,8 +101,7 @@ public class OutputController {
     }
 
     private String createTotalDiscountText(int totalDiscount) {
-        return LINE_SEPARATOR
-                + String.format("%s%s",
+        return String.format("%s%s",
                 Converter.intToLocaleString(-totalDiscount),
                 Menu.CURRENCY_UNIT);
     }
@@ -114,8 +113,7 @@ public class OutputController {
     }
 
     private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
-        return LINE_SEPARATOR
-                + String.format("%s%s",
+        return String.format("%s%s",
                 Converter.intToLocaleString(expectedPayAfterDiscount),
                 Menu.CURRENCY_UNIT);
     }
@@ -128,9 +126,8 @@ public class OutputController {
 
     private String createEventBadgeText(EventBadge eventBadge) {
         if (eventBadge == EventBadge.NOTHING) {
-            return LINE_SEPARATOR + NOTHING;
+            return NOTHING;
         }
-        return LINE_SEPARATOR
-                + String.format(eventBadge.getName());
+        return String.format(eventBadge.getName());
     }
 }
