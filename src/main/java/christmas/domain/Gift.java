@@ -5,6 +5,7 @@ public enum Gift {
     NOTHING("", 0);
 
     public static final String CURRENCY_UNIT = "원";
+    public static final int THRESHOLD = 120000;
     private final String name;
     private final int price;
 
@@ -14,7 +15,7 @@ public enum Gift {
     }
 
     public static Gift valueOf(int totalPriceBeforeDiscount) {
-        final int THRESHOLD = 120000;
+
         if (totalPriceBeforeDiscount >= THRESHOLD) {
             return Gift.CHAMPAGNE;
         }

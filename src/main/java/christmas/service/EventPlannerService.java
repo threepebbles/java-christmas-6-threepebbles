@@ -5,7 +5,6 @@ import christmas.controller.OutputController;
 import christmas.domain.Date;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
-import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.discount.Discount;
 import christmas.domain.discount.DiscountType;
@@ -43,15 +42,15 @@ public class EventPlannerService {
 
         // 4. 할인 혜택 내역 계산 및 출력
         Discounter discounter = new Discounter();
-        List<Discount> discounts = discounter.calculateAllDiscounts(date, order);
-        outputController.printDiscountDetails(discounts);
+        List<Discount> discountDetails = discounter.calculateDiscountDetails(date, order);
+        outputController.printDiscountDetails(discountDetails);
 
         // 5. 총 혜택 금액 계산 및 출력
-        int totalDiscount = calculateTotalDiscount(discounts);
+        int totalDiscount = calculateTotalDiscount(discountDetails);
         outputController.printTotalDiscount(totalDiscount);
 
         // 6. 할인 후 예상 결제 금액
-        int expectedPayAfterDiscount = totalPriceBeforeDiscount - calculateTotalDiscountWithoutGift(discounts);
+        int expectedPayAfterDiscount = totalPriceBeforeDiscount - calculateTotalDiscountWithoutGift(discountDetails);
         outputController.printExpectedPayAfterDiscount(expectedPayAfterDiscount);
 
         // 7. 12월 이벤트 배지
@@ -70,13 +69,5 @@ public class EventPlannerService {
         return discounts.stream()
                 .mapToInt(Discount::getAmount)
                 .sum();
-    }
-
-    private Menu requestGift(int totalPriceBeforeDiscount) {
-        final int THRESHOLD = 120000;
-        if (totalPriceBeforeDiscount >= THRESHOLD) {
-            return Menu.CHAMPAGNE;
-        }
-        return Menu.NOTHING;
     }
 }

@@ -1,6 +1,7 @@
 package christmas.domain.discount;
 
 import christmas.domain.Date;
+import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.MenuType;
 import christmas.domain.Order;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class Discounter {
 
-    public List<Discount> calculateAllDiscounts(Date date, Order order) {
+    public List<Discount> calculateDiscountDetails(Date date, Order order) {
         List<Discount> discounts = List.of(
                 calculateChristmasDiscount(date),
                 calculateWeekdayDiscount(date, order),
@@ -64,8 +65,7 @@ public class Discounter {
 
     private Discount calculateGiftDiscount(Order order) {
         int amount = 0;
-        final int THRESHOLD = 120000;
-        if (order.calculateTotalPriceBeforeDiscount() >= THRESHOLD) {
+        if (order.calculateTotalPriceBeforeDiscount() >= Gift.THRESHOLD) {
             amount = Menu.CHAMPAGNE.getPrice();
         }
         return new Discount(DiscountType.GIFT, amount);
