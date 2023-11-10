@@ -7,7 +7,6 @@ import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.view.OutputView;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -57,9 +56,8 @@ public class OutputController {
     }
 
     private String createTotalPriceBeforeDiscountText(int amount) {
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         return LINE_SEPARATOR + String.format("%s%s",
-                decFormat.format(amount),
+                String.format("%,d", amount),
                 Menu.CURRENCY_UNIT);
     }
 
@@ -86,12 +84,11 @@ public class OutputController {
         if (discounts.isEmpty()) {
             return LINE_SEPARATOR + NOTHING;
         }
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         StringBuilder sb = new StringBuilder();
         discounts.forEach(discount -> sb.append(LINE_SEPARATOR)
                 .append(String.format("%s: -%s%s",
                         discount.getName(),
-                        decFormat.format(discount.getAmount()),
+                        String.format("%,d", discount.getAmount()),
                         Menu.CURRENCY_UNIT)));
         return sb.toString();
     }
@@ -103,10 +100,9 @@ public class OutputController {
     }
 
     private String createTotalDiscountText(int totalDiscount) {
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         return LINE_SEPARATOR
                 + String.format("%s%s",
-                decFormat.format(-totalDiscount),
+                String.format("%,d", -totalDiscount),
                 Menu.CURRENCY_UNIT);
     }
 
@@ -117,10 +113,9 @@ public class OutputController {
     }
 
     private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         return LINE_SEPARATOR
                 + String.format("%s%s",
-                decFormat.format(expectedPayAfterDiscount),
+                String.format("%,d", expectedPayAfterDiscount),
                 Menu.CURRENCY_UNIT);
     }
 
