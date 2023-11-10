@@ -27,19 +27,11 @@ public class OutputView {
     }
 
     public void printGift(String gift) {
-        if (gift.isBlank()) {
-            System.out.println(NOTHING_MESSAGE);
-            return;
-        }
         String text = String.format(GIFT_FORMAT, gift);
         System.out.println(text);
     }
 
     public void printDiscountDetails(String discountDetails) {
-        if (discountDetails.isBlank()) {
-            System.out.println(NOTHING_MESSAGE);
-            return;
-        }
         String text = String.format(DISCOUNT_DETAILS_FORMAT, discountDetails);
         System.out.println(text);
     }
@@ -55,10 +47,6 @@ public class OutputView {
     }
 
     public void printEventBadge(String badge) {
-        if (badge.isBlank()) {
-            System.out.println(NOTHING_MESSAGE);
-            return;
-        }
         String text = String.format(EVENT_BADGE_FORMAT, badge);
         System.out.println(text);
     }

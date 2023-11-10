@@ -16,7 +16,9 @@ public enum Menu {
 
     ZERO_COKE(MenuType.BEVERAGE, "제로콜라", 3000),
     RED_WINE(MenuType.BEVERAGE, "레드와인", 60000),
-    CHAMPAGNE(MenuType.BEVERAGE, "샴페인", 25000);
+    CHAMPAGNE(MenuType.BEVERAGE, "샴페인", 25000),
+
+    NOTHING(MenuType.NOTHING, "", 0);
 
     public static final String CURRENCY_UNIT = "원";
     private MenuType menuType;
@@ -35,7 +37,7 @@ public enum Menu {
                 return menu;
             }
         }
-        return null;
+        return NOTHING;
     }
 
     @Override

@@ -1,5 +1,5 @@
 package christmas.domain;
 
 public enum MenuType {
-    APPETIZER, MAIN, DESSERT, BEVERAGE;
+    APPETIZER, MAIN, DESSERT, BEVERAGE, NOTHING;
 }

@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
 import christmas.domain.Date;
+import christmas.domain.EventBadge;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.discount.Discount;
@@ -48,6 +49,10 @@ public class EventPlannerService {
         // 6. 할인 후 예상 결제 금액
         int expectedPayAfterDiscount = totalPriceBeforeDiscount - calculateTotalDiscountWithoutGift(discounts);
         outputController.printExpectedPayAfterDiscount(expectedPayAfterDiscount);
+
+        // 7. 12월 이벤트 배지
+        EventBadge eventBadge = EventBadge.valueOf(totalDiscount);
+        outputController.printEventBadge(eventBadge);
     }
 
     private int calculateTotalDiscountWithoutGift(List<Discount> discounts) {
