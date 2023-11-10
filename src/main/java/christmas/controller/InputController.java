@@ -1,12 +1,15 @@
 package christmas.controller;
 
-import christmas.controller.validator.DayOfVisitValidator;
-import christmas.controller.validator.OrderValidator;
+import christmas.controller.validator.DayOfVisitInputValidator;
+import christmas.controller.validator.OrderInputValidator;
 import christmas.domain.Date;
+import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.utils.Parser;
 import christmas.view.InputView;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 public class InputController {
@@ -20,7 +23,7 @@ public class InputController {
         return (Date) retryUntilSuccess(inputView,
                 inputView -> {
                     String day = inputView.scanDayOfVisit();
-                    DayOfVisitValidator.getInstance().validate(day);
+                    DayOfVisitInputValidator.getInstance().validate(day);
                     return createDate(day);
                 });
     }
@@ -33,21 +36,26 @@ public class InputController {
         return (Order) retryUntilSuccess(inputView,
                 inputView -> {
                     String order = inputView.scanOrder();
-                    OrderValidator.getInstance().validate(order);
+                    OrderInputValidator.getInstance().validate(order);
                     return createOrder(order);
                 });
     }
 
     private Order createOrder(String userInput) {
-        Order order = new Order();
+        Map<Menu, Integer> menuCounter = convertToMenuCounter(userInput);
+        return new Order(menuCounter);
+    }
+
+    private Map<Menu, Integer> convertToMenuCounter(String userInput) {
+        Map<Menu, Integer> menuCounter = new HashMap<>();
         List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, ",");
         menuCountFormats.forEach(menuCountFormat -> {
             List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, "-");
             String menuName = menuCountBundle.get(0);
             int count = Integer.parseInt(menuCountBundle.get(1));
-            order.addMenu(menuName, count);
+            menuCounter.put(Menu.findMenuByName(menuName), count);
         });
-        return order;
+        return menuCounter;
     }
 
     public Object retryUntilSuccess(InputView inputView, Function<InputView, Object> function) {

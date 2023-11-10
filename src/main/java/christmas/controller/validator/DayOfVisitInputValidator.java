@@ -2,17 +2,17 @@ package christmas.controller.validator;
 
 import christmas.constant.ErrorMessage;
 
-public class DayOfVisitValidator implements InputValidator {
-    public static DayOfVisitValidator dayOfVisitValidator;
+public class DayOfVisitInputValidator implements InputValidator {
+    public static DayOfVisitInputValidator dayOfVisitInputValidator;
 
-    private DayOfVisitValidator() {
+    private DayOfVisitInputValidator() {
     }
 
-    public static DayOfVisitValidator getInstance() {
-        if (dayOfVisitValidator == null) {
-            dayOfVisitValidator = new DayOfVisitValidator();
+    public static DayOfVisitInputValidator getInstance() {
+        if (dayOfVisitInputValidator == null) {
+            dayOfVisitInputValidator = new DayOfVisitInputValidator();
         }
-        return dayOfVisitValidator;
+        return dayOfVisitInputValidator;
     }
 
     @Override

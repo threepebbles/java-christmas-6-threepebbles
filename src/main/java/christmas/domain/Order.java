@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constant.ErrorMessage;
+import christmas.domain.validator.OrderValidator;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,24 +14,27 @@ public class Order {
         );
     }
 
-    public void addMenu(String name, int count) {
-        Menu menu = Menu.findMenuByName(name);
-        validateOnMenu(menu);
-        validateDuplication(menu);
+    public Order(Map<Menu, Integer> menuCounter) {
+        this.menuCounter = new TreeMap<>(
+                Comparator.comparing(Menu::getName)
+        );
+        this.menuCounter.putAll(menuCounter);
 
-        menuCounter.put(menu, count);
+        OrderValidator.getInstance().validate(this);
     }
 
-    private void validateOnMenu(Menu menu) {
-        if (menu == null) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
-        }
+    public boolean hasOnlyBeverage() {
+        return menuCounter.keySet().stream()
+                .filter(menu -> menu.getMenuType() == MenuType.BEVERAGE)
+                .distinct().count()
+                == menuCounter.keySet().size();
     }
 
-    private void validateDuplication(Menu menu) {
-        if (menuCounter.get(menu) != null) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
-        }
+
+    public int totalCountOfMenu() {
+        return menuCounter.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public int countByMenuType(MenuType menuType) {
@@ -45,6 +48,11 @@ public class Order {
         return menuCounter.keySet().stream()
                 .mapToInt(menu -> menu.getPrice() * menuCounter.get(menu))
                 .sum();
+    }
+
+    public void addMenu(String name, int count) {
+        Menu menu = Menu.findMenuByName(name);
+        menuCounter.put(menu, count);
     }
 
     public Map<Menu, Integer> getMenuCounter() {

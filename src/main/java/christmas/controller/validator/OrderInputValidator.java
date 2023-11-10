@@ -4,17 +4,17 @@ import christmas.constant.ErrorMessage;
 import christmas.utils.Parser;
 import java.util.List;
 
-public class OrderValidator implements InputValidator {
-    public static OrderValidator orderValidator;
+public class OrderInputValidator implements InputValidator {
+    public static OrderInputValidator orderInputValidator;
 
-    private OrderValidator() {
+    private OrderInputValidator() {
     }
 
-    public static OrderValidator getInstance() {
-        if (orderValidator == null) {
-            orderValidator = new OrderValidator();
+    public static OrderInputValidator getInstance() {
+        if (orderInputValidator == null) {
+            orderInputValidator = new OrderInputValidator();
         }
-        return orderValidator;
+        return orderInputValidator;
     }
 
     @Override
