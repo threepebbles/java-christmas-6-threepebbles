@@ -1,10 +1,10 @@
 package christmas.controller;
 
 import christmas.model.Date;
-import christmas.model.DiscountDetails;
 import christmas.model.EventBadge;
 import christmas.model.Gift;
 import christmas.model.Order;
+import christmas.model.discount.DiscountDetails;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.ArrayList;

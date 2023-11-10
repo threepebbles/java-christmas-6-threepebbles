@@ -1,5 +1,7 @@
-package christmas.model;
+package christmas.model.discount;
 
+import christmas.model.Date;
+import christmas.model.Order;
 import java.util.List;
 
 public class DiscountDetails {
@@ -11,11 +13,11 @@ public class DiscountDetails {
 
     public static DiscountDetails createDiscountDetails(Date date, Order order) {
         List<Discount> discounts = List.of(
-                Discount.createChristmasDiscount(date),
-                Discount.createWeekdayDiscount(date, order),
-                Discount.createWeekendDiscount(date, order),
-                Discount.createSpecialDiscount(date),
-                Discount.createGiftDiscount(order)
+                new ChristmasDiscount(date),
+                new WeekdayDiscount(date, order),
+                new WeekendDiscount(date, order),
+                new SpecialDiscount(date),
+                new GiftDiscount(order)
         );
         return new DiscountDetails(
                 discounts.stream()

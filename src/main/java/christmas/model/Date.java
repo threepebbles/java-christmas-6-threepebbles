@@ -5,7 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class Date {
-    LocalDate date;
+    private final LocalDate date;
 
     public Date(int day) {
         validate(day);
@@ -30,10 +30,6 @@ public class Date {
 
     public int getDay() {
         return date.getDayOfMonth();
-    }
-
-    public DayOfWeek getDayOfWeek() {
-        return date.getDayOfWeek();
     }
 
     public LocalDate getDate() {

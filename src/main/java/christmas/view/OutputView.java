@@ -1,12 +1,12 @@
 package christmas.view;
 
 import christmas.model.Date;
-import christmas.model.Discount;
-import christmas.model.DiscountDetails;
 import christmas.model.EventBadge;
 import christmas.model.Gift;
 import christmas.model.Menu;
 import christmas.model.Order;
+import christmas.model.discount.Discount;
+import christmas.model.discount.DiscountDetails;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +23,7 @@ public class OutputView {
     public static final String TOTAL_DISCOUNT_FORMAT = "<총혜택 금액>" + LINE_SEPARATOR + "%s";
     public static final String EXPECTED_PAY_AFTER_DISCOUNT_FORMAT = "<할인 후 예상 결제 금액>" + LINE_SEPARATOR + "%s";
     public static final String EVENT_BADGE_FORMAT = "<12월 이벤트 배지>" + LINE_SEPARATOR + "%s";
-    private static final String NOTHING = "없음";
+    public static final String NOTHING = "없음";
 
     // 헤더 메세지 출력
     public void printEventStatisticsHeader(Date date) {
