@@ -3,6 +3,7 @@ package christmas.service;
 import christmas.controller.InputController;
 import christmas.controller.OutputController;
 import christmas.domain.Date;
+import christmas.domain.Order;
 
 public class EventPlannerService {
     InputController inputController;
@@ -15,6 +16,11 @@ public class EventPlannerService {
 
     public void run() {
         Date date = inputController.askDayOfVisit();
-        System.out.println(date.getDay());
+        System.out.println("day: " + date.getDay());
+        Order order = inputController.askOrder();
+        order.getMenuCounter().forEach((menu, count) -> {
+            System.out.print("menu: " + menu.toString());
+            System.out.println(", count: " + count);
+        });
     }
 }
