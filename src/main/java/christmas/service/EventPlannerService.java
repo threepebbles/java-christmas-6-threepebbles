@@ -73,6 +73,6 @@ public class EventPlannerService {
         if (totalPriceBeforeDiscount >= THRESHOLD) {
             return Menu.CHAMPAGNE;
         }
-        return null;
+        return Menu.NOTHING;
     }
 }
