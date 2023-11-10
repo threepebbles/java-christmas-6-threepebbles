@@ -87,4 +87,15 @@ public class OutputController {
                 decFormat.format(-totalDiscount),
                 Menu.CURRENCY_UNIT);
     }
+
+    public void printExpectedPayAfterDiscount(int expectedPayAfterDiscount) {
+        outputView.printExpectedPayAfterDiscount(createExpectedPayAfterDiscountText(expectedPayAfterDiscount));
+    }
+
+    private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return String.format("%s%s\n",
+                decFormat.format(expectedPayAfterDiscount),
+                Menu.CURRENCY_UNIT);
+    }
 }

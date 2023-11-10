@@ -6,6 +6,7 @@ import christmas.domain.Date;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.discount.Discount;
+import christmas.domain.discount.DiscountType;
 import christmas.domain.discount.Discounter;
 import java.util.List;
 
@@ -43,6 +44,17 @@ public class EventPlannerService {
         // 5. 총 혜택 금액 계산 및 출력
         int totalDiscount = calculateTotalDiscount(discounts);
         outputController.printTotalDiscount(totalDiscount);
+
+        // 6. 할인 후 예상 결제 금액
+        int expectedPayAfterDiscount = totalPriceBeforeDiscount - calculateTotalDiscountWithoutGift(discounts);
+        outputController.printExpectedPayAfterDiscount(expectedPayAfterDiscount);
+    }
+
+    private int calculateTotalDiscountWithoutGift(List<Discount> discounts) {
+        return discounts.stream()
+                .filter(discount -> discount.getDiscountType() != DiscountType.GIFT)
+                .mapToInt(Discount::getAmount)
+                .sum();
     }
 
     private int calculateTotalDiscount(List<Discount> discounts) {
