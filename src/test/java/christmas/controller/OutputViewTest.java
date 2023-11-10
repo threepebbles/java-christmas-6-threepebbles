@@ -21,14 +21,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class OutputControllerTest {
+public class OutputViewTest {
     public static final String LINE_SEPARATOR = System.lineSeparator();
-    private OutputController outputController;
+    private OutputView outputView;
     private ByteArrayOutputStream output;
 
     @BeforeEach
     void setup() {
-        outputController = new OutputController(new OutputView());
+        outputView = new OutputView();
         output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
     }
@@ -50,7 +50,7 @@ public class OutputControllerTest {
                 String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", day);
 
         // when
-        outputController.printEventStatisticsHeader(date);
+        outputView.printEventStatisticsHeader(date);
         String actual = output.toString();
 
         // then
@@ -70,7 +70,7 @@ public class OutputControllerTest {
                 + "티본스테이크 2개" + LINE_SEPARATOR;
 
         // when
-        outputController.printOrder(order);
+        outputView.printOrder(order);
         String actual = output.toString();
 
         // then
@@ -87,7 +87,7 @@ public class OutputControllerTest {
                 + "100,203원" + LINE_SEPARATOR;
 
         // when
-        outputController.printTotalPriceBeforeDiscount(amount);
+        outputView.printTotalPriceBeforeDiscount(amount);
         String actual = output.toString();
 
         // then
@@ -104,7 +104,7 @@ public class OutputControllerTest {
                 + "샴페인 1개" + LINE_SEPARATOR;
 
         // when
-        outputController.printGift(gift);
+        outputView.printGift(gift);
         String actual = output.toString();
 
         // then
@@ -121,7 +121,7 @@ public class OutputControllerTest {
                 + "없음" + LINE_SEPARATOR;
 
         // when
-        outputController.printGift(gift);
+        outputView.printGift(gift);
         String actual = output.toString();
 
         // then
@@ -145,7 +145,7 @@ public class OutputControllerTest {
                 + "증정 이벤트: -3,030원" + LINE_SEPARATOR;
 
         // when
-        outputController.printDiscountDetails(discountDetails);
+        outputView.printDiscountDetails(discountDetails);
         String actual = output.toString();
 
         // then
@@ -162,7 +162,7 @@ public class OutputControllerTest {
                 + "-102,030원" + LINE_SEPARATOR;
 
         // when
-        outputController.printTotalDiscount(totalDiscount);
+        outputView.printTotalDiscount(totalDiscount);
         String actual = output.toString();
 
         // then;
@@ -179,7 +179,7 @@ public class OutputControllerTest {
                 + "52,000원" + LINE_SEPARATOR;
 
         // when
-        outputController.printExpectedPayAfterDiscount(expectedPay);
+        outputView.printExpectedPayAfterDiscount(expectedPay);
         String actual = output.toString();
 
         // then
@@ -196,7 +196,7 @@ public class OutputControllerTest {
                 + "별" + LINE_SEPARATOR;
 
         // when
-        outputController.printEventBadge(eventBadge);
+        outputView.printEventBadge(eventBadge);
         String actual = output.toString();
 
         // then
