@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.Date;
 import christmas.domain.Discount;
+import christmas.domain.DiscountDetails;
 import christmas.domain.DiscountType;
 import christmas.domain.EventBadge;
 import christmas.domain.Gift;
@@ -136,6 +137,7 @@ public class OutputControllerTest {
             add(new Discount(DiscountType.SPECIAL, 2020));
             add(new Discount(DiscountType.GIFT, 3030));
         }};
+        DiscountDetails discountDetails = new DiscountDetails(discounts);
         String expected = LINE_SEPARATOR
                 + "<혜택 내역>" + LINE_SEPARATOR
                 + "크리스마스 디데이 할인: -1,010원" + LINE_SEPARATOR
@@ -143,7 +145,7 @@ public class OutputControllerTest {
                 + "증정 이벤트: -3,030원" + LINE_SEPARATOR;
 
         // when
-        outputController.printDiscountDetails(discounts);
+        outputController.printDiscountDetails(discountDetails);
         String actual = output.toString();
 
         // then
