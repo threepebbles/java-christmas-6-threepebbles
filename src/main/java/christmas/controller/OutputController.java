@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.view.OutputView;
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public class OutputController {
@@ -20,7 +21,7 @@ public class OutputController {
         outputView.printOrder(createOrderText(order));
     }
 
-    String createOrderText(Order order) {
+    public String createOrderText(Order order) {
         StringBuilder sb = new StringBuilder();
         Map<Menu, Integer> menuCounter = order.getMenuCounter();
         menuCounter.forEach((menu, count) -> {
@@ -29,5 +30,14 @@ public class OutputController {
                     .append("\n");
         });
         return sb.toString();
+    }
+
+    public void printTotalPriceBeforeDiscount(int amount) {
+        outputView.printTotalPriceBeforeDiscount(createTotalPriceBeforeDiscountText(amount));
+    }
+
+    public String createTotalPriceBeforeDiscountText(int amount) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return decFormat.format(amount);
     }
 }
