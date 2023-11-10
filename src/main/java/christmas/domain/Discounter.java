@@ -3,6 +3,17 @@ package christmas.domain;
 import java.util.List;
 
 public class Discounter {
+    private static Discounter discounter;
+
+    private Discounter() {
+    }
+
+    public static Discounter getInstance() {
+        if (discounter == null) {
+            discounter = new Discounter();
+        }
+        return discounter;
+    }
 
     public List<Discount> calculateDiscountDetails(Date date, Order order) {
         List<Discount> discounts = List.of(

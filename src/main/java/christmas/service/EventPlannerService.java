@@ -41,8 +41,7 @@ public class EventPlannerService {
         outputController.printGift(gift);
 
         // 4. 할인 혜택 내역 계산 및 출력
-        Discounter discounter = new Discounter();
-        List<Discount> discountDetails = discounter.calculateDiscountDetails(date, order);
+        List<Discount> discountDetails = Discounter.getInstance().calculateDiscountDetails(date, order);
         outputController.printDiscountDetails(discountDetails);
 
         // 5. 총 혜택 금액 계산 및 출력
