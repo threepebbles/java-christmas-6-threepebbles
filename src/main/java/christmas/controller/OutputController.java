@@ -52,7 +52,9 @@ public class OutputController {
 
     public String createTotalPriceBeforeDiscountText(int amount) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
-        return decFormat.format(amount) + "\n";
+        return String.format("%s%s\n",
+                decFormat.format(amount),
+                Menu.CURRENCY_UNIT);
     }
 
     // 혜택 내역
@@ -64,10 +66,22 @@ public class OutputController {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         StringBuilder sb = new StringBuilder();
         discounts.forEach(discount -> {
-            sb.append(String.format("%s: -%s원\n",
+            sb.append(String.format("%s: -%s%s\n",
                     discount.getName(),
-                    decFormat.format(discount.getAmount())));
+                    decFormat.format(discount.getAmount()),
+                    Menu.CURRENCY_UNIT));
         });
         return sb.toString();
+    }
+
+    public void printTotalDiscount(int totalDiscount) {
+        outputView.printTotalDiscount(createTotalDiscountText(totalDiscount));
+    }
+
+    private String createTotalDiscountText(int totalDiscount) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+        return String.format("%s%s\n",
+                decFormat.format(-totalDiscount),
+                Menu.CURRENCY_UNIT);
     }
 }

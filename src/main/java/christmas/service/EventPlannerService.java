@@ -27,7 +27,7 @@ public class EventPlannerService {
         outputController.printEventStatisticsHeader();
         // 1. 주문 받은 메뉴 목록 출력
         outputController.printOrder(order);
-        
+
         // 2. 할인 전 총 주문 금액 계산 및 출력
         int totalPriceBeforeDiscount = order.calculateTotalPriceBeforeDiscount();
         outputController.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
@@ -40,6 +40,16 @@ public class EventPlannerService {
         Discounter discounter = new Discounter();
         List<Discount> discounts = discounter.calculateAllDiscounts(date, order);
         outputController.printDiscountDetails(discounts);
+
+        // 5. 총 혜택 금액 계산 및 출력
+        int totalDiscount = calculateTotalDiscount(discounts);
+        outputController.printTotalDiscount(totalDiscount);
+    }
+
+    private int calculateTotalDiscount(List<Discount> discounts) {
+        return discounts.stream()
+                .mapToInt(Discount::getAmount)
+                .sum();
     }
 
     private Menu requestGift(int totalPriceBeforeDiscount) {
