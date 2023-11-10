@@ -4,18 +4,18 @@ import christmas.domain.Date;
 import christmas.domain.Menu;
 import christmas.domain.MenuType;
 import christmas.domain.Order;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Discounter {
 
     public List<Discount> calculateAllDiscounts(Date date, Order order) {
-        List<Discount> discounts = new ArrayList<>();
-        discounts.add(calculateChristmasDiscount(date));
-        discounts.add(calculateWeekdayDiscount(date, order));
-        discounts.add(calculateWeekendDiscount(date, order));
-        discounts.add(calculateSpecialDiscount(date));
-        discounts.add(calculateGiftDiscount(order));
+        List<Discount> discounts = List.of(
+                calculateChristmasDiscount(date),
+                calculateWeekdayDiscount(date, order),
+                calculateWeekendDiscount(date, order),
+                calculateSpecialDiscount(date),
+                calculateGiftDiscount(order)
+        );
         return discounts.stream()
                 .filter(discount -> discount.getAmount() != 0)
                 .toList();
@@ -27,7 +27,9 @@ public class Discounter {
 
         int day = date.getDay();
         if (day <= DEAD_LINE_DAY) {
-            amount = 1000 + (day - 1) * 100;
+            final int DEFAULT = 1000;
+            final int UNIT = 100;
+            amount = DEFAULT + (day - 1) * UNIT;
         }
         return new Discount(DiscountType.CHRISTMAS_D_DAY, amount);
     }
