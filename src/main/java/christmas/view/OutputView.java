@@ -3,7 +3,7 @@ package christmas.view;
 public class OutputView {
     public static final String EVENT_STATISTICS_HEADER_FORMAT = "%s에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n";
     public static final String ORDER_FORMAT = "<주문 메뉴>\n%s";
-    public static final String TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT = "<할인 전 총 주문 금액>\n%s";
+    public static final String TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT = "<할인 전 총주문 금액>\n%s";
     public static final String GIFT_FORMAT = "<증정 메뉴>\n%s";
     public static final String DISCOUNT_DETAILS_FORMAT = "<혜택 내역>\n%s";
     public static final String TOTAL_DISCOUNT_FORMAT = "<총혜택 금액>\n%s";
