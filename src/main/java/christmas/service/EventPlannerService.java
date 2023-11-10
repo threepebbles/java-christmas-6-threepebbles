@@ -30,7 +30,7 @@ public class EventPlannerService {
         outputController.printOrder(order);
 
         // 2. 할인 전 총 주문 금액 계산 및 출력
-        int totalPriceBeforeDiscount = order.calculateTotalPriceBeforeDiscount();
+        int totalPriceBeforeDiscount = order.calculateTotalPrice();
         outputController.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
 
         // 3. 증정 메뉴 존재 유무 판단 출력

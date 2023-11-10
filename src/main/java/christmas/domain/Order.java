@@ -44,7 +44,7 @@ public class Order {
                 .sum();
     }
 
-    public int calculateTotalPriceBeforeDiscount() {
+    public int calculateTotalPrice() {
         return menuCounter.keySet().stream()
                 .mapToInt(menu -> menu.getPrice() * menuCounter.get(menu))
                 .sum();

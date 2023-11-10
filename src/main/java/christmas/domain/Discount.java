@@ -54,7 +54,7 @@ public class Discount {
 
     public static Discount createGiftDiscount(Order order) {
         int amount = 0;
-        if (order.calculateTotalPriceBeforeDiscount() >= Gift.THRESHOLD) {
+        if (order.calculateTotalPrice() >= Gift.THRESHOLD) {
             amount = Menu.CHAMPAGNE.getPrice();
         }
         return new Discount(DiscountType.GIFT, amount);
