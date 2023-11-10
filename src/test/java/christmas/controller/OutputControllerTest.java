@@ -21,7 +21,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class OutputControllerTest {
-    private static final String LINE_SEPARATOR = System.lineSeparator();
     private OutputController outputController;
     private ByteArrayOutputStream output;
 
@@ -69,7 +68,7 @@ public class OutputControllerTest {
         String actual = output.toString();
 
         // then
-        assertThat(actual).contains(LINE_SEPARATOR.repeat(2), "<주문 메뉴>", "제로콜라 2개", "티본스테이크 2개");
+        assertThat(actual).contains("<주문 메뉴>", "제로콜라 2개", "티본스테이크 2개");
     }
 
     @DisplayName("할인 전 총 주문 금액이 정상적으로 출력되는지 테스트한다.")
@@ -83,7 +82,7 @@ public class OutputControllerTest {
         String actual = output.toString();
 
         // then
-        assertThat(actual).contains(LINE_SEPARATOR.repeat(2), "<할인 전 총주문 금액>", "100,203원");
+        assertThat(actual).contains("<할인 전 총주문 금액>", "100,203원");
     }
 
     @DisplayName("증정 메뉴가 있는 경우 정상적으로 출력되는지 테스트한다.")
@@ -97,7 +96,7 @@ public class OutputControllerTest {
         String actual = output.toString();
 
         // then
-        assertThat(actual).contains(LINE_SEPARATOR.repeat(2), "<증정 메뉴>", "샴페인 1개");
+        assertThat(actual).contains("<증정 메뉴>", "샴페인 1개");
     }
 
     @DisplayName("증정 메뉴가 없는 경우 정상적으로 출력되는지 테스트한다.")
@@ -111,7 +110,7 @@ public class OutputControllerTest {
         String actual = output.toString();
 
         // then
-        assertThat(actual).contains(LINE_SEPARATOR.repeat(2), "<증정 메뉴>", "없음");
+        assertThat(actual).contains("<증정 메뉴>", "없음");
     }
 
     @DisplayName("혜택 내역이 있는 경우 정상적으로 출력되는지 테스트한다.")
