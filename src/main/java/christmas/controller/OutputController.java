@@ -15,14 +15,6 @@ import java.util.Map;
 
 public class OutputController {
     private static final String LINE_SEPARATOR = System.lineSeparator();
-    public static final String EVENT_STATISTICS_HEADER_FORMAT = "%s에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
-    public static final String ORDER_FORMAT = "<주문 메뉴>%s";
-    public static final String TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT = "<할인 전 총주문 금액>%s";
-    public static final String GIFT_FORMAT = "<증정 메뉴>%s";
-    public static final String DISCOUNT_DETAILS_FORMAT = "<혜택 내역>%s";
-    public static final String TOTAL_DISCOUNT_FORMAT = "<총혜택 금액>%s";
-    public static final String EXPECTED_PAY_AFTER_DISCOUNT_FORMAT = "<할인 후 예상 결제 금액>%s";
-    public static final String EVENT_BADGE_FORMAT = "<12월 이벤트 배지>%s";
     private static final String NOTHING = "없음";
     private final OutputView outputView;
 
@@ -33,8 +25,7 @@ public class OutputController {
     // 이벤트 플래어 헤더 메세지
     public void printEventStatisticsHeader(Date date) {
         String dateText = createDateText(date);
-        String text = String.format(EVENT_STATISTICS_HEADER_FORMAT, dateText);
-        outputView.printText(text);
+        outputView.printEventStatisticsHeader(dateText);
     }
 
     private String createDateText(Date date) {
@@ -46,9 +37,7 @@ public class OutputController {
     // 주문 메뉴
     public void printOrder(Order order) {
         String orderText = createOrderText(order);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(ORDER_FORMAT, orderText);
-        outputView.printText(text);
+        outputView.printOrder(orderText);
     }
 
     private String createOrderText(Order order) {
@@ -64,9 +53,7 @@ public class OutputController {
     // 할인 전 총 주문 금액
     public void printTotalPriceBeforeDiscount(int amount) {
         String amountText = createTotalPriceBeforeDiscountText(amount);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT, amountText);
-        outputView.printText(text);
+        outputView.printTotalPriceBeforeDiscount(amountText);
     }
 
     private String createTotalPriceBeforeDiscountText(int amount) {
@@ -79,9 +66,7 @@ public class OutputController {
     // 증정 메뉴
     public void printGift(Gift gift) {
         String giftText = createGiftText(gift);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(GIFT_FORMAT, giftText);
-        outputView.printText(text);
+        outputView.printGift(giftText);
     }
 
     private String createGiftText(Gift gift) {
@@ -92,11 +77,9 @@ public class OutputController {
     }
 
     // 혜택 내역
-    public void printDiscountDetails(List<Discount> discounts) {
-        String discountsText = createDiscountDetailsText(discounts);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(DISCOUNT_DETAILS_FORMAT, discountsText);
-        outputView.printText(text);
+    public void printDiscountDetails(List<Discount> details) {
+        String detailsText = createDiscountDetailsText(details);
+        outputView.printDiscountDetails(detailsText);
     }
 
     private String createDiscountDetailsText(List<Discount> discounts) {
@@ -116,9 +99,7 @@ public class OutputController {
     // 총혜택 금액
     public void printTotalDiscount(int totalDiscount) {
         String totalDiscountText = createTotalDiscountText(totalDiscount);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(TOTAL_DISCOUNT_FORMAT, totalDiscountText);
-        outputView.printText(text);
+        outputView.printTotalDiscount(totalDiscountText);
     }
 
     private String createTotalDiscountText(int totalDiscount) {
@@ -132,9 +113,7 @@ public class OutputController {
     // 할인 후 예상 결제 금액
     public void printExpectedPayAfterDiscount(int expectedPay) {
         String expectedPayText = createExpectedPayAfterDiscountText(expectedPay);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(EXPECTED_PAY_AFTER_DISCOUNT_FORMAT, expectedPayText);
-        outputView.printText(text);
+        outputView.printExpectedPayAfterDiscount(expectedPayText);
     }
 
     private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
@@ -148,9 +127,7 @@ public class OutputController {
     // 12월 이벤트 배지
     public void printEventBadge(EventBadge eventBadge) {
         String eventBadgeText = createEventBadgeText(eventBadge);
-        String text = LINE_SEPARATOR.repeat(2)
-                + String.format(EVENT_BADGE_FORMAT, eventBadgeText);
-        outputView.printText(text);
+        outputView.printEventBadge(eventBadgeText);
     }
 
     private String createEventBadgeText(EventBadge eventBadge) {
