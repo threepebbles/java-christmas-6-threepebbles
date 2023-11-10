@@ -6,6 +6,7 @@ import christmas.domain.EventBadge;
 import christmas.domain.Gift;
 import christmas.domain.Menu;
 import christmas.domain.Order;
+import christmas.utils.Converter;
 import christmas.view.OutputView;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -57,7 +58,7 @@ public class OutputController {
 
     private String createTotalPriceBeforeDiscountText(int amount) {
         return LINE_SEPARATOR + String.format("%s%s",
-                String.format("%,d", amount),
+                Converter.intToLocaleString(amount),
                 Menu.CURRENCY_UNIT);
     }
 
@@ -88,7 +89,7 @@ public class OutputController {
         discounts.forEach(discount -> sb.append(LINE_SEPARATOR)
                 .append(String.format("%s: -%s%s",
                         discount.getName(),
-                        String.format("%,d", discount.getAmount()),
+                        Converter.intToLocaleString(discount.getAmount()),
                         Menu.CURRENCY_UNIT)));
         return sb.toString();
     }
@@ -102,7 +103,7 @@ public class OutputController {
     private String createTotalDiscountText(int totalDiscount) {
         return LINE_SEPARATOR
                 + String.format("%s%s",
-                String.format("%,d", -totalDiscount),
+                Converter.intToLocaleString(-totalDiscount),
                 Menu.CURRENCY_UNIT);
     }
 
@@ -115,7 +116,7 @@ public class OutputController {
     private String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
         return LINE_SEPARATOR
                 + String.format("%s%s",
-                String.format("%,d", expectedPayAfterDiscount),
+                Converter.intToLocaleString(expectedPayAfterDiscount),
                 Menu.CURRENCY_UNIT);
     }
 
