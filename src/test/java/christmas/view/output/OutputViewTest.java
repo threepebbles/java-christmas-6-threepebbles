@@ -7,12 +7,15 @@ import christmas.model.domain.DiscountDetails;
 import christmas.model.domain.DiscountType;
 import christmas.model.domain.EventBadge;
 import christmas.model.domain.Gift;
+import christmas.model.domain.Menu;
 import christmas.model.domain.Order;
 import christmas.model.domain.discount.Discount;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -60,9 +63,12 @@ public class OutputViewTest {
     @Test
     void 주문_메뉴_출력_테스트() {
         // given
-        Order order = new Order();
-        order.addMenu("티본스테이크", 2);
-        order.addMenu("제로콜라", 2);
+        Map<Menu, Integer> menuCounter = new HashMap<>() {{
+            put(Menu.findMenuByName("티본스테이크"), 2);
+            put(Menu.findMenuByName("제로콜라"), 2);
+        }};
+        Order order = new Order(menuCounter);
+
         String expected = "<주문 메뉴>" + LINE_SEPARATOR
                 + "제로콜라 2개" + LINE_SEPARATOR
                 + "티본스테이크 2개" + LINE_SEPARATOR;
