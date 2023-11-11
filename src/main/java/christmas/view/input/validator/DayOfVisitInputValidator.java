@@ -1,4 +1,4 @@
-package christmas.view.validator;
+package christmas.view.input.validator;
 
 import christmas.constant.ErrorMessage;
 

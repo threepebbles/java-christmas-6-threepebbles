@@ -1,4 +1,4 @@
-package christmas.view.validator;
+package christmas.view.input.validator;
 
 import christmas.constant.ErrorMessage;
 import christmas.utils.Parser;
@@ -22,10 +22,10 @@ public class OrderInputValidator implements InputValidator {
         String COMMA = ",";
         List<String> menuCounts = Parser.parseWithDelimiter(target, COMMA);
         menuCounts.stream()
-                .forEach(this::validateFormat);
+                .forEach(this::validateMenuCountFormat);
     }
 
-    private void validateFormat(String target) {
+    private void validateMenuCountFormat(String target) {
         String HYPHEN = "-";
         List<String> menuCount = Parser.parseWithDelimiter(target, HYPHEN);
         if (menuCount.size() != 2) {

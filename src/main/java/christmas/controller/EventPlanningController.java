@@ -6,8 +6,8 @@ import christmas.model.domain.EventBadge;
 import christmas.model.domain.EventPlanner;
 import christmas.model.domain.Gift;
 import christmas.model.domain.Order;
-import christmas.view.InputView;
-import christmas.view.OutputView;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputView;
 
 public class EventPlanningController {
     private final InputView inputView;
@@ -28,32 +28,49 @@ public class EventPlanningController {
     private void startPlanning(Date date, Order order) {
         final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
 
-        outputView.printEventStatisticsHeader(date);
-        outputView.printOrder(order);
+        outputView.updateEventPlanHeaderScreen(date);
+        outputView.updateOrderScreen(order);
         if (order.calculateTotalPrice() < MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS) {
             planningWithoutEvents(date, order);
             return;
         }
         planningEvents(date, order);
+        renderEventPlan();
     }
 
     private void planningEvents(Date date, Order order) {
         EventPlanner eventPlanner = new EventPlanner(date, order);
 
-        outputView.printTotalPriceBeforeDiscount(eventPlanner.calculateTotalPriceBeforeDiscount());
-        outputView.printGift(eventPlanner.calculateGift());
-        outputView.printDiscountDetails(eventPlanner.calculateDiscountDetails());
-        outputView.printTotalDiscount(eventPlanner.calculateTotalDiscount());
-        outputView.printExpectedPayAfterDiscount(eventPlanner.calculateExpectedPayAfterDiscount());
-        outputView.printEventBadge(eventPlanner.calculateEventBadge());
+        outputView.updateTotalPriceBeforeDiscountScreen(eventPlanner.calculateTotalPriceBeforeDiscount());
+        outputView.updateGiftScreen(eventPlanner.calculateGift());
+        outputView.updateDiscountDetailsScreen(eventPlanner.calculateDiscountDetails());
+        outputView.updateTotalDiscountScreen(eventPlanner.calculateTotalDiscount());
+        outputView.updateExpectedPayAfterDiscountScreen(eventPlanner.calculateExpectedPayAfterDiscount());
+        outputView.updateEventBadgeScreen(eventPlanner.calculateEventBadge());
     }
 
     private void planningWithoutEvents(Date date, Order order) {
-        outputView.printTotalPriceBeforeDiscount(0);
-        outputView.printGift(Gift.NOTHING);
-        outputView.printDiscountDetails(DiscountDetails.createEmptyDiscountDetails());
-        outputView.printTotalDiscount(0);
-        outputView.printExpectedPayAfterDiscount(order.calculateTotalPrice());
-        outputView.printEventBadge(EventBadge.NOTHING);
+        outputView.updateTotalPriceBeforeDiscountScreen(0);
+        outputView.updateGiftScreen(Gift.NOTHING);
+        outputView.updateDiscountDetailsScreen(DiscountDetails.createEmptyDiscountDetails());
+        outputView.updateTotalDiscountScreen(0);
+        outputView.updateExpectedPayAfterDiscountScreen(order.calculateTotalPrice());
+        outputView.updateEventBadgeScreen(EventBadge.NOTHING);
+    }
+
+    private void renderEventPlan() {
+        renderWithLineSeparator(outputView::renderEventPlanHeaderScreen, 1);
+        renderWithLineSeparator(outputView::renderOrderScreen, 1);
+        renderWithLineSeparator(outputView::renderTotalPriceBeforeDiscountScreen, 1);
+        renderWithLineSeparator(outputView::renderGiftScreen, 1);
+        renderWithLineSeparator(outputView::renderDiscountDetailsScreen, 1);
+        renderWithLineSeparator(outputView::renderTotalDiscountScreen, 1);
+        renderWithLineSeparator(outputView::renderExpectedPayAfterDiscountScreen, 1);
+        outputView.renderEventBadgeScreen();
+    }
+
+    public void renderWithLineSeparator(Runnable toRun, int lineSeparatorCount) {
+        toRun.run();
+        outputView.printLineSeparator(lineSeparatorCount);
     }
 }

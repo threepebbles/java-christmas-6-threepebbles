@@ -1,12 +1,12 @@
-package christmas.view;
+package christmas.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.model.domain.Date;
 import christmas.model.domain.Menu;
 import christmas.model.domain.Order;
 import christmas.utils.Parser;
-import christmas.view.validator.DayOfVisitInputValidator;
-import christmas.view.validator.OrderInputValidator;
+import christmas.view.input.validator.DayOfVisitInputValidator;
+import christmas.view.input.validator.OrderInputValidator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
