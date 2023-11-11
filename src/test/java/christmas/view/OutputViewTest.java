@@ -1,15 +1,16 @@
-package christmas.controller;
+package christmas.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.model.Date;
-import christmas.model.EventBadge;
-import christmas.model.Gift;
-import christmas.model.Order;
-import christmas.model.discount.Discount;
-import christmas.model.discount.DiscountDetails;
-import christmas.model.discount.DiscountType;
-import christmas.view.OutputView;
+import christmas.model.domain.Date;
+import christmas.model.domain.DiscountDetails;
+import christmas.model.domain.DiscountType;
+import christmas.model.domain.EventBadge;
+import christmas.model.domain.Gift;
+import christmas.model.domain.Order;
+import christmas.model.domain.discount.Discount;
+import christmas.view.output.OutputView;
+import christmas.view.output.Presenter;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -23,12 +24,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class OutputViewTest {
     public static final String LINE_SEPARATOR = System.lineSeparator();
-    private OutputView outputView;
+    private final OutputView outputView = new OutputView(new Presenter());
     private ByteArrayOutputStream output;
 
     @BeforeEach
     void setup() {
-        outputView = new OutputView();
         output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
     }
@@ -47,10 +47,11 @@ public class OutputViewTest {
         Date date = new Date(day);
 
         String expected =
-                String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", day);
+                String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", day) + LINE_SEPARATOR;
 
         // when
-        outputView.printEventStatisticsHeader(date);
+        outputView.updateEventPlanHeaderScreen(date);
+        outputView.renderEventPlanHeaderScreen();
         String actual = output.toString();
 
         // then
@@ -64,13 +65,13 @@ public class OutputViewTest {
         Order order = new Order();
         order.addMenu("티본스테이크", 2);
         order.addMenu("제로콜라", 2);
-        String expected = LINE_SEPARATOR + LINE_SEPARATOR
-                + "<주문 메뉴>" + LINE_SEPARATOR
+        String expected = "<주문 메뉴>" + LINE_SEPARATOR
                 + "제로콜라 2개" + LINE_SEPARATOR
                 + "티본스테이크 2개" + LINE_SEPARATOR;
 
         // when
-        outputView.printOrder(order);
+        outputView.updateOrderScreen(order);
+        outputView.renderOrderScreen();
         String actual = output.toString();
 
         // then
@@ -82,12 +83,12 @@ public class OutputViewTest {
     void 할인_전_총_주문_금액_출력_테스트() {
         // given
         int amount = 100203;
-        String expected = LINE_SEPARATOR
-                + "<할인 전 총주문 금액>" + LINE_SEPARATOR
+        String expected = "<할인 전 총주문 금액>" + LINE_SEPARATOR
                 + "100,203원" + LINE_SEPARATOR;
 
         // when
-        outputView.printTotalPriceBeforeDiscount(amount);
+        outputView.updateTotalPriceBeforeDiscountScreen(amount);
+        outputView.renderTotalPriceBeforeDiscountScreen();
         String actual = output.toString();
 
         // then
@@ -99,12 +100,12 @@ public class OutputViewTest {
     void 증정_메뉴_있는_경우_출력_테스트() {
         // given
         Gift gift = Gift.CHAMPAGNE;
-        String expected = LINE_SEPARATOR
-                + "<증정 메뉴>" + LINE_SEPARATOR
+        String expected = "<증정 메뉴>" + LINE_SEPARATOR
                 + "샴페인 1개" + LINE_SEPARATOR;
 
         // when
-        outputView.printGift(gift);
+        outputView.updateGiftScreen(gift);
+        outputView.renderGiftScreen();
         String actual = output.toString();
 
         // then
@@ -116,12 +117,12 @@ public class OutputViewTest {
     void 증정_메뉴_없는_경우_출력_테스트() {
         // given
         Gift gift = Gift.NOTHING;
-        String expected = LINE_SEPARATOR
-                + "<증정 메뉴>" + LINE_SEPARATOR
+        String expected = "<증정 메뉴>" + LINE_SEPARATOR
                 + "없음" + LINE_SEPARATOR;
 
         // when
-        outputView.printGift(gift);
+        outputView.updateGiftScreen(gift);
+        outputView.renderGiftScreen();
         String actual = output.toString();
 
         // then
@@ -138,14 +139,14 @@ public class OutputViewTest {
             add(new Discount(DiscountType.GIFT, 3030));
         }};
         DiscountDetails discountDetails = new DiscountDetails(discounts);
-        String expected = LINE_SEPARATOR
-                + "<혜택 내역>" + LINE_SEPARATOR
+        String expected = "<혜택 내역>" + LINE_SEPARATOR
                 + "크리스마스 디데이 할인: -1,010원" + LINE_SEPARATOR
                 + "특별 할인: -2,020원" + LINE_SEPARATOR
                 + "증정 이벤트: -3,030원" + LINE_SEPARATOR;
 
         // when
-        outputView.printDiscountDetails(discountDetails);
+        outputView.updateDiscountDetailsScreen(discountDetails);
+        outputView.renderDiscountDetailsScreen();
         String actual = output.toString();
 
         // then
@@ -157,12 +158,12 @@ public class OutputViewTest {
     void 총혜택_금액_출력_테스트() {
         // given
         int totalDiscount = 102030;
-        String expected = LINE_SEPARATOR
-                + "<총혜택 금액>" + LINE_SEPARATOR
+        String expected = "<총혜택 금액>" + LINE_SEPARATOR
                 + "-102,030원" + LINE_SEPARATOR;
 
         // when
-        outputView.printTotalDiscount(totalDiscount);
+        outputView.updateTotalDiscountScreen(totalDiscount);
+        outputView.renderTotalDiscountScreen();
         String actual = output.toString();
 
         // then;
@@ -174,12 +175,12 @@ public class OutputViewTest {
     void 할인_후_예상_결제_금액_출력_테스트() {
         // given
         int expectedPay = 52000;
-        String expected = LINE_SEPARATOR
-                + "<할인 후 예상 결제 금액>" + LINE_SEPARATOR
+        String expected = "<할인 후 예상 결제 금액>" + LINE_SEPARATOR
                 + "52,000원" + LINE_SEPARATOR;
 
         // when
-        outputView.printExpectedPayAfterDiscount(expectedPay);
+        outputView.updateExpectedPayAfterDiscountScreen(expectedPay);
+        outputView.renderExpectedPayAfterDiscountScreen();
         String actual = output.toString();
 
         // then
@@ -191,12 +192,12 @@ public class OutputViewTest {
     void 이벤트_배지_출력_테스트() {
         // given
         EventBadge eventBadge = EventBadge.STAR;
-        String expected = LINE_SEPARATOR
-                + "<12월 이벤트 배지>" + LINE_SEPARATOR
+        String expected = "<12월 이벤트 배지>" + LINE_SEPARATOR
                 + "별" + LINE_SEPARATOR;
 
         // when
-        outputView.printEventBadge(eventBadge);
+        outputView.updateEventBadgeScreen(eventBadge);
+        outputView.renderEventBadgeScreen();
         String actual = output.toString();
 
         // then
