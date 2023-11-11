@@ -4,10 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.constant.DiscountType;
 import christmas.constant.EventBadge;
+import christmas.constant.Gift;
+import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
-import christmas.model.Gift;
-import christmas.model.Menu;
 import christmas.model.Order;
 import christmas.model.Orders;
 import christmas.model.discount.Discount;
