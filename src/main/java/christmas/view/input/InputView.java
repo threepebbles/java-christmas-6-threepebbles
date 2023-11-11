@@ -5,8 +5,7 @@ import christmas.model.domain.Date;
 import christmas.model.domain.Menu;
 import christmas.model.domain.Order;
 import christmas.utils.Parser;
-import christmas.view.input.validator.DayOfVisitInputValidator;
-import christmas.view.input.validator.OrderInputValidator;
+import christmas.view.input.validator.InputValidatorFinder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +20,18 @@ public class InputView {
             + "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
     public static final String ENTER_ORDER_TEXT = "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)";
 
+    private final InputValidatorFinder inputValidatorFinder;
+
+    public InputView() {
+        inputValidatorFinder = new InputValidatorFinder();
+    }
+
     public Date askDayOfVisit() {
         return (Date) retryUntilSuccess(
                 inputView -> {
                     String day = scanDayOfVisit();
-                    DayOfVisitInputValidator.getInstance().validate(day);
+                    inputValidatorFinder.findValidatorByInputType(InputType.DAY_OF_VISIT)
+                            .validate(day);
                     return createDate(day);
                 });
     }
@@ -43,7 +49,8 @@ public class InputView {
         return (Order) retryUntilSuccess(
                 inputView -> {
                     String order = inputView.scanOrder();
-                    OrderInputValidator.getInstance().validate(order);
+                    inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
+                            .validate(order);
                     return createOrder(order);
                 });
     }
