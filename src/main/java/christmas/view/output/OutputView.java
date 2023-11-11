@@ -1,9 +1,9 @@
 package christmas.view.output;
 
 import christmas.constant.EventBadge;
+import christmas.constant.Gift;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
-import christmas.model.Gift;
 import christmas.model.Orders;
 
 public class OutputView {

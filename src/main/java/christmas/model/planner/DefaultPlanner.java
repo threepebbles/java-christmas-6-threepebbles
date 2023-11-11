@@ -1,8 +1,8 @@
 package christmas.model.planner;
 
 import christmas.constant.EventBadge;
+import christmas.constant.Gift;
 import christmas.model.DiscountDetails;
-import christmas.model.Gift;
 import christmas.model.Orders;
 
 public class DefaultPlanner implements Planner {

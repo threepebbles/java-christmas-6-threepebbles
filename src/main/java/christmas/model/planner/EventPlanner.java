@@ -1,9 +1,9 @@
 package christmas.model.planner;
 
 import christmas.constant.EventBadge;
+import christmas.constant.Gift;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
-import christmas.model.Gift;
 import christmas.model.Orders;
 import christmas.model.discount.GiftDiscount;
 

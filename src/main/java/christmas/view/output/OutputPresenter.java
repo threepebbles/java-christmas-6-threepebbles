@@ -1,9 +1,9 @@
 package christmas.view.output;
 
 import christmas.constant.EventBadge;
+import christmas.constant.Gift;
+import christmas.constant.Menu;
 import christmas.model.Date;
-import christmas.model.Gift;
-import christmas.model.Menu;
 import christmas.model.Order;
 import christmas.model.Orders;
 import christmas.model.discount.Discount;

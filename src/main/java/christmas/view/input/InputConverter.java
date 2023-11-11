@@ -1,7 +1,7 @@
 package christmas.view.input;
 
+import christmas.constant.Menu;
 import christmas.model.Date;
-import christmas.model.Menu;
 import christmas.model.Order;
 import christmas.model.Orders;
 import christmas.utils.Parser;
