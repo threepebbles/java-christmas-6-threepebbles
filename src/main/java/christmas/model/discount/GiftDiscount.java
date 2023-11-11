@@ -1,7 +1,7 @@
 package christmas.model.discount;
 
 import christmas.constant.DiscountType;
-import christmas.model.Gift;
+import christmas.constant.Gift;
 import christmas.model.Orders;
 
 public class GiftDiscount extends Discount {
