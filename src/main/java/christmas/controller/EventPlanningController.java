@@ -7,7 +7,6 @@ import christmas.model.Order;
 import christmas.model.discount.DiscountDetails;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.util.ArrayList;
 
 public class EventPlanningController {
     private final InputView inputView;
@@ -26,9 +25,11 @@ public class EventPlanningController {
     }
 
     private void startPlanning(Date date, Order order) {
-        final int MINIMUM_REQUIRED_AMOUNT_TO_PLAN_EVENTS = 10000;
+        final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
 
-        if (order.calculateTotalPrice() < MINIMUM_REQUIRED_AMOUNT_TO_PLAN_EVENTS) {
+        outputView.printEventStatisticsHeader(date);
+        outputView.printOrder(order);
+        if (order.calculateTotalPrice() < MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS) {
             planningWithoutEvents(date, order);
             return;
         }
@@ -36,9 +37,6 @@ public class EventPlanningController {
     }
 
     private void planningEvents(Date date, Order order) {
-        outputView.printEventStatisticsHeader(date);
-        outputView.printOrder(order);
-
         int totalPriceBeforeDiscount = order.calculateTotalPrice();
         outputView.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
 
@@ -59,11 +57,9 @@ public class EventPlanningController {
     }
 
     private void planningWithoutEvents(Date date, Order order) {
-        outputView.printEventStatisticsHeader(date);
-        outputView.printOrder(order);
         outputView.printTotalPriceBeforeDiscount(0);
         outputView.printGift(Gift.NOTHING);
-        outputView.printDiscountDetails(new DiscountDetails(new ArrayList<>()));
+        outputView.printDiscountDetails(DiscountDetails.createEmptyDiscountDetails());
         outputView.printTotalDiscount(0);
         outputView.printExpectedPayAfterDiscount(order.calculateTotalPrice());
         outputView.printEventBadge(EventBadge.NOTHING);
