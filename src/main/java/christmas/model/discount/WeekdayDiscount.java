@@ -3,20 +3,20 @@ package christmas.model.discount;
 import christmas.constant.DiscountType;
 import christmas.constant.MenuType;
 import christmas.model.Date;
-import christmas.model.Order;
+import christmas.model.Orders;
 
 public class WeekdayDiscount extends Discount {
     private final int UNIT = 2023;
 
-    public WeekdayDiscount(Date date, Order order) {
+    public WeekdayDiscount(Date date, Orders orders) {
         super(DiscountType.WEEKDAY);
-        this.amount = calculateAmount(date, order);
+        this.amount = calculateAmount(date, orders);
     }
 
-    private int calculateAmount(Date date, Order order) {
+    private int calculateAmount(Date date, Orders orders) {
         int amount = 0;
         if (date.isWeekDay()) {
-            amount = order.countByMenuType(MenuType.DESSERT) * UNIT;
+            amount = orders.countByMenuType(MenuType.DESSERT) * UNIT;
         }
         return amount;
     }

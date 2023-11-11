@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.model.Date;
-import christmas.model.Order;
+import christmas.model.Orders;
 import christmas.model.planner.DefaultPlanner;
 import christmas.model.planner.EventPlanner;
 import christmas.model.planner.Planner;
@@ -19,22 +19,22 @@ public class MainController {
 
     public void run() {
         Date date = inputView.askDayOfVisit();
-        Order order = inputView.askOrder();
+        Orders orders = inputView.askOrder();
 
-        startPlanning(date, order);
+        startPlanning(date, orders);
         renderEventPlan();
     }
 
-    private void startPlanning(Date date, Order order) {
+    private void startPlanning(Date date, Orders orders) {
         outputView.updateEventPlanHeaderScreen(date);
-        outputView.updateOrderScreen(order);
-        outputView.updateTotalPriceBeforeDiscountScreen(order.calculateTotalPrice());
-        EventPlanner eventPlanner = new EventPlanner(date, order);
-        if (eventPlanner.isRequired(order.calculateTotalPrice())) {
+        outputView.updateOrderScreen(orders);
+        outputView.updateTotalPriceBeforeDiscountScreen(orders.calculateTotalPrice());
+        EventPlanner eventPlanner = new EventPlanner(date, orders);
+        if (eventPlanner.isRequired(orders.calculateTotalPrice())) {
             planningEvents(eventPlanner);
             return;
         }
-        DefaultPlanner defaultPlanner = new DefaultPlanner(order);
+        DefaultPlanner defaultPlanner = new DefaultPlanner(orders);
         planningEvents(defaultPlanner);
     }
 

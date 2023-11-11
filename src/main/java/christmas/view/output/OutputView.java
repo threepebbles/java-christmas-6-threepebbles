@@ -4,7 +4,7 @@ import christmas.constant.EventBadge;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
 import christmas.model.Gift;
-import christmas.model.Order;
+import christmas.model.Orders;
 
 public class OutputView {
     public static final String LINE_SEPARATOR = System.lineSeparator();
@@ -47,10 +47,10 @@ public class OutputView {
     }
 
     // <주문 메뉴> 화면 업데이트 및 출력
-    public void updateOrderScreen(Order order) {
+    public void updateOrderScreen(Orders orders) {
         orderScreen = String.format(
                 OutputViewFormat.ORDER_FORMAT,
-                outputPresenter.createOrderText(order)
+                outputPresenter.createOrderText(orders)
         );
     }
 

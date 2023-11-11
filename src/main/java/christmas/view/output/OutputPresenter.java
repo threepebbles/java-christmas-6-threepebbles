@@ -5,12 +5,12 @@ import christmas.model.Date;
 import christmas.model.Gift;
 import christmas.model.Menu;
 import christmas.model.Order;
+import christmas.model.Orders;
 import christmas.model.discount.Discount;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 
 public class OutputPresenter {
     public static final String LINE_SEPARATOR = System.lineSeparator();
@@ -22,13 +22,12 @@ public class OutputPresenter {
         return localDate.format(dateTimeFormatter);
     }
 
-    public String createOrderText(Order order) {
+    public String createOrderText(Orders orders) {
         StringBuilder sb = new StringBuilder();
-        Map<Menu, Integer> menuCounter = order.getMenuCounter();
-        menuCounter.forEach((menu, count) -> {
-            sb.append(String.format("%s %d개", menu.getName(), count))
+        for (Order order : orders.getOrders()) {
+            sb.append(String.format("%s %d개", order.menu().getName(), order.count()))
                     .append(LINE_SEPARATOR);
-        });
+        }
         return sb.toString();
     }
 

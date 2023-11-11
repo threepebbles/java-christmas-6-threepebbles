@@ -1,13 +1,12 @@
 package christmas.view.input;
 
-import christmas.constant.ErrorMessage;
 import christmas.model.Date;
 import christmas.model.Menu;
 import christmas.model.Order;
+import christmas.model.Orders;
 import christmas.utils.Parser;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class InputConverter {
     public static final String COMMA = ",";
@@ -18,23 +17,25 @@ public class InputConverter {
         return new Date(day);
     }
 
-    public Order createOrder(String userInput) {
-        Map<Menu, Integer> menuCounter = convertToMenuCounter(userInput);
-        return new Order(menuCounter);
+    public Orders createOrder(String userInput) {
+        List<Order> orders = convertToOrders(userInput);
+        return new Orders(orders);
     }
 
-    public Map<Menu, Integer> convertToMenuCounter(String userInput) {
-        Map<Menu, Integer> menuCounter = new HashMap<>();
+    private List<Order> convertToOrders(String userInput) {
+        List<Order> orders = new ArrayList<>();
+
         List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, COMMA);
         menuCountFormats.forEach(menuCountFormat -> {
-            List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
-            String menuName = menuCountBundle.get(0);
-            int count = Integer.parseInt(menuCountBundle.get(1));
-            if (menuCounter.get(Menu.findMenuByName(menuName)) != null) {
-                throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
-            }
-            menuCounter.put(Menu.findMenuByName(menuName), count);
+            orders.add(convertToOrder(menuCountFormat));
         });
-        return menuCounter;
+        return orders;
+    }
+
+    private Order convertToOrder(String menuCountFormat) {
+        List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
+        Menu menu = Menu.findMenuByName(menuCountBundle.get(0));
+        int count = Integer.parseInt(menuCountBundle.get(1));
+        return new Order(menu, count);
     }
 }

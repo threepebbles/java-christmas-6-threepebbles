@@ -15,13 +15,13 @@ public record DiscountDetails(List<Discount> details) {
         return new DiscountDetails(new ArrayList<>());
     }
 
-    public static DiscountDetails createDiscountDetails(Date date, Order order) {
+    public static DiscountDetails createDiscountDetails(Date date, Orders orders) {
         List<Discount> discounts = List.of(
                 new ChristmasDiscount(date),
-                new WeekdayDiscount(date, order),
-                new WeekendDiscount(date, order),
+                new WeekdayDiscount(date, orders),
+                new WeekendDiscount(date, orders),
                 new SpecialDiscount(date),
-                new GiftDiscount(order)
+                new GiftDiscount(orders)
         );
         return new DiscountDetails(
                 discounts.stream()

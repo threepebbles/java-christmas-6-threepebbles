@@ -3,17 +3,17 @@ package christmas.model.planner;
 import christmas.constant.EventBadge;
 import christmas.model.DiscountDetails;
 import christmas.model.Gift;
-import christmas.model.Order;
+import christmas.model.Orders;
 
 public class DefaultPlanner implements Planner {
-    private final Order order;
+    private final Orders orders;
 
-    public DefaultPlanner(Order order) {
-        this.order = order;
+    public DefaultPlanner(Orders orders) {
+        this.orders = orders;
     }
 
     public int calculateTotalPriceBeforeDiscount() {
-        return order.calculateTotalPrice();
+        return orders.calculateTotalPrice();
     }
 
     public Gift calculateGift() {

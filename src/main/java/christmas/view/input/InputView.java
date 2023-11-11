@@ -3,7 +3,7 @@ package christmas.view.input;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.constant.InputType;
 import christmas.model.Date;
-import christmas.model.Order;
+import christmas.model.Orders;
 import christmas.view.input.validator.InputValidatorFinder;
 import java.util.function.Function;
 
@@ -37,8 +37,8 @@ public class InputView {
         return Console.readLine();
     }
 
-    public Order askOrder() {
-        return (Order) retryUntilSuccess(
+    public Orders askOrder() {
+        return (Orders) retryUntilSuccess(
                 inputView -> {
                     String order = inputView.scanOrder();
                     inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
