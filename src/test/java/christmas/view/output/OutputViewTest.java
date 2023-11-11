@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,8 +9,6 @@ import christmas.model.domain.EventBadge;
 import christmas.model.domain.Gift;
 import christmas.model.domain.Order;
 import christmas.model.domain.discount.Discount;
-import christmas.view.output.OutputView;
-import christmas.view.output.Presenter;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
