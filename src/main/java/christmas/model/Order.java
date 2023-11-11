@@ -1,4 +1,4 @@
-package christmas.model.domain;
+package christmas.model;
 
 import christmas.model.validator.OrderValidator;
 import java.util.Comparator;

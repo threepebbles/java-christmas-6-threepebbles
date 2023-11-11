@@ -1,9 +1,9 @@
 package christmas.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.model.domain.Date;
-import christmas.model.domain.Menu;
-import christmas.model.domain.Order;
+import christmas.model.Date;
+import christmas.model.Menu;
+import christmas.model.Order;
 import christmas.utils.Parser;
 import christmas.view.input.validator.InputValidatorFinder;
 import java.util.HashMap;

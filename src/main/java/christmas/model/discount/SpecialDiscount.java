@@ -1,7 +1,7 @@
-package christmas.model.domain.discount;
+package christmas.model.discount;
 
-import christmas.model.domain.Date;
-import christmas.model.domain.DiscountType;
+import christmas.model.Date;
+import christmas.model.DiscountType;
 import java.util.List;
 
 public class SpecialDiscount extends Discount {

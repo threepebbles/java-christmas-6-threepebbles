@@ -1,8 +1,8 @@
-package christmas.model.domain.discount;
+package christmas.model.discount;
 
-import christmas.model.domain.DiscountType;
-import christmas.model.domain.Gift;
-import christmas.model.domain.Order;
+import christmas.model.DiscountType;
+import christmas.model.Gift;
+import christmas.model.Order;
 
 public class GiftDiscount extends Discount {
     public static final int THRESHOLD = 120000;

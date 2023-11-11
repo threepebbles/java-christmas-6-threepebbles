@@ -1,10 +1,10 @@
 package christmas.view.output;
 
-import christmas.model.domain.Date;
-import christmas.model.domain.DiscountDetails;
-import christmas.model.domain.EventBadge;
-import christmas.model.domain.Gift;
-import christmas.model.domain.Order;
+import christmas.model.Date;
+import christmas.model.DiscountDetails;
+import christmas.model.EventBadge;
+import christmas.model.Gift;
+import christmas.model.Order;
 
 public class OutputView {
     public static final String LINE_SEPARATOR = System.lineSeparator();
@@ -116,7 +116,7 @@ public class OutputView {
     public void renderEventBadgeScreen() {
         System.out.print(eventBadgeScreen);
     }
-    
+
     public void printLineSeparator(int repeat) {
         System.out.print(LINE_SEPARATOR.repeat(repeat));
     }

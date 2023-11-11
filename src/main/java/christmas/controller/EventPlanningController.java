@@ -1,11 +1,11 @@
 package christmas.controller;
 
-import christmas.model.domain.Date;
-import christmas.model.domain.DiscountDetails;
-import christmas.model.domain.EventBadge;
-import christmas.model.domain.EventPlanner;
-import christmas.model.domain.Gift;
-import christmas.model.domain.Order;
+import christmas.model.Date;
+import christmas.model.DiscountDetails;
+import christmas.model.EventBadge;
+import christmas.model.EventPlanner;
+import christmas.model.Gift;
+import christmas.model.Order;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 

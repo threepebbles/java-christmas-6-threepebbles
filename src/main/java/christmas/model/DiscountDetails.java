@@ -1,11 +1,11 @@
-package christmas.model.domain;
+package christmas.model;
 
-import christmas.model.domain.discount.ChristmasDiscount;
-import christmas.model.domain.discount.Discount;
-import christmas.model.domain.discount.GiftDiscount;
-import christmas.model.domain.discount.SpecialDiscount;
-import christmas.model.domain.discount.WeekdayDiscount;
-import christmas.model.domain.discount.WeekendDiscount;
+import christmas.model.discount.ChristmasDiscount;
+import christmas.model.discount.Discount;
+import christmas.model.discount.GiftDiscount;
+import christmas.model.discount.SpecialDiscount;
+import christmas.model.discount.WeekdayDiscount;
+import christmas.model.discount.WeekendDiscount;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package christmas.model.domain.discount;
+package christmas.model.discount;
 
-import christmas.model.domain.Date;
-import christmas.model.domain.DiscountType;
-import christmas.model.domain.MenuType;
-import christmas.model.domain.Order;
+import christmas.model.Date;
+import christmas.model.DiscountType;
+import christmas.model.MenuType;
+import christmas.model.Order;
 
 public class WeekendDiscount extends Discount {
     private final int UNIT = 2023;

@@ -1,8 +1,8 @@
 package christmas.model.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.model.domain.Menu;
-import christmas.model.domain.MenuType;
+import christmas.model.Menu;
+import christmas.model.MenuType;
 import java.util.Map;
 
 public class OrderValidator {

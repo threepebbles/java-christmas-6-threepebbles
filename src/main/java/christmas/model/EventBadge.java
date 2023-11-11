@@ -1,4 +1,4 @@
-package christmas.model.domain;
+package christmas.model;
 
 public enum EventBadge {
     SANTA("산타", 20000),

@@ -1,6 +1,6 @@
-package christmas.model.domain;
+package christmas.model;
 
-import christmas.model.domain.discount.GiftDiscount;
+import christmas.model.discount.GiftDiscount;
 
 public class EventPlanner {
     private final Date date;

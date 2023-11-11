@@ -1,4 +1,4 @@
-package christmas.model.domain;
+package christmas.model;
 
 public enum MenuType {
     APPETIZER, MAIN, DESSERT, BEVERAGE, NOTHING;
