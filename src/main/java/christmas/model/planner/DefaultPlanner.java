@@ -1,0 +1,39 @@
+package christmas.model.planner;
+
+import christmas.constant.EventBadge;
+import christmas.model.DiscountDetails;
+import christmas.model.Gift;
+import christmas.model.Order;
+
+public class DefaultPlanner implements Planner {
+    private final Order order;
+
+    public DefaultPlanner(Order order) {
+        this.order = order;
+    }
+
+    public int calculateTotalPriceBeforeDiscount() {
+        return order.calculateTotalPrice();
+    }
+
+    public Gift calculateGift() {
+        return Gift.NOTHING;
+    }
+
+    public DiscountDetails calculateDiscountDetails() {
+        return DiscountDetails.createEmptyDiscountDetails();
+    }
+
+    public int calculateTotalDiscount() {
+        return DiscountDetails.createEmptyDiscountDetails()
+                .calculateTotalDiscount();
+    }
+
+    public int calculateExpectedPayAfterDiscount() {
+        return calculateTotalPriceBeforeDiscount();
+    }
+
+    public EventBadge calculateEventBadge() {
+        return EventBadge.NOTHING;
+    }
+}
