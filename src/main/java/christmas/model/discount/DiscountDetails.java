@@ -2,13 +2,12 @@ package christmas.model.discount;
 
 import christmas.model.Date;
 import christmas.model.Order;
+import java.util.ArrayList;
 import java.util.List;
 
-public class DiscountDetails {
-    private final List<Discount> details;
-
-    public DiscountDetails(List<Discount> details) {
-        this.details = details;
+public record DiscountDetails(List<Discount> details) {
+    public static DiscountDetails createEmptyDiscountDetails() {
+        return new DiscountDetails(new ArrayList<>());
     }
 
     public static DiscountDetails createDiscountDetails(Date date, Order order) {
@@ -36,9 +35,5 @@ public class DiscountDetails {
                 .filter(discount -> discount.getDiscountType() != DiscountType.GIFT)
                 .mapToInt(Discount::getAmount)
                 .sum();
-    }
-
-    public List<Discount> getDetails() {
-        return details;
     }
 }

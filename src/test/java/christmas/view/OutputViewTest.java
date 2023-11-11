@@ -3,12 +3,12 @@ package christmas.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.model.Date;
-import christmas.model.Discount;
-import christmas.model.DiscountDetails;
-import christmas.model.DiscountType;
 import christmas.model.EventBadge;
 import christmas.model.Gift;
 import christmas.model.Order;
+import christmas.model.discount.Discount;
+import christmas.model.discount.DiscountDetails;
+import christmas.model.discount.DiscountType;
 import christmas.view.OutputView;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
