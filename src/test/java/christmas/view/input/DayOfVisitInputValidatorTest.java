@@ -14,7 +14,7 @@ public class DayOfVisitInputValidatorTest {
     @DisplayName("방문 날짜 정상 입력에 대한 테스트입니다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "11", "31"})
-    void 방문_날짜_입력_검증_테스트(String dayOfVisitInput) {
+    void 방문_날짜_정상_입력_테스트(String dayOfVisitInput) {
         // when & then
         assertThatCode(
                 () -> DayOfVisitInputValidator.getInstance().validate(dayOfVisitInput)).doesNotThrowAnyException();
@@ -23,7 +23,7 @@ public class DayOfVisitInputValidatorTest {
     @DisplayName("방문 날짜 입력이 정수가 아닌 경우")
     @ParameterizedTest
     @ValueSource(strings = {"첫째날", "이십이일", "둘"})
-    void 방문_날짜_입력_검증_예외_테스트_정수가_아닌_꼉우(String dayOfVisitInput) {
+    void 방문_날짜_정수가_아닌_경우_예외_테스트_(String dayOfVisitInput) {
         // when & then
         assertThatThrownBy(() -> DayOfVisitInputValidator.getInstance().validate(dayOfVisitInput))
                 .isInstanceOf(IllegalArgumentException.class)
