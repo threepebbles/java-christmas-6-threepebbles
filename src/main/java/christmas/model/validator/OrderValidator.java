@@ -2,7 +2,7 @@ package christmas.model.validator;
 
 import christmas.constant.ErrorMessage;
 import christmas.model.domain.Menu;
-import christmas.model.domain.Order;
+import christmas.model.domain.MenuType;
 import java.util.Map;
 
 public class OrderValidator {
@@ -18,14 +18,13 @@ public class OrderValidator {
         return orderValidator;
     }
 
-    public void validate(Order order) {
-        Map<Menu, Integer> menuCounter = order.getMenuCounter();
+    public void validateMenuCounter(Map<Menu, Integer> menuCounter) {
         menuCounter.keySet().forEach(this::validateOnMenu);
         menuCounter.values().forEach(this::validatePositiveInteger);
 
-        validateOrderSize(order);
-        validateHasOnlyBeverage(order);
-        validateDuplication(order);
+        validateOrderSize(menuCounter);
+        validateHasOnlyBeverage(menuCounter);
+        validateDuplication(menuCounter);
     }
 
     private void validateOnMenu(Menu menu) {
@@ -40,22 +39,35 @@ public class OrderValidator {
         }
     }
 
-    private void validateOrderSize(Order order) {
+    private void validateOrderSize(Map<Menu, Integer> menuCounter) {
         int MAX_ORDER_SIZE = 20;
-        if (order.totalCountOfMenu() >= MAX_ORDER_SIZE) {
+        if (totalCountOfMenu(menuCounter) >= MAX_ORDER_SIZE) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
         }
     }
 
-    private void validateHasOnlyBeverage(Order order) {
-        if (order.hasOnlyBeverage()) {
+    private int totalCountOfMenu(Map<Menu, Integer> menuCounter) {
+        return menuCounter.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+    private void validateHasOnlyBeverage(Map<Menu, Integer> menuCounter) {
+        if (hasOnlyBeverage(menuCounter)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
         }
     }
 
-    private void validateDuplication(Order order) {
-        if (order.getMenuCounter().keySet().stream()
-                .distinct().count() != order.getMenuCounter().size()) {
+    private boolean hasOnlyBeverage(Map<Menu, Integer> menuCounter) {
+        return menuCounter.keySet().stream()
+                .filter(menu -> menu.getMenuType() == MenuType.BEVERAGE)
+                .distinct().count()
+                == menuCounter.keySet().size();
+    }
+
+    private void validateDuplication(Map<Menu, Integer> menuCounter) {
+        if (menuCounter.keySet().stream()
+                .distinct().count() != menuCounter.size()) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
         }
     }

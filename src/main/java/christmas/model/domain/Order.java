@@ -8,33 +8,12 @@ import java.util.TreeMap;
 public class Order {
     Map<Menu, Integer> menuCounter;
 
-    public Order() {
-        menuCounter = new TreeMap<>(
-                Comparator.comparing(Menu::getName)
-        );
-    }
-
     public Order(Map<Menu, Integer> menuCounter) {
+        OrderValidator.getInstance().validateMenuCounter(menuCounter);
         this.menuCounter = new TreeMap<>(
                 Comparator.comparing(Menu::getName)
         );
         this.menuCounter.putAll(menuCounter);
-
-        OrderValidator.getInstance().validate(this);
-    }
-
-    public boolean hasOnlyBeverage() {
-        return menuCounter.keySet().stream()
-                .filter(menu -> menu.getMenuType() == MenuType.BEVERAGE)
-                .distinct().count()
-                == menuCounter.keySet().size();
-    }
-
-
-    public int totalCountOfMenu() {
-        return menuCounter.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
     }
 
     public int countByMenuType(MenuType menuType) {

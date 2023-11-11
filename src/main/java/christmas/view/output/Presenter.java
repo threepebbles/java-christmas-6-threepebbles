@@ -17,7 +17,7 @@ public class Presenter {
     public static final String NOTHING = "없음";
 
     public String createDateText(Date date) {
-        LocalDate localDate = date.getDate();
+        LocalDate localDate = date.getLocalDate();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M월 d일");
         return localDate.format(dateTimeFormatter);
     }
