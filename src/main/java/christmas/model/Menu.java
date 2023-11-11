@@ -1,5 +1,7 @@
 package christmas.model;
 
+import christmas.constant.MenuType;
+
 public enum Menu {
     MUSHROOM_SOUP(MenuType.APPETIZER, "양송이수프", 6000),
     TAPAS(MenuType.APPETIZER, "타파스", 5500),

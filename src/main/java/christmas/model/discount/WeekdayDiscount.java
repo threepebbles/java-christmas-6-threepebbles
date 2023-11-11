@@ -1,8 +1,8 @@
 package christmas.model.discount;
 
+import christmas.constant.DiscountType;
+import christmas.constant.MenuType;
 import christmas.model.Date;
-import christmas.model.DiscountType;
-import christmas.model.MenuType;
 import christmas.model.Order;
 
 public class WeekdayDiscount extends Discount {

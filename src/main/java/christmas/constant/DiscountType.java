@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.constant;
 
 public enum DiscountType {
     CHRISTMAS_D_DAY("크리스마스 디데이 할인"),

@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.constant.MenuType;
 import christmas.model.validator.OrderValidator;
 import java.util.Comparator;
 import java.util.Map;

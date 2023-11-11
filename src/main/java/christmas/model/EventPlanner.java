@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.constant.EventBadge;
 import christmas.model.discount.GiftDiscount;
 
 public class EventPlanner {

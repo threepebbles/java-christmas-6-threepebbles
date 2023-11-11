@@ -1,4 +1,4 @@
-package christmas.view.input;
+package christmas.constant;
 
 public enum InputType {
     DAY_OF_VISIT, ORDER;

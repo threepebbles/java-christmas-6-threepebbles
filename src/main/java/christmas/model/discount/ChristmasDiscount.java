@@ -1,7 +1,7 @@
 package christmas.model.discount;
 
+import christmas.constant.DiscountType;
 import christmas.model.Date;
-import christmas.model.DiscountType;
 
 public class ChristmasDiscount extends Discount {
     public static final int DEAD_LINE_DAY = 25;

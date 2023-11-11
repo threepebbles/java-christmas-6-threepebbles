@@ -1,6 +1,6 @@
 package christmas.model.discount;
 
-import christmas.model.DiscountType;
+import christmas.constant.DiscountType;
 import christmas.model.Gift;
 import christmas.model.Order;
 

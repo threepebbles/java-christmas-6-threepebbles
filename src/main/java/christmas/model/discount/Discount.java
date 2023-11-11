@@ -1,6 +1,6 @@
 package christmas.model.discount;
 
-import christmas.model.DiscountType;
+import christmas.constant.DiscountType;
 
 public class Discount {
     protected DiscountType discountType;

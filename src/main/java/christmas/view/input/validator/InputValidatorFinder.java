@@ -1,6 +1,6 @@
 package christmas.view.input.validator;
 
-import christmas.view.input.InputType;
+import christmas.constant.InputType;
 import java.util.HashMap;
 import java.util.Map;
 
