@@ -1,6 +1,6 @@
-package christmas.model;
+package christmas.model.domain;
 
-import christmas.model.discount.DiscountDetails;
+import christmas.model.domain.discount.GiftDiscount;
 
 public class EventPlanner {
     private final Date date;
@@ -10,14 +10,17 @@ public class EventPlanner {
         this.date = date;
         this.order = order;
     }
-    
+
     public int calculateTotalPriceBeforeDiscount() {
         return order.calculateTotalPrice();
     }
 
     public Gift calculateGift() {
         int totalPriceBeforeDiscount = order.calculateTotalPrice();
-        return Gift.valueOf(totalPriceBeforeDiscount);
+        if (totalPriceBeforeDiscount >= GiftDiscount.THRESHOLD) {
+            return Gift.CHAMPAGNE;
+        }
+        return Gift.NOTHING;
     }
 
     public DiscountDetails calculateDiscountDetails() {

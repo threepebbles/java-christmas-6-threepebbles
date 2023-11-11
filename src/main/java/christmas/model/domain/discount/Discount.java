@@ -1,4 +1,6 @@
-package christmas.model.discount;
+package christmas.model.domain.discount;
+
+import christmas.model.domain.DiscountType;
 
 public class Discount {
     protected DiscountType discountType;

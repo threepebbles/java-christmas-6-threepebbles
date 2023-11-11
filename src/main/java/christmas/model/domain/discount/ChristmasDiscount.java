@@ -1,11 +1,12 @@
-package christmas.model.discount;
+package christmas.model.domain.discount;
 
-import christmas.model.Date;
+import christmas.model.domain.Date;
+import christmas.model.domain.DiscountType;
 
 public class ChristmasDiscount extends Discount {
-    private final int DEAD_LINE_DAY = 25;
-    private final int DEFAULT = 1000;
-    private final int UNIT = 100;
+    public static final int DEAD_LINE_DAY = 25;
+    private final int DEFAULT_DISCOUNT = 1000;
+    private final int UNIT_AMOUNT = 100;
 
     public ChristmasDiscount(Date date) {
         super(DiscountType.CHRISTMAS_D_DAY);
@@ -16,8 +17,7 @@ public class ChristmasDiscount extends Discount {
         int amount = 0;
         int day = date.getDay();
         if (day <= DEAD_LINE_DAY) {
-
-            amount = DEFAULT + (day - 1) * UNIT;
+            amount = DEFAULT_DISCOUNT + (day - 1) * UNIT_AMOUNT;
         }
         return amount;
     }

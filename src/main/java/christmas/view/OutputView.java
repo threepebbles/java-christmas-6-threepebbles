@@ -1,12 +1,12 @@
 package christmas.view;
 
-import christmas.model.Date;
-import christmas.model.EventBadge;
-import christmas.model.Gift;
-import christmas.model.Menu;
-import christmas.model.Order;
-import christmas.model.discount.Discount;
-import christmas.model.discount.DiscountDetails;
+import christmas.model.domain.Date;
+import christmas.model.domain.DiscountDetails;
+import christmas.model.domain.EventBadge;
+import christmas.model.domain.Gift;
+import christmas.model.domain.Menu;
+import christmas.model.domain.Order;
+import christmas.model.domain.discount.Discount;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -84,7 +84,7 @@ public class OutputView {
     // <혜택 내역>
     public void printDiscountDetails(DiscountDetails details) {
         printLineSeparator(1);
-        String detailsText = createDiscountDetailsText(details.getDetails());
+        String detailsText = createDiscountDetailsText(details.details());
         printByFormat(DISCOUNT_DETAILS_FORMAT, detailsText);
     }
 

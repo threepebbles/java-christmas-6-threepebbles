@@ -1,10 +1,11 @@
-package christmas.model.discount;
+package christmas.model.domain.discount;
 
-import christmas.model.Date;
+import christmas.model.domain.Date;
+import christmas.model.domain.DiscountType;
 import java.util.List;
 
 public class SpecialDiscount extends Discount {
-    private final List<Integer> specialDays = List.of(3, 10, 17, 24, 25, 31);
+    public static final List<Integer> specialDays = List.of(3, 10, 17, 24, 25, 31);
     private final int UNIT = 1000;
 
     public SpecialDiscount(Date date) {

@@ -1,9 +1,9 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.model.Date;
-import christmas.model.Menu;
-import christmas.model.Order;
+import christmas.model.domain.Date;
+import christmas.model.domain.Menu;
+import christmas.model.domain.Order;
 import christmas.utils.Parser;
 import christmas.view.validator.DayOfVisitInputValidator;
 import christmas.view.validator.OrderInputValidator;
