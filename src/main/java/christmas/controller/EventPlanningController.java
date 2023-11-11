@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.model.Date;
 import christmas.model.EventBadge;
+import christmas.model.EventPlanner;
 import christmas.model.Gift;
 import christmas.model.Order;
 import christmas.model.discount.DiscountDetails;
@@ -37,23 +38,14 @@ public class EventPlanningController {
     }
 
     private void planningEvents(Date date, Order order) {
-        int totalPriceBeforeDiscount = order.calculateTotalPrice();
-        outputView.printTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
+        EventPlanner eventPlanner = new EventPlanner(date, order);
 
-        Gift gift = Gift.valueOf(totalPriceBeforeDiscount);
-        outputView.printGift(gift);
-
-        DiscountDetails discountDetails = DiscountDetails.createDiscountDetails(date, order);
-        outputView.printDiscountDetails(discountDetails);
-
-        int totalDiscount = discountDetails.calculateTotalDiscount();
-        outputView.printTotalDiscount(totalDiscount);
-
-        int expectedPayAfterDiscount = totalPriceBeforeDiscount - discountDetails.calculateTotalDiscountWithoutGift();
-        outputView.printExpectedPayAfterDiscount(expectedPayAfterDiscount);
-
-        EventBadge eventBadge = EventBadge.valueOf(totalDiscount);
-        outputView.printEventBadge(eventBadge);
+        outputView.printTotalPriceBeforeDiscount(eventPlanner.calculateTotalPriceBeforeDiscount());
+        outputView.printGift(eventPlanner.calculateGift());
+        outputView.printDiscountDetails(eventPlanner.calculateDiscountDetails());
+        outputView.printTotalDiscount(eventPlanner.calculateTotalDiscount());
+        outputView.printExpectedPayAfterDiscount(eventPlanner.calculateExpectedPayAfterDiscount());
+        outputView.printEventBadge(eventPlanner.calculateEventBadge());
     }
 
     private void planningWithoutEvents(Date date, Order order) {
