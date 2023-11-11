@@ -2,20 +2,19 @@ package christmas.view.output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.model.domain.Date;
-import christmas.model.domain.DiscountDetails;
-import christmas.model.domain.DiscountType;
-import christmas.model.domain.EventBadge;
-import christmas.model.domain.Gift;
-import christmas.model.domain.Menu;
-import christmas.model.domain.Order;
-import christmas.model.domain.discount.Discount;
+import christmas.constant.DiscountType;
+import christmas.constant.EventBadge;
+import christmas.model.Date;
+import christmas.model.DiscountDetails;
+import christmas.model.Gift;
+import christmas.model.Menu;
+import christmas.model.Order;
+import christmas.model.Orders;
+import christmas.model.discount.Discount;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +24,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class OutputViewTest {
     public static final String LINE_SEPARATOR = System.lineSeparator();
-    private final OutputView outputView = new OutputView(new Presenter());
+    private final OutputView outputView = new OutputView(new OutputPresenter());
     private ByteArrayOutputStream output;
 
     @BeforeEach
@@ -63,18 +62,19 @@ public class OutputViewTest {
     @Test
     void 주문_메뉴_출력_테스트() {
         // given
-        Map<Menu, Integer> menuCounter = new HashMap<>() {{
-            put(Menu.findMenuByName("티본스테이크"), 2);
-            put(Menu.findMenuByName("제로콜라"), 2);
-        }};
-        Order order = new Order(menuCounter);
+        Orders orders = new Orders(
+                new ArrayList<>() {{
+                    add(new Order(Menu.findMenuByName("티본스테이크"), 2));
+                    add(new Order(Menu.findMenuByName("제로콜라"), 2));
+                }}
+        );
 
         String expected = "<주문 메뉴>" + LINE_SEPARATOR
                 + "제로콜라 2개" + LINE_SEPARATOR
                 + "티본스테이크 2개" + LINE_SEPARATOR;
 
         // when
-        outputView.updateOrderScreen(order);
+        outputView.updateOrderScreen(orders);
         outputView.renderOrderScreen();
         String actual = output.toString();
 
