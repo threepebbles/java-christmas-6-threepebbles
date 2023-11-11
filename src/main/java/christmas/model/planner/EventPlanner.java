@@ -39,13 +39,13 @@ public class EventPlanner implements Planner {
 
     public int calculateTotalDiscount() {
         DiscountDetails discountDetails = DiscountDetails.createDiscountDetails(date, orders);
-        return discountDetails.calculateTotalDiscount();
+        return Math.min(discountDetails.calculateTotalDiscount(), orders.calculateTotalPrice());
     }
 
     public int calculateExpectedPayAfterDiscount() {
         int totalPriceBeforeDiscount = calculateTotalPriceBeforeDiscount();
         DiscountDetails discountDetails = DiscountDetails.createDiscountDetails(date, orders);
-        return totalPriceBeforeDiscount - discountDetails.calculateTotalDiscountWithoutGift();
+        return Math.max(totalPriceBeforeDiscount - discountDetails.calculateTotalDiscountWithoutGift(), 0);
     }
 
     public EventBadge calculateEventBadge() {
