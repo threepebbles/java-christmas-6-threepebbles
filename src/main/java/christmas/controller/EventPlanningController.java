@@ -32,6 +32,7 @@ public class EventPlanningController {
         outputView.updateOrderScreen(order);
         if (order.calculateTotalPrice() < MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS) {
             planningWithoutEvents(date, order);
+            renderEventPlan();
             return;
         }
         planningEvents(date, order);
