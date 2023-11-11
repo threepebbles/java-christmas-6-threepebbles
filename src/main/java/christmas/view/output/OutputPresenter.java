@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
-public class Presenter {
+public class OutputPresenter {
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String NOTHING = "없음";
 

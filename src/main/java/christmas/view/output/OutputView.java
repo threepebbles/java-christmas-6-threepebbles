@@ -8,7 +8,7 @@ import christmas.model.Order;
 
 public class OutputView {
     public static final String LINE_SEPARATOR = System.lineSeparator();
-    private final Presenter presenter;
+    private final OutputPresenter outputPresenter;
     private String eventPlanHeaderScreen;
     private String orderScreen;
     private String totalPriceBeforeDiscountScreen;
@@ -18,8 +18,8 @@ public class OutputView {
     private String expectedPayAfterDiscountScreen;
     private String eventBadgeScreen;
 
-    public OutputView(Presenter presenter) {
-        this.presenter = presenter;
+    public OutputView(OutputPresenter outputPresenter) {
+        this.outputPresenter = outputPresenter;
         init();
     }
 
@@ -39,7 +39,7 @@ public class OutputView {
     public void updateEventPlanHeaderScreen(Date date) {
         eventPlanHeaderScreen = String.format(
                 OutputViewFormat.EVENT_PLAN_HEADER_FORMAT,
-                presenter.createDateText(date));
+                outputPresenter.createDateText(date));
     }
 
     public void renderEventPlanHeaderScreen() {
@@ -50,7 +50,7 @@ public class OutputView {
     public void updateOrderScreen(Order order) {
         orderScreen = String.format(
                 OutputViewFormat.ORDER_FORMAT,
-                presenter.createOrderText(order)
+                outputPresenter.createOrderText(order)
         );
     }
 
@@ -60,7 +60,7 @@ public class OutputView {
 
     // <할인 전 총주문 금액> 화면 업데이트 및 출력
     public void updateTotalPriceBeforeDiscountScreen(int amount) {
-        String amountText = presenter.createTotalPriceBeforeDiscountText(amount);
+        String amountText = outputPresenter.createTotalPriceBeforeDiscountText(amount);
         totalPriceBeforeDiscountScreen = String.format(OutputViewFormat.TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT, amountText);
     }
 
@@ -70,7 +70,7 @@ public class OutputView {
 
     // <증정 메뉴> 화면 업데이트 및 출력
     public void updateGiftScreen(Gift gift) {
-        giftScreen = String.format(OutputViewFormat.GIFT_FORMAT, presenter.createGiftText(gift));
+        giftScreen = String.format(OutputViewFormat.GIFT_FORMAT, outputPresenter.createGiftText(gift));
     }
 
     public void renderGiftScreen() {
@@ -80,7 +80,7 @@ public class OutputView {
     // <혜택 내역> 화면 업데이트 및 출력
     public void updateDiscountDetailsScreen(DiscountDetails details) {
         discountDetailsScreen = String.format(OutputViewFormat.DISCOUNT_DETAILS_FORMAT,
-                presenter.createDiscountDetailsText(details.details()));
+                outputPresenter.createDiscountDetailsText(details.details()));
     }
 
     public void renderDiscountDetailsScreen() {
@@ -90,7 +90,7 @@ public class OutputView {
     // <총혜택 금액> 화면 업데이트 및 출력
     public void updateTotalDiscountScreen(int totalDiscount) {
         totalDiscountScreen = String.format(OutputViewFormat.TOTAL_DISCOUNT_FORMAT,
-                presenter.createTotalDiscountText(totalDiscount));
+                outputPresenter.createTotalDiscountText(totalDiscount));
     }
 
     public void renderTotalDiscountScreen() {
@@ -100,7 +100,7 @@ public class OutputView {
     // <할인 후 예상 결제 금액> 화면 업데이트 및 출력
     public void updateExpectedPayAfterDiscountScreen(int expectedPay) {
         expectedPayAfterDiscountScreen = String.format(OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT,
-                presenter.createExpectedPayAfterDiscountText(expectedPay));
+                outputPresenter.createExpectedPayAfterDiscountText(expectedPay));
     }
 
     public void renderExpectedPayAfterDiscountScreen() {
@@ -110,7 +110,7 @@ public class OutputView {
     // <12월 이벤트 배지> 화면 업데이트 및 출력
     public void updateEventBadgeScreen(EventBadge eventBadge) {
         eventBadgeScreen = String.format(OutputViewFormat.EVENT_BADGE_FORMAT,
-                presenter.createEventBadgeText(eventBadge));
+                outputPresenter.createEventBadgeText(eventBadge));
     }
 
     public void renderEventBadgeScreen() {
