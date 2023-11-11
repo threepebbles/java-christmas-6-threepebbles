@@ -25,7 +25,7 @@ public class OutputPresenter {
     public String createOrderText(Orders orders) {
         StringBuilder sb = new StringBuilder();
         for (Order order : orders.getOrders()) {
-            sb.append(String.format("%s %d개", order.menu().getName(), order.count()))
+            sb.append(String.format("%s %d개", order.getMenuName(), order.getCount()))
                     .append(LINE_SEPARATOR);
         }
         return sb.toString();
