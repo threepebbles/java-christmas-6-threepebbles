@@ -21,8 +21,7 @@ public class OrderInputValidator implements InputValidator {
     public void validate(String target) {
         String COMMA = ",";
         List<String> menuCounts = Parser.parseWithDelimiter(target, COMMA);
-        menuCounts.stream()
-                .forEach(this::validateMenuCountFormat);
+        menuCounts.forEach(this::validateMenuCountFormat);
     }
 
     private void validateMenuCountFormat(String target) {
