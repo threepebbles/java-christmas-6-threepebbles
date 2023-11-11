@@ -9,11 +9,11 @@ import christmas.model.Order;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
-public class EventPlanningController {
+public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public EventPlanningController(InputView inputView, OutputView outputView) {
+    public MainController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
