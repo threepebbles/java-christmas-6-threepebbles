@@ -6,7 +6,7 @@ import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.model.Orders;
-import christmas.model.discount.Discount;
+import christmas.model.discount.DiscountEvent;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,12 +44,12 @@ public class OutputPresenter {
         return String.format("%s 1개", gift.getName()) + LINE_SEPARATOR;
     }
 
-    public String createDiscountDetailsText(List<Discount> discounts) {
-        if (discounts.isEmpty()) {
+    public String createDiscountDetailsText(List<DiscountEvent> discountEvents) {
+        if (discountEvents.isEmpty()) {
             return NOTHING + LINE_SEPARATOR;
         }
         StringBuilder sb = new StringBuilder();
-        discounts.forEach(discount ->
+        discountEvents.forEach(discount ->
                 sb.append(String.format("%s: -%s%s",
                                 discount.getName(),
                                 Converter.intToLocaleString(discount.getAmount()),

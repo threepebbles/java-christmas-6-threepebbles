@@ -1,5 +1,5 @@
 package christmas.constant;
 
 public enum InputType {
-    DAY_OF_VISIT, ORDER;
+    DAY_OF_VISIT, ORDERS;
 }

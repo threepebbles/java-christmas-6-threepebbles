@@ -33,15 +33,15 @@ public class InputView {
     public Orders askOrders() {
         return (Orders) retryUntilSuccess(
                 inputView -> {
-                    String order = inputView.scanOrder();
-                    inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
-                            .validate(order);
-                    return inputConverter.createOrders(order);
+                    String orders = inputView.scanOrders();
+                    inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
+                            .validate(orders);
+                    return inputConverter.createOrders(orders);
                 });
     }
 
-    private String scanOrder() {
-        System.out.println(InputViewText.ENTER_ORDER_TEXT);
+    private String scanOrders() {
+        System.out.println(InputViewText.ENTER_ORDERS_TEXT);
         return Console.readLine();
     }
 

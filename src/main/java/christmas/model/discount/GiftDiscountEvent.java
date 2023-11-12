@@ -4,11 +4,11 @@ import christmas.constant.DiscountType;
 import christmas.constant.Gift;
 import christmas.model.Orders;
 
-public class GiftDiscount extends Discount {
+public class GiftDiscountEvent extends DiscountEvent {
     public static final int MINIMUM_AMOUNT_TO_RECEIVE_GIFT = 120000;
     public static final Gift gift = Gift.CHAMPAGNE;
 
-    public GiftDiscount(Orders orders) {
+    public GiftDiscountEvent(Orders orders) {
         super(DiscountType.GIFT);
         this.amount = calculateAmount(orders);
     }

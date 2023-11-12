@@ -13,7 +13,7 @@ public class InputValidatorFinder {
     public InputValidatorFinder() {
         validatorStore = new HashMap<>() {{
             put(InputType.DAY_OF_VISIT, DayOfVisitInputValidator.getInstance());
-            put(InputType.ORDER, OrderInputValidator.getInstance());
+            put(InputType.ORDERS, OrderInputValidator.getInstance());
         }};
     }
 

@@ -5,18 +5,18 @@ import christmas.constant.MenuType;
 import christmas.model.Date;
 import christmas.model.Orders;
 
-public class WeekendDiscount extends Discount {
+public class WeekdayDiscountEvent extends DiscountEvent {
     private final int UNIT = 2023;
 
-    public WeekendDiscount(Date date, Orders orders) {
-        super(DiscountType.WEEKEND);
+    public WeekdayDiscountEvent(Date date, Orders orders) {
+        super(DiscountType.WEEKDAY);
         this.amount = calculateAmount(date, orders);
     }
 
     private int calculateAmount(Date date, Orders orders) {
         int amount = 0;
-        if (date.isWeekend()) {
-            amount = orders.countByMenuType(MenuType.MAIN) * UNIT;
+        if (date.isWeekDay()) {
+            amount = orders.countByMenuType(MenuType.DESSERT) * UNIT;
         }
         return amount;
     }

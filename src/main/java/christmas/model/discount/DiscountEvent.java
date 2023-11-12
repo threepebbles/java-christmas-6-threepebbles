@@ -2,16 +2,16 @@ package christmas.model.discount;
 
 import christmas.constant.DiscountType;
 
-public class Discount {
+public class DiscountEvent {
     protected DiscountType discountType;
     protected int amount;
 
-    public Discount(DiscountType discountType, int amount) {
+    public DiscountEvent(DiscountType discountType, int amount) {
         this.discountType = discountType;
         this.amount = amount;
     }
 
-    public Discount(DiscountType discountType) {
+    public DiscountEvent(DiscountType discountType) {
         this.discountType = discountType;
     }
 

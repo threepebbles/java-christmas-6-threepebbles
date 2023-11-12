@@ -4,11 +4,11 @@ import christmas.constant.DiscountType;
 import christmas.model.Date;
 import java.util.List;
 
-public class SpecialDiscount extends Discount {
+public class SpecialDiscountEvent extends DiscountEvent {
     public static final List<Integer> specialDays = List.of(3, 10, 17, 24, 25, 31);
     private final int UNIT = 1000;
 
-    public SpecialDiscount(Date date) {
+    public SpecialDiscountEvent(Date date) {
         super(DiscountType.SPECIAL);
         this.amount = calculateAmount(date);
     }

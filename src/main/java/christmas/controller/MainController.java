@@ -1,52 +1,44 @@
 package christmas.controller;
 
+import christmas.Service.EventPlanningService;
 import christmas.model.Date;
+import christmas.model.EventPlanDTO;
 import christmas.model.Orders;
-import christmas.model.planner.DefaultPlanner;
-import christmas.model.planner.EventPlanner;
-import christmas.model.planner.Planner;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
 public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
+    EventPlanningService eventPlanningService;
 
-    public MainController(InputView inputView, OutputView outputView) {
+    public MainController(InputView inputView, OutputView outputView, EventPlanningService eventPlanningService) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.eventPlanningService = eventPlanningService;
     }
 
     public void run() {
         Date date = inputView.askDate();
         Orders orders = inputView.askOrders();
 
-        startPlanning(date, orders);
-        renderEventPlan();
+        EventPlanDTO eventPlanDTO = eventPlanningService.createEventPlan(date, orders);
+        updateEventPlanView(eventPlanDTO);
+        renderEventPlanView();
     }
 
-    private void startPlanning(Date date, Orders orders) {
-        outputView.updateEventPlanHeaderScreen(date);
-        outputView.updateOrderScreen(orders);
-        outputView.updateTotalPriceBeforeDiscountScreen(orders.calculateTotalPrice());
-        EventPlanner eventPlanner = new EventPlanner(date, orders);
-        if (eventPlanner.isRequired(orders.calculateTotalPrice())) {
-            planningEvents(eventPlanner);
-            return;
-        }
-        DefaultPlanner defaultPlanner = new DefaultPlanner(orders);
-        planningEvents(defaultPlanner);
+    private void updateEventPlanView(EventPlanDTO eventPlanDTO) {
+        outputView.updateEventPlanHeaderScreen(eventPlanDTO.getDate());
+        outputView.updateOrderScreen(eventPlanDTO.getOrders());
+        outputView.updateTotalPriceBeforeDiscountScreen(eventPlanDTO.getTotalPriceBeforeDiscount());
+        outputView.updateGiftScreen(eventPlanDTO.getGift());
+        outputView.updateDiscountDetailsScreen(eventPlanDTO.getDiscountDetails());
+        outputView.updateTotalDiscountScreen(eventPlanDTO.getTotalDiscount());
+        outputView.updateExpectedPayAfterDiscountScreen(eventPlanDTO.getExpectedPayAfterDiscount());
+        outputView.updateEventBadgeScreen(eventPlanDTO.getEventBadge());
     }
 
-    private void planningEvents(Planner planner) {
-        outputView.updateGiftScreen(planner.calculateGift());
-        outputView.updateDiscountDetailsScreen(planner.calculateDiscountDetails());
-        outputView.updateTotalDiscountScreen(planner.calculateTotalDiscount());
-        outputView.updateExpectedPayAfterDiscountScreen(planner.calculateExpectedPayAfterDiscount());
-        outputView.updateEventBadgeScreen(planner.calculateEventBadge());
-    }
-
-    private void renderEventPlan() {
+    private void renderEventPlanView() {
         renderWithLineSeparator(outputView::renderEventPlanHeaderScreen, 1);
         renderWithLineSeparator(outputView::renderOrderScreen, 1);
         renderWithLineSeparator(outputView::renderTotalPriceBeforeDiscountScreen, 1);

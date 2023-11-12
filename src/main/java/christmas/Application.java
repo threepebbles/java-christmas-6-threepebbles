@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.Service.EventPlanningService;
 import christmas.controller.MainController;
 import christmas.view.input.InputConverter;
 import christmas.view.input.InputValidatorFinder;
@@ -11,7 +12,8 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView(new InputValidatorFinder(), new InputConverter());
         OutputView outputView = new OutputView(new OutputPresenter());
-        MainController mainController = new MainController(inputView, outputView);
+        EventPlanningService eventPlanningService = new EventPlanningService();
+        MainController mainController = new MainController(inputView, outputView, eventPlanningService);
         mainController.run();
     }
 }
