@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.EventType;
+import christmas.domain.DTO.DiscountResultDTO;
 
 public class DiscountResult {
     private final EventType eventType;
@@ -11,6 +12,10 @@ public class DiscountResult {
         this.amount = amount;
     }
 
+    public DiscountResultDTO toDTO() {
+        return new DiscountResultDTO(getEventName(), amount);
+    }
+    
     public int getPriority() {
         return eventType.getPriority();
     }

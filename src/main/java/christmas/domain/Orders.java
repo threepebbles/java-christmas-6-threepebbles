@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.MenuType;
+import christmas.domain.DTO.OrdersDTO;
 import christmas.domain.validator.OrdersValidator;
 import java.util.Comparator;
 import java.util.List;
@@ -14,6 +15,10 @@ public class Orders {
                 .toList();
 
         OrdersValidator.getInstance().validateOrders(this);
+    }
+
+    public OrdersDTO toDTO() {
+        return new OrdersDTO(orders.stream().map(Order::toDTO).toList());
     }
 
     public int countByMenuType(MenuType menuType) {

@@ -3,7 +3,7 @@ package christmas.service.planner;
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
 import christmas.domain.Date;
-import christmas.domain.DiscountDetails;
+import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
 import christmas.service.event.ChristmasDDayDiscountEvent;
 import christmas.service.event.GiftEvent;
@@ -22,11 +22,11 @@ public interface Planner {
 
     Gift requestGift();
 
-    DiscountDetails calculateDiscountDetails();
+    DiscountResults calculateDiscountResults();
 
     int calculateTotalDiscount();
 
-    int calculateExpectedPayAfterDiscount();
+    int calculateExpectedAmountAfterDiscount();
 
     EventBadge requestEventBadge();
 

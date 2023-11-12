@@ -2,28 +2,42 @@ package christmas.domain;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
+import christmas.domain.DTO.EventPlanDTO;
 
 public class EventPlan {
     private Date date;
     private Orders orders;
     private int totalPriceBeforeDiscount;
     private Gift gift;
-    private DiscountDetails discountDetails;
+    private DiscountResults discountResults;
     private int totalDiscount;
-    private int ExpectedPayAfterDiscount;
+    private int expectedAmountAfterDiscount;
     private EventBadge eventBadge;
 
     public EventPlan(Date date, Orders orders, int totalPriceBeforeDiscount, Gift gift,
-                     DiscountDetails discountDetails,
-                     int totalDiscount, int expectedPayAfterDiscount, EventBadge eventBadge) {
+                     DiscountResults discountResults,
+                     int totalDiscount, int expectedAmountAfterDiscount, EventBadge eventBadge) {
         this.date = date;
         this.orders = orders;
         this.totalPriceBeforeDiscount = totalPriceBeforeDiscount;
         this.gift = gift;
-        this.discountDetails = discountDetails;
+        this.discountResults = discountResults;
         this.totalDiscount = totalDiscount;
-        ExpectedPayAfterDiscount = expectedPayAfterDiscount;
+        this.expectedAmountAfterDiscount = expectedAmountAfterDiscount;
         this.eventBadge = eventBadge;
+    }
+
+    public EventPlanDTO toDTO() {
+        EventPlanDTO eventPlanDTO = new EventPlanDTO();
+        eventPlanDTO.setLocalDate(date.getLocalDate());
+        eventPlanDTO.setOrders(orders.toDTO());
+        eventPlanDTO.setTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
+        eventPlanDTO.setGift(gift.toDTO());
+        eventPlanDTO.setDiscountResults(discountResults.toDTO());
+        eventPlanDTO.setTotalDiscount(totalDiscount);
+        eventPlanDTO.setExpectedAmountAfterDiscount(expectedAmountAfterDiscount);
+        eventPlanDTO.setEventBadgeName(eventBadge.getName());
+        return eventPlanDTO;
     }
 
     public Date getDate() {
@@ -42,16 +56,16 @@ public class EventPlan {
         return gift;
     }
 
-    public DiscountDetails getDiscountDetails() {
-        return discountDetails;
+    public DiscountResults getDiscountResults() {
+        return discountResults;
     }
 
     public int getTotalDiscount() {
         return totalDiscount;
     }
 
-    public int getExpectedPayAfterDiscount() {
-        return ExpectedPayAfterDiscount;
+    public int getExpectedAmountAfterDiscount() {
+        return expectedAmountAfterDiscount;
     }
 
     public EventBadge getEventBadge() {

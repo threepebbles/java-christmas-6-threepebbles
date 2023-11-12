@@ -3,8 +3,8 @@ package christmas.service.planner;
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
 import christmas.domain.Date;
-import christmas.domain.DiscountDetails;
 import christmas.domain.DiscountResult;
+import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class EventPlanner implements Planner {
     }
 
     @Override
-    public DiscountDetails calculateDiscountDetails() {
+    public DiscountResults calculateDiscountResults() {
         List<DiscountResult> discountResults = new ArrayList<>() {{
             add(christmasDDayDiscountEvent.calculateDiscountResult(date));
             add(weekdayDiscountEvent.calculateDiscountResult(date, orders));
@@ -43,22 +43,22 @@ public class EventPlanner implements Planner {
             add(specialDiscountEvent.calculateDiscountResult(date));
             add(giftEvent.calculateAmount(orders));
         }};
-        return new DiscountDetails(discountResults.stream()
+        return new DiscountResults(discountResults.stream()
                 .filter(discountResult -> discountResult.getAmount() != 0)
                 .toList());
     }
 
     @Override
     public int calculateTotalDiscount() {
-        DiscountDetails discountDetails = calculateDiscountDetails();
-        return Math.min(discountDetails.calculateTotalDiscount(), orders.calculateTotalPrice());
+        DiscountResults discountResults = calculateDiscountResults();
+        return Math.min(discountResults.calculateTotalDiscount(), orders.calculateTotalPrice());
     }
 
     @Override
-    public int calculateExpectedPayAfterDiscount() {
+    public int calculateExpectedAmountAfterDiscount() {
         int totalPriceBeforeDiscount = calculateTotalPriceBeforeDiscount();
-        DiscountDetails discountDetails = calculateDiscountDetails();
-        return Math.max(totalPriceBeforeDiscount - discountDetails.calculateTotalDiscountWithoutGift(), 0);
+        DiscountResults discountResults = calculateDiscountResults();
+        return Math.max(totalPriceBeforeDiscount - discountResults.calculateTotalDiscountWithoutGift(), 0);
     }
 
     @Override

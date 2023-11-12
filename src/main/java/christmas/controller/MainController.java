@@ -23,7 +23,7 @@ public class MainController {
         Orders orders = inputView.askOrders();
 
         EventPlan eventPlan = eventPlanningService.createEventPlan(date, orders);
-        outputView.updateEventPlanView(eventPlan);
+        outputView.updateEventPlanView(eventPlan.toDTO());
         outputView.renderEventPlanView();
     }
 }

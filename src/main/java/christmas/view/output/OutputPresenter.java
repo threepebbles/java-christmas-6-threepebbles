@@ -1,79 +1,72 @@
 package christmas.view.output;
 
-import christmas.constant.EventBadge;
-import christmas.constant.Gift;
 import christmas.constant.Menu;
-import christmas.domain.Date;
-import christmas.domain.DiscountResult;
-import christmas.domain.Order;
-import christmas.domain.Orders;
+import christmas.domain.DTO.DiscountResultsDTO;
+import christmas.domain.DTO.GiftDTO;
+import christmas.domain.DTO.OrderDTO;
+import christmas.domain.DTO.OrdersDTO;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class OutputPresenter {
     public static final String LINE_SEPARATOR = System.lineSeparator();
     public static final String NOTHING = "없음";
 
-    public String createDateText(Date date) {
-        LocalDate localDate = date.getLocalDate();
+    public String createDateText(LocalDate localDate) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M월 d일");
         return localDate.format(dateTimeFormatter);
     }
 
-    public String createOrderText(Orders orders) {
+    public String createOrderText(OrdersDTO ordersDTO) {
         StringBuilder sb = new StringBuilder();
-        for (Order order : orders.getOrders()) {
-            sb.append(String.format("%s %d개", order.getMenuName(), order.getCount()))
+        for (OrderDTO orderDTO : ordersDTO) {
+            sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
                     .append(LINE_SEPARATOR);
         }
         return sb.toString();
     }
 
     public String createTotalPriceBeforeDiscountText(int amount) {
-        return String.format("%s%s",
-                Converter.intToLocaleString(amount),
-                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
+        return String.format("%s원",
+                Converter.intToLocaleString(amount)) + LINE_SEPARATOR;
     }
 
-    public String createGiftText(Gift gift) {
-        if (gift == Gift.NOTHING) {
+    public String createGiftText(GiftDTO giftDTO) {
+        if (giftDTO.getGiftName().isBlank()) {
             return NOTHING + LINE_SEPARATOR;
         }
-        return String.format("%s 1개", gift.getName()) + LINE_SEPARATOR;
+        return String.format("%s %d개", giftDTO.getGiftName(), giftDTO.getCount()) + LINE_SEPARATOR;
     }
 
-    public String createDiscountDetailsText(List<DiscountResult> discountResults) {
-        if (discountResults.isEmpty()) {
+    public String createDiscountResultsText(DiscountResultsDTO discountResultsDTO) {
+        if (discountResultsDTO.isEmpty()) {
             return NOTHING + LINE_SEPARATOR;
         }
         StringBuilder sb = new StringBuilder();
-        discountResults.forEach(discount ->
-                sb.append(String.format("%s: -%s%s",
-                                discount.getEventName(),
-                                Converter.intToLocaleString(discount.getAmount()),
-                                Menu.CURRENCY_UNIT))
+        discountResultsDTO.forEach(discountResultDTO ->
+                sb.append(String.format("%s: -%s원",
+                                discountResultDTO.getEventName(),
+                                Converter.intToLocaleString(discountResultDTO.getAmount())))
                         .append(LINE_SEPARATOR));
         return sb.toString();
     }
 
     public String createTotalDiscountText(int totalDiscount) {
+        return String.format("%s원",
+                Converter.intToLocaleString(-totalDiscount)) + LINE_SEPARATOR;
+    }
+
+    public String createExpectedAmountAfterDiscountText(int expectedAmountAfterDiscount) {
         return String.format("%s%s",
-                Converter.intToLocaleString(-totalDiscount),
+                Converter.intToLocaleString(expectedAmountAfterDiscount),
                 Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
     }
 
-    public String createExpectedPayAfterDiscountText(int expectedPayAfterDiscount) {
-        return String.format("%s%s",
-                Converter.intToLocaleString(expectedPayAfterDiscount),
-                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
-    }
-
-    public String createEventBadgeText(EventBadge eventBadge) {
-        if (eventBadge == EventBadge.NOTHING) {
+    public String createEventBadgeText(String eventBadgeName) {
+        if (eventBadgeName.isBlank()) {
             return NOTHING + LINE_SEPARATOR;
         }
-        return String.format(eventBadge.getName()) + LINE_SEPARATOR;
+        return eventBadgeName + LINE_SEPARATOR;
     }
 }

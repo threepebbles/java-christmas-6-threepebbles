@@ -3,7 +3,7 @@ package christmas.service.planner;
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
 import christmas.domain.Date;
-import christmas.domain.DiscountDetails;
+import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
 
 public class DefaultPlanner implements Planner {
@@ -26,8 +26,8 @@ public class DefaultPlanner implements Planner {
     }
 
     @Override
-    public DiscountDetails calculateDiscountDetails() {
-        return DiscountDetails.createEmptyDiscountDetails();
+    public DiscountResults calculateDiscountResults() {
+        return DiscountResults.createEmptyDiscountResults();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DefaultPlanner implements Planner {
     }
 
     @Override
-    public int calculateExpectedPayAfterDiscount() {
+    public int calculateExpectedAmountAfterDiscount() {
         return orders.calculateTotalPrice();
     }
 
