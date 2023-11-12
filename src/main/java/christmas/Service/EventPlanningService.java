@@ -4,13 +4,13 @@ import christmas.Service.planner.DefaultPlanner;
 import christmas.Service.planner.EventPlanner;
 import christmas.Service.planner.Planner;
 import christmas.model.Date;
-import christmas.model.EventPlanDTO;
+import christmas.model.EventPlan;
 import christmas.model.Orders;
 
 public class EventPlanningService {
-    public EventPlanDTO createEventPlan(Date date, Orders orders) {
+    public EventPlan createEventPlan(Date date, Orders orders) {
         Planner planner = matchPlanner(date, orders);
-        return new EventPlanDTO(
+        return new EventPlan(
                 planner.getDate(),
                 planner.getOrders(),
                 planner.calculateTotalPriceBeforeDiscount(),

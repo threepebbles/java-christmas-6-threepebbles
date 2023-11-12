@@ -2,7 +2,7 @@ package christmas.controller;
 
 import christmas.Service.EventPlanningService;
 import christmas.model.Date;
-import christmas.model.EventPlanDTO;
+import christmas.model.EventPlan;
 import christmas.model.Orders;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
@@ -22,20 +22,20 @@ public class MainController {
         Date date = inputView.askDate();
         Orders orders = inputView.askOrders();
 
-        EventPlanDTO eventPlanDTO = eventPlanningService.createEventPlan(date, orders);
-        updateEventPlanView(eventPlanDTO);
+        EventPlan eventPlan = eventPlanningService.createEventPlan(date, orders);
+        updateEventPlanView(eventPlan);
         renderEventPlanView();
     }
 
-    private void updateEventPlanView(EventPlanDTO eventPlanDTO) {
-        outputView.updateEventPlanHeaderScreen(eventPlanDTO.getDate());
-        outputView.updateOrderScreen(eventPlanDTO.getOrders());
-        outputView.updateTotalPriceBeforeDiscountScreen(eventPlanDTO.getTotalPriceBeforeDiscount());
-        outputView.updateGiftScreen(eventPlanDTO.getGift());
-        outputView.updateDiscountDetailsScreen(eventPlanDTO.getDiscountDetails());
-        outputView.updateTotalDiscountScreen(eventPlanDTO.getTotalDiscount());
-        outputView.updateExpectedPayAfterDiscountScreen(eventPlanDTO.getExpectedPayAfterDiscount());
-        outputView.updateEventBadgeScreen(eventPlanDTO.getEventBadge());
+    private void updateEventPlanView(EventPlan eventPlan) {
+        outputView.updateEventPlanHeaderScreen(eventPlan.getDate());
+        outputView.updateOrderScreen(eventPlan.getOrders());
+        outputView.updateTotalPriceBeforeDiscountScreen(eventPlan.getTotalPriceBeforeDiscount());
+        outputView.updateGiftScreen(eventPlan.getGift());
+        outputView.updateDiscountDetailsScreen(eventPlan.getDiscountDetails());
+        outputView.updateTotalDiscountScreen(eventPlan.getTotalDiscount());
+        outputView.updateExpectedPayAfterDiscountScreen(eventPlan.getExpectedPayAfterDiscount());
+        outputView.updateEventBadgeScreen(eventPlan.getEventBadge());
     }
 
     private void renderEventPlanView() {
