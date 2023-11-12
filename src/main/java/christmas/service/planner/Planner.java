@@ -1,4 +1,4 @@
-package christmas.Service.planner;
+package christmas.service.planner;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;

@@ -1,11 +1,11 @@
-package christmas.Service;
+package christmas.service;
 
-import christmas.Service.planner.DefaultPlanner;
-import christmas.Service.planner.EventPlanner;
-import christmas.Service.planner.Planner;
 import christmas.model.Date;
 import christmas.model.EventPlan;
 import christmas.model.Orders;
+import christmas.service.planner.DefaultPlanner;
+import christmas.service.planner.EventPlanner;
+import christmas.service.planner.Planner;
 
 public class EventPlanningService {
     public EventPlan createEventPlan(Date date, Orders orders) {

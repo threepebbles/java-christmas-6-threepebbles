@@ -4,9 +4,9 @@ import christmas.constant.EventBadge;
 import christmas.constant.Gift;
 import christmas.constant.Menu;
 import christmas.model.Date;
+import christmas.model.DiscountResult;
 import christmas.model.Order;
 import christmas.model.Orders;
-import christmas.model.event.DiscountEvent;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -44,14 +44,14 @@ public class OutputPresenter {
         return String.format("%s 1개", gift.getName()) + LINE_SEPARATOR;
     }
 
-    public String createDiscountDetailsText(List<DiscountEvent> discountEvents) {
-        if (discountEvents.isEmpty()) {
+    public String createDiscountDetailsText(List<DiscountResult> discountResults) {
+        if (discountResults.isEmpty()) {
             return NOTHING + LINE_SEPARATOR;
         }
         StringBuilder sb = new StringBuilder();
-        discountEvents.forEach(discount ->
+        discountResults.forEach(discount ->
                 sb.append(String.format("%s: -%s%s",
-                                discount.getName(),
+                                discount.getEventName(),
                                 Converter.intToLocaleString(discount.getAmount()),
                                 Menu.CURRENCY_UNIT))
                         .append(LINE_SEPARATOR));

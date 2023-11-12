@@ -104,7 +104,7 @@ public class OutputView {
     // <혜택 내역> 화면 업데이트 및 출력
     public void updateDiscountDetailsScreen(DiscountDetails details) {
         discountDetailsScreen = String.format(OutputViewFormat.DISCOUNT_DETAILS_FORMAT,
-                outputPresenter.createDiscountDetailsText(details.details()));
+                outputPresenter.createDiscountDetailsText(details.getDetails()));
     }
 
     public void renderDiscountDetailsScreen() {
@@ -140,7 +140,7 @@ public class OutputView {
     public void renderEventBadgeScreen() {
         System.out.print(eventBadgeScreen);
     }
-    
+
     public void renderWithLineSeparator(Runnable toRun, int lineSeparatorCount) {
         toRun.run();
         printLineSeparator(lineSeparatorCount);
