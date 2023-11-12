@@ -14,7 +14,7 @@ public class EventPlanningService {
                 planner.getDate(),
                 planner.getOrders(),
                 planner.calculateTotalPriceBeforeDiscount(),
-                planner.calculateGift(),
+                planner.requestGift(),
                 planner.calculateDiscountDetails(),
                 planner.calculateTotalDiscount(),
                 planner.calculateExpectedPayAfterDiscount(),

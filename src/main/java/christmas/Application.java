@@ -13,6 +13,7 @@ public class Application {
         InputView inputView = new InputView(new InputValidatorFinder(), new InputConverter());
         OutputView outputView = new OutputView(new OutputPresenter());
         EventPlanningService eventPlanningService = new EventPlanningService();
+        
         MainController mainController = new MainController(inputView, outputView, eventPlanningService);
         mainController.run();
     }

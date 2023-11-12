@@ -6,11 +6,6 @@ import christmas.model.Date;
 import christmas.model.DiscountDetails;
 import christmas.model.DiscountResult;
 import christmas.model.Orders;
-import christmas.service.event.ChristmasDDayDiscountEvent;
-import christmas.service.event.GiftEvent;
-import christmas.service.event.SpecialDiscountEvent;
-import christmas.service.event.WeekdayDiscountEvent;
-import christmas.service.event.WeekendDiscountEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,20 +13,10 @@ public class EventPlanner implements Planner {
     public static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
     private final Date date;
     private final Orders orders;
-    private final ChristmasDDayDiscountEvent christmasDDayDiscountEvent;
-    private final WeekdayDiscountEvent weekdayDiscountEvent;
-    private final WeekendDiscountEvent weekendDiscountEvent;
-    private final SpecialDiscountEvent specialDiscountEvent;
-    private final GiftEvent giftEvent;
 
     public EventPlanner(Date date, Orders orders) {
         this.date = date;
         this.orders = orders;
-        christmasDDayDiscountEvent = new ChristmasDDayDiscountEvent();
-        weekdayDiscountEvent = new WeekdayDiscountEvent();
-        weekendDiscountEvent = new WeekendDiscountEvent();
-        specialDiscountEvent = new SpecialDiscountEvent();
-        giftEvent = new GiftEvent();
     }
 
     public boolean isEnoughAmount(int totalPrice) {
@@ -44,12 +29,9 @@ public class EventPlanner implements Planner {
     }
 
     @Override
-    public Gift calculateGift() {
-        int totalPriceBeforeDiscount = orders.calculateTotalPrice();
-        if (giftEvent.isEnoughAmount(totalPriceBeforeDiscount)) {
-            return giftEvent.getGift();
-        }
-        return Gift.NOTHING;
+    public Gift requestGift() {
+        return giftEvent.requestGift(calculateTotalPriceBeforeDiscount());
+
     }
 
     @Override

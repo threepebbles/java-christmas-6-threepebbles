@@ -17,11 +17,14 @@ public class GiftEvent {
         return new DiscountResult(EventType.GIFT, amount);
     }
 
-    public boolean isEnoughAmount(int totalPrice) {
-        return totalPrice >= MINIMUM_AMOUNT_TO_RECEIVE_GIFT;
+    public Gift requestGift(int totalPriceBeforeDiscount) {
+        if (isEnoughAmount(totalPriceBeforeDiscount)) {
+            return gift;
+        }
+        return Gift.NOTHING;
     }
 
-    public Gift getGift() {
-        return gift;
+    private boolean isEnoughAmount(int totalPrice) {
+        return totalPrice >= MINIMUM_AMOUNT_TO_RECEIVE_GIFT;
     }
 }

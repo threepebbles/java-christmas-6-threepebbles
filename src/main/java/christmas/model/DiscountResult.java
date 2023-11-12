@@ -10,8 +10,7 @@ public class DiscountResult {
         this.eventType = eventType;
         this.amount = amount;
     }
-
-
+    
     public int getPriority() {
         return eventType.getPriority();
     }

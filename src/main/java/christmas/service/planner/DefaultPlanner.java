@@ -21,8 +21,8 @@ public class DefaultPlanner implements Planner {
     }
 
     @Override
-    public Gift calculateGift() {
-        return Gift.NOTHING;
+    public Gift requestGift() {
+        return giftEvent.requestGift(calculateTotalPriceBeforeDiscount());
     }
 
     @Override
