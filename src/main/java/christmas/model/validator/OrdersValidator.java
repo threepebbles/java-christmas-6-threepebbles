@@ -3,6 +3,7 @@ package christmas.model.validator;
 import christmas.constant.ErrorMessage;
 import christmas.constant.MenuType;
 import christmas.model.Order;
+import christmas.model.Orders;
 import java.util.List;
 
 public class OrdersValidator {
@@ -18,10 +19,10 @@ public class OrdersValidator {
         return ordersValidator;
     }
 
-    public void validateOrders(List<Order> orders) {
-        validateDuplication(orders);
-        validateHasOnlyBeverage(orders);
-        validateOrderSize(orders);
+    public void validateOrders(Orders orders) {
+        validateDuplication(orders.getOrders());
+        validateHasOnlyBeverage(orders.getOrders());
+        validateOrderSize(orders.getOrders());
     }
 
     private static void validateDuplication(List<Order> orders) {
@@ -29,7 +30,7 @@ public class OrdersValidator {
                 .map(Order::getMenu)
                 .distinct()
                 .count() != orders.size()) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 
@@ -38,13 +39,13 @@ public class OrdersValidator {
         if (orders.stream()
                 .mapToInt(Order::getCount)
                 .sum() > MAX_ORDER_SIZE) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 
     private void validateHasOnlyBeverage(List<Order> orders) {
         if (hasOnlyBeverage(orders)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 

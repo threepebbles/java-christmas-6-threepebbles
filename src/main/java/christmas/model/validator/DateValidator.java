@@ -1,6 +1,8 @@
 package christmas.model.validator;
 
 import christmas.constant.ErrorMessage;
+import christmas.constant.EventConstant;
+import christmas.model.Date;
 
 public class DateValidator {
     private static DateValidator dateValidator;
@@ -15,12 +17,20 @@ public class DateValidator {
         return dateValidator;
     }
 
-    public void validateDay(int day) {
-        final int FIRST_DAY_OF_DECEMBER = 1;
-        final int LAST_DAY_OF_DECEMBER = 31;
+    public void validate(Date date) {
+        validateYear(date.getYear());
+        validateMonth(date.getMonth());
+    }
 
-        if (day < FIRST_DAY_OF_DECEMBER || day > LAST_DAY_OF_DECEMBER) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY_FORMAT.getMessage());
+    private void validateYear(int year) {
+        if (year != EventConstant.EVENT_YEAR) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
+        }
+    }
+
+    private void validateMonth(int month) {
+        if (month != EventConstant.EVENT_MONTH) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
         }
     }
 }

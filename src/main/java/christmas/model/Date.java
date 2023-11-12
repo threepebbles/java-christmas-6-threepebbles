@@ -7,12 +7,9 @@ import java.time.LocalDate;
 public class Date {
     private final LocalDate localDate;
 
-    public Date(int day) {
-        DateValidator.getInstance().validateDay(day);
-
-        final int CURRENT_YEAR = 2023;
-        final int CURRENT_MONTH = 12;
-        localDate = LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, day);
+    public Date(LocalDate localDate) {
+        this.localDate = localDate;
+        DateValidator.getInstance().validate(this);
     }
 
     public boolean isWeekDay() {
@@ -21,6 +18,14 @@ public class Date {
 
     public boolean isWeekend() {
         return localDate.getDayOfWeek() == DayOfWeek.FRIDAY || localDate.getDayOfWeek() == DayOfWeek.SATURDAY;
+    }
+
+    public int getYear() {
+        return localDate.getYear();
+    }
+
+    public int getMonth() {
+        return localDate.getMonthValue();
     }
 
     public int getDay() {

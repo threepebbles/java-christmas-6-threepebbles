@@ -28,7 +28,7 @@ public class OrderInputValidator implements InputValidator {
         String HYPHEN = "-";
         List<String> menuCount = Parser.parseWithDelimiter(target, HYPHEN);
         if (menuCount.size() != 2) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
         String count = menuCount.get(1);
         validateInteger(count);
@@ -38,7 +38,7 @@ public class OrderInputValidator implements InputValidator {
         try {
             Integer.parseInt(count);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 }

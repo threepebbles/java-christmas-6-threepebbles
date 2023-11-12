@@ -1,10 +1,13 @@
 package christmas.view.input;
 
+import christmas.constant.ErrorMessage;
 import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.model.Orders;
 import christmas.utils.Parser;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +16,18 @@ public class InputConverter {
     public static final String HYPHEN = "-";
 
     public Date createDate(String userInput) {
-        int day = Integer.parseInt(userInput);
-        return new Date(day);
+        LocalDate localDate = convertToLocalDate(userInput);
+        return new Date(localDate);
+    }
+
+    private LocalDate convertToLocalDate(String day) {
+        try {
+            final int CURRENT_YEAR = 2023;
+            final int CURRENT_MONTH = 12;
+            return LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, Integer.parseInt(day));
+        } catch (DateTimeException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
+        }
     }
 
     public Orders createOrder(String userInput) {

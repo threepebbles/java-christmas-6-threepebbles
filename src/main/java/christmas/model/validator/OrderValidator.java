@@ -2,6 +2,7 @@ package christmas.model.validator;
 
 import christmas.constant.ErrorMessage;
 import christmas.constant.Menu;
+import christmas.model.Order;
 
 public class OrderValidator {
     private static OrderValidator orderValidator;
@@ -16,23 +17,28 @@ public class OrderValidator {
         return orderValidator;
     }
 
-    public void validateMenu(Menu menu) {
-        validateNothing(menu);
+    public void validateOrder(Order order) {
+        validateMenu(order.getMenu());
+        validateCount(order.getCount());
     }
 
-    private void validateNothing(Menu menu) {
-        if (menu == Menu.NOTHING) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+    private void validateMenu(Menu menu) {
+        validateNotOnMenu(menu);
+    }
+
+    private void validateNotOnMenu(Menu menu) {
+        if (menu == null || menu == Menu.NOTHING) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 
-    public void validateCount(int count) {
+    private void validateCount(int count) {
         validatePositiveInteger(count);
     }
 
     private void validatePositiveInteger(int count) {
         if (count <= 0) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
     }
 }

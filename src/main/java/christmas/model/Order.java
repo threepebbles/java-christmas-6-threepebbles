@@ -9,11 +9,10 @@ public class Order {
     private final int count;
 
     public Order(Menu menu, int count) {
-        OrderValidator.getInstance().validateMenu(menu);
-        OrderValidator.getInstance().validateCount(count);
-
         this.menu = menu;
         this.count = count;
+        
+        OrderValidator.getInstance().validateOrder(this);
     }
 
     public int calculatePrice() {

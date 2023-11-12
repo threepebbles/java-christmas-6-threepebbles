@@ -9,11 +9,11 @@ public class Orders {
     private final List<Order> orders;
 
     public Orders(List<Order> orders) {
-        OrdersValidator.getInstance().validateOrders(orders);
-
         this.orders = orders.stream()
                 .sorted(Comparator.comparing(Order::getMenuName))
                 .toList();
+        
+        OrdersValidator.getInstance().validateOrders(this);
     }
 
     public int countByMenuType(MenuType menuType) {

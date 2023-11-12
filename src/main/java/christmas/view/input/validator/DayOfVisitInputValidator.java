@@ -24,7 +24,7 @@ public class DayOfVisitInputValidator implements InputValidator {
         try {
             Integer.parseInt(target);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
         }
     }
 }
