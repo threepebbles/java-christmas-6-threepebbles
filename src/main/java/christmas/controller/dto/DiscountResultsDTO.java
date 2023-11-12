@@ -1,4 +1,4 @@
-package christmas.domain.dto;
+package christmas.controller.dto;
 
 import java.util.Iterator;
 import java.util.List;

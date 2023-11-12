@@ -1,4 +1,4 @@
-package christmas.domain.dto;
+package christmas.controller.dto;
 
 public class GiftDTO {
     private String giftName;
