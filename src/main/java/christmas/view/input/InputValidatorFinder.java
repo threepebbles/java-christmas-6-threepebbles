@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InputValidatorFinder {
-    private Map<InputType, InputValidator> validatorStore;
+    private final Map<InputType, InputValidator> validatorStore;
 
     public InputValidatorFinder() {
         validatorStore = new HashMap<>() {{

@@ -18,7 +18,7 @@ public class MainController {
     }
 
     public void run() {
-        Date date = inputView.askDayOfVisit();
+        Date date = inputView.askDate();
         Orders orders = inputView.askOrders();
 
         startPlanning(date, orders);

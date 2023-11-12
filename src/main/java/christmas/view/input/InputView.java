@@ -16,12 +16,12 @@ public class InputView {
     private final InputValidatorFinder inputValidatorFinder;
     private final InputConverter inputConverter;
 
-    public InputView() {
-        inputValidatorFinder = new InputValidatorFinder();
-        inputConverter = new InputConverter();
+    public InputView(InputValidatorFinder inputValidatorFinder, InputConverter inputConverter) {
+        this.inputValidatorFinder = inputValidatorFinder;
+        this.inputConverter = inputConverter;
     }
 
-    public Date askDayOfVisit() {
+    public Date askDate() {
         return (Date) retryUntilSuccess(
                 inputView -> {
                     String day = scanDayOfVisit();

@@ -19,8 +19,8 @@ public class OutputView {
     private String eventBadgeScreen;
 
     public OutputView(OutputPresenter outputPresenter) {
-        this.outputPresenter = outputPresenter;
         init();
+        this.outputPresenter = outputPresenter;
     }
 
     public void init() {
