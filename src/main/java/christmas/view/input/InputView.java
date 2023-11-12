@@ -36,13 +36,13 @@ public class InputView {
         return Console.readLine();
     }
 
-    public Orders askOrder() {
+    public Orders askOrders() {
         return (Orders) retryUntilSuccess(
                 inputView -> {
                     String order = inputView.scanOrder();
                     inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
                             .validate(order);
-                    return inputConverter.createOrder(order);
+                    return inputConverter.createOrders(order);
                 });
     }
 

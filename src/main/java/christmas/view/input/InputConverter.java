@@ -30,21 +30,15 @@ public class InputConverter {
         }
     }
 
-    public Orders createOrder(String userInput) {
-        List<Order> orders = convertToOrders(userInput);
-        return new Orders(orders);
-    }
-
-    private List<Order> convertToOrders(String userInput) {
+    public Orders createOrders(String userInput) {
         List<Order> orders = new ArrayList<>();
-
         List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, COMMA);
         menuCountFormats.forEach(menuCountFormat -> {
             orders.add(convertToOrder(menuCountFormat));
         });
-        return orders;
+        return new Orders(orders);
     }
-
+    
     private Order convertToOrder(String menuCountFormat) {
         List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
         Menu menu = Menu.findMenuByName(menuCountBundle.get(0));
