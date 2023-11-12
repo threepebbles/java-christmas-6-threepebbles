@@ -27,8 +27,8 @@ public class EventPlanner implements Planner {
 
     public Gift calculateGift() {
         int totalPriceBeforeDiscount = orders.calculateTotalPrice();
-        if (totalPriceBeforeDiscount >= GiftDiscount.THRESHOLD) {
-            return Gift.CHAMPAGNE;
+        if (totalPriceBeforeDiscount >= GiftDiscount.MINIMUM_AMOUNT_TO_RECEIVE_GIFT) {
+            return GiftDiscount.gift;
         }
         return Gift.NOTHING;
     }
