@@ -44,7 +44,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         assertThatCode(() -> {
-            inputConverter.createOrder(input);
+            inputConverter.createOrders(input);
         }).doesNotThrowAnyException();
     }
 
@@ -56,7 +56,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> inputConverter.createOrder(input))
+        assertThatThrownBy(() -> inputConverter.createOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -68,7 +68,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> inputConverter.createOrder(input))
+        assertThatThrownBy(() -> inputConverter.createOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -80,7 +80,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> inputConverter.createOrder(input))
+        assertThatThrownBy(() -> inputConverter.createOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -92,7 +92,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> inputConverter.createOrder(input))
+        assertThatThrownBy(() -> inputConverter.createOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -104,7 +104,7 @@ public class InputConverterTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> inputConverter.createOrder(input))
+        assertThatThrownBy(() -> inputConverter.createOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

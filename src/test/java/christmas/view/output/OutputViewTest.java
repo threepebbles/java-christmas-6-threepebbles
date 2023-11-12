@@ -13,6 +13,7 @@ import christmas.model.Orders;
 import christmas.model.discount.Discount;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -44,7 +45,7 @@ public class OutputViewTest {
     @ValueSource(ints = {1, 10, 20, 31})
     void 헤더_메세지_출력_테스트(int day) {
         // given
-        Date date = new Date(day);
+        Date date = new Date(LocalDate.of(2023, 12, day));
 
         String expected =
                 String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", day) + LINE_SEPARATOR;
