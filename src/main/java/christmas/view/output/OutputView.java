@@ -4,6 +4,7 @@ import christmas.constant.EventBadge;
 import christmas.constant.Gift;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
+import christmas.model.EventPlan;
 import christmas.model.Orders;
 
 public class OutputView {
@@ -32,6 +33,30 @@ public class OutputView {
         totalDiscountScreen = OutputViewFormat.TOTAL_DISCOUNT_FORMAT;
         expectedPayAfterDiscountScreen = OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT;
         eventBadgeScreen = OutputViewFormat.EVENT_BADGE_FORMAT;
+    }
+
+    // 이벤트 플랜 화면 전체 업데이트
+    public void updateEventPlanView(EventPlan eventPlan) {
+        updateEventPlanHeaderScreen(eventPlan.getDate());
+        updateOrderScreen(eventPlan.getOrders());
+        updateTotalPriceBeforeDiscountScreen(eventPlan.getTotalPriceBeforeDiscount());
+        updateGiftScreen(eventPlan.getGift());
+        updateDiscountDetailsScreen(eventPlan.getDiscountDetails());
+        updateTotalDiscountScreen(eventPlan.getTotalDiscount());
+        updateExpectedPayAfterDiscountScreen(eventPlan.getExpectedPayAfterDiscount());
+        updateEventBadgeScreen(eventPlan.getEventBadge());
+    }
+
+    // 이벤트 플랜 화면 전체 출력
+    public void renderEventPlanView() {
+        renderWithLineSeparator(this::renderEventPlanHeaderScreen, 1);
+        renderWithLineSeparator(this::renderOrderScreen, 1);
+        renderWithLineSeparator(this::renderTotalPriceBeforeDiscountScreen, 1);
+        renderWithLineSeparator(this::renderGiftScreen, 1);
+        renderWithLineSeparator(this::renderDiscountDetailsScreen, 1);
+        renderWithLineSeparator(this::renderTotalDiscountScreen, 1);
+        renderWithLineSeparator(this::renderExpectedPayAfterDiscountScreen, 1);
+        renderEventBadgeScreen();
     }
 
     // 헤더 메세지 화면 업데이트 및 출력
@@ -114,6 +139,11 @@ public class OutputView {
 
     public void renderEventBadgeScreen() {
         System.out.print(eventBadgeScreen);
+    }
+    
+    public void renderWithLineSeparator(Runnable toRun, int lineSeparatorCount) {
+        toRun.run();
+        printLineSeparator(lineSeparatorCount);
     }
 
     public void printLineSeparator(int repeat) {
