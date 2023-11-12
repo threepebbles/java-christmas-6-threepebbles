@@ -14,7 +14,7 @@ public enum EventBadge {
         this.threshold = threshold;
     }
 
-    public static EventBadge valueOf(int totalDiscount) {
+    public static EventBadge getEventBadgeByTotalDiscount(int totalDiscount) {
         for (EventBadge eventBadge : values()) {
             if (totalDiscount >= eventBadge.threshold) {
                 return eventBadge;

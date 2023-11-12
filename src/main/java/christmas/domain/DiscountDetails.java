@@ -17,8 +17,7 @@ public class DiscountDetails {
     public static DiscountDetails createEmptyDiscountDetails() {
         return new DiscountDetails(new ArrayList<>());
     }
-
-
+    
     public int calculateTotalDiscount() {
         return details.stream()
                 .mapToInt(DiscountResult::getAmount)

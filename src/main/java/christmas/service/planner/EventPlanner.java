@@ -64,7 +64,7 @@ public class EventPlanner implements Planner {
     @Override
     public EventBadge requestEventBadge() {
         int totalDiscount = calculateTotalDiscount();
-        return EventBadge.valueOf(totalDiscount);
+        return EventBadge.getEventBadgeByTotalDiscount(totalDiscount);
     }
 
     @Override

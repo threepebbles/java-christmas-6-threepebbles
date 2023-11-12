@@ -18,10 +18,6 @@ public interface Planner {
     SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent();
     GiftEvent giftEvent = new GiftEvent();
 
-    Date getDate();
-
-    Orders getOrders();
-
     int calculateTotalPriceBeforeDiscount();
 
     Gift requestGift();
@@ -33,4 +29,8 @@ public interface Planner {
     int calculateExpectedPayAfterDiscount();
 
     EventBadge requestEventBadge();
+
+    Date getDate();
+
+    Orders getOrders();
 }
