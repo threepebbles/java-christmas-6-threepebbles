@@ -1,10 +1,11 @@
 package christmas.domain.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.EventConstant;
 import christmas.domain.Date;
 
 public class DateValidator {
+    private static final int EVENT_YEAR = 2023;
+    private static final int EVENT_MONTH = 12;
     private static DateValidator dateValidator;
 
     private DateValidator() {
@@ -23,13 +24,13 @@ public class DateValidator {
     }
 
     private void validateYear(int year) {
-        if (year != EventConstant.EVENT_YEAR) {
+        if (year != EVENT_YEAR) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
         }
     }
 
     private void validateMonth(int month) {
-        if (month != EventConstant.EVENT_MONTH) {
+        if (month != EVENT_MONTH) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
         }
     }
