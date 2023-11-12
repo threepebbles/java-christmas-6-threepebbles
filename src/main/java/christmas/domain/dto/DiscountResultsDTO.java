@@ -1,4 +1,4 @@
-package christmas.domain.DTO;
+package christmas.domain.dto;
 
 import java.util.Iterator;
 import java.util.List;

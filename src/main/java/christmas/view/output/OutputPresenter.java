@@ -1,10 +1,10 @@
 package christmas.view.output;
 
 import christmas.constant.Menu;
-import christmas.domain.DTO.DiscountResultsDTO;
-import christmas.domain.DTO.GiftDTO;
-import christmas.domain.DTO.OrderDTO;
-import christmas.domain.DTO.OrdersDTO;
+import christmas.domain.dto.DiscountResultsDTO;
+import christmas.domain.dto.GiftDTO;
+import christmas.domain.dto.OrderDTO;
+import christmas.domain.dto.OrdersDTO;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

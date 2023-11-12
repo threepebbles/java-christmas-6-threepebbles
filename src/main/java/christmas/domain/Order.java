@@ -2,7 +2,7 @@ package christmas.domain;
 
 import christmas.constant.Menu;
 import christmas.constant.MenuType;
-import christmas.domain.DTO.OrderDTO;
+import christmas.domain.dto.OrderDTO;
 import christmas.domain.validator.OrderValidator;
 
 public class Order {

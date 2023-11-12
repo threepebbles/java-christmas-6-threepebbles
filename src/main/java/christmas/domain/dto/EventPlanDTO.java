@@ -1,4 +1,4 @@
-package christmas.domain.DTO;
+package christmas.domain.dto;
 
 import java.time.LocalDate;
 

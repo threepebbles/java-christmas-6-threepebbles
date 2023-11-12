@@ -7,8 +7,8 @@ import christmas.constant.EventType;
 import christmas.constant.Gift;
 import christmas.constant.Menu;
 import christmas.domain.Date;
-import christmas.domain.DiscountDetails;
 import christmas.domain.DiscountResult;
+import christmas.domain.DiscountResults;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import java.io.ByteArrayOutputStream;
@@ -51,7 +51,7 @@ public class OutputViewTest {
                 String.format("12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!", day) + LINE_SEPARATOR;
 
         // when
-        outputView.updateEventPlanHeaderScreen(date);
+        outputView.updateEventPlanHeaderScreen(date.getLocalDate());
         outputView.renderEventPlanHeaderScreen();
         String actual = output.toString();
 
@@ -69,13 +69,12 @@ public class OutputViewTest {
                     add(new Order(Menu.findMenuByName("제로콜라"), 2));
                 }}
         );
-
         String expected = "<주문 메뉴>" + LINE_SEPARATOR
                 + "제로콜라 2개" + LINE_SEPARATOR
                 + "티본스테이크 2개" + LINE_SEPARATOR;
 
         // when
-        outputView.updateOrderScreen(orders);
+        outputView.updateOrderScreen(orders.toDTO());
         outputView.renderOrderScreen();
         String actual = output.toString();
 
@@ -109,7 +108,7 @@ public class OutputViewTest {
                 + "샴페인 1개" + LINE_SEPARATOR;
 
         // when
-        outputView.updateGiftScreen(gift);
+        outputView.updateGiftScreen(gift.toDTO());
         outputView.renderGiftScreen();
         String actual = output.toString();
 
@@ -126,7 +125,7 @@ public class OutputViewTest {
                 + "없음" + LINE_SEPARATOR;
 
         // when
-        outputView.updateGiftScreen(gift);
+        outputView.updateGiftScreen(gift.toDTO());
         outputView.renderGiftScreen();
         String actual = output.toString();
 
@@ -138,20 +137,20 @@ public class OutputViewTest {
     @Test
     void 혜택_내역_있는_경우_출력_테스트() {
         // given
-        List<DiscountResult> discountResults = new ArrayList<>() {{
+        List<DiscountResult> discountResultList = new ArrayList<>() {{
             add(new DiscountResult(EventType.CHRISTMAS_D_DAY_DISCOUNT, 1010));
             add(new DiscountResult(EventType.SPECIAL_DISCOUNT, 2020));
             add(new DiscountResult(EventType.GIFT, 3030));
         }};
-        DiscountDetails discountDetails = new DiscountDetails(discountResults);
+        DiscountResults discountResults = new DiscountResults(discountResultList);
         String expected = "<혜택 내역>" + LINE_SEPARATOR
                 + "크리스마스 디데이 할인: -1,010원" + LINE_SEPARATOR
                 + "특별 할인: -2,020원" + LINE_SEPARATOR
                 + "증정 이벤트: -3,030원" + LINE_SEPARATOR;
 
         // when
-        outputView.updateDiscountDetailsScreen(discountDetails);
-        outputView.renderDiscountDetailsScreen();
+        outputView.updateDiscountResultsScreen(discountResults.toDTO());
+        outputView.renderDiscountResultsScreen();
         String actual = output.toString();
 
         // then
@@ -179,13 +178,13 @@ public class OutputViewTest {
     @Test
     void 할인_후_예상_결제_금액_출력_테스트() {
         // given
-        int expectedPay = 52000;
+        int expectedAmount = 52000;
         String expected = "<할인 후 예상 결제 금액>" + LINE_SEPARATOR
                 + "52,000원" + LINE_SEPARATOR;
 
         // when
-        outputView.updateExpectedPayAfterDiscountScreen(expectedPay);
-        outputView.renderExpectedPayAfterDiscountScreen();
+        outputView.updateExpectedAmountAfterDiscountScreen(expectedAmount);
+        outputView.renderExpectedAmountAfterDiscountScreen();
         String actual = output.toString();
 
         // then
@@ -201,7 +200,7 @@ public class OutputViewTest {
                 + "별" + LINE_SEPARATOR;
 
         // when
-        outputView.updateEventBadgeScreen(eventBadge);
+        outputView.updateEventBadgeScreen(eventBadge.getName());
         outputView.renderEventBadgeScreen();
         String actual = output.toString();
 

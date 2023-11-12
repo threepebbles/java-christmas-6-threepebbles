@@ -2,7 +2,7 @@ package christmas.domain;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
-import christmas.domain.DTO.EventPlanDTO;
+import christmas.domain.dto.EventPlanDTO;
 
 public class EventPlan {
     private Date date;

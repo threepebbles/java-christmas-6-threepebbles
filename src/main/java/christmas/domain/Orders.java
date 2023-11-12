@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.constant.MenuType;
-import christmas.domain.DTO.OrdersDTO;
+import christmas.domain.dto.OrdersDTO;
 import christmas.domain.validator.OrdersValidator;
 import java.util.Comparator;
 import java.util.List;
