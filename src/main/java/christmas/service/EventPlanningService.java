@@ -18,7 +18,7 @@ public class EventPlanningService {
                 planner.calculateDiscountDetails(),
                 planner.calculateTotalDiscount(),
                 planner.calculateExpectedPayAfterDiscount(),
-                planner.calculateEventBadge());
+                planner.requestEventBadge());
     }
 
     private Planner matchPlanner(Date date, Orders orders) {

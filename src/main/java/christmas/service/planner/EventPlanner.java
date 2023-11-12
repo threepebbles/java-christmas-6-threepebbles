@@ -30,7 +30,7 @@ public class EventPlanner implements Planner {
 
     @Override
     public Gift requestGift() {
-        return giftEvent.requestGift(calculateTotalPriceBeforeDiscount());
+        return giftEvent.requestGift(orders.calculateTotalPrice());
 
     }
 
@@ -62,7 +62,7 @@ public class EventPlanner implements Planner {
     }
 
     @Override
-    public EventBadge calculateEventBadge() {
+    public EventBadge requestEventBadge() {
         int totalDiscount = calculateTotalDiscount();
         return EventBadge.valueOf(totalDiscount);
     }

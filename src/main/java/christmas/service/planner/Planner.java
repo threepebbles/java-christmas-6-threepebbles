@@ -32,5 +32,5 @@ public interface Planner {
 
     int calculateExpectedPayAfterDiscount();
 
-    EventBadge calculateEventBadge();
+    EventBadge requestEventBadge();
 }

@@ -22,7 +22,7 @@ public class DefaultPlanner implements Planner {
 
     @Override
     public Gift requestGift() {
-        return giftEvent.requestGift(calculateTotalPriceBeforeDiscount());
+        return giftEvent.requestGift(orders.calculateTotalPrice());
     }
 
     @Override
@@ -32,17 +32,16 @@ public class DefaultPlanner implements Planner {
 
     @Override
     public int calculateTotalDiscount() {
-        return DiscountDetails.createEmptyDiscountDetails()
-                .calculateTotalDiscount();
+        return 0;
     }
 
     @Override
     public int calculateExpectedPayAfterDiscount() {
-        return calculateTotalPriceBeforeDiscount();
+        return orders.calculateTotalPrice();
     }
 
     @Override
-    public EventBadge calculateEventBadge() {
+    public EventBadge requestEventBadge() {
         return EventBadge.NOTHING;
     }
 
