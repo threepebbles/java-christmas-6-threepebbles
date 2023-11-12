@@ -7,7 +7,6 @@ import christmas.model.DiscountDetails;
 import christmas.model.Orders;
 
 public class OutputView {
-    public static final String LINE_SEPARATOR = System.lineSeparator();
     private final OutputPresenter outputPresenter;
     private String eventPlanHeaderScreen;
     private String orderScreen;
@@ -118,6 +117,7 @@ public class OutputView {
     }
 
     public void printLineSeparator(int repeat) {
+        final String LINE_SEPARATOR = System.lineSeparator();
         System.out.print(LINE_SEPARATOR.repeat(repeat));
     }
 }
