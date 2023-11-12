@@ -2,9 +2,9 @@ package christmas.view.input;
 
 import christmas.constant.ErrorMessage;
 import christmas.constant.Menu;
-import christmas.model.Date;
-import christmas.model.Order;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.Order;
+import christmas.domain.Orders;
 import christmas.utils.Parser;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -38,7 +38,7 @@ public class InputConverter {
         });
         return new Orders(orders);
     }
-    
+
     private Order convertToOrder(String menuCountFormat) {
         List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
         Menu menu = Menu.findMenuByName(menuCountBundle.get(0));

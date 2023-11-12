@@ -2,9 +2,9 @@ package christmas.service.planner;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
-import christmas.model.Date;
-import christmas.model.DiscountDetails;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.DiscountDetails;
+import christmas.domain.Orders;
 
 public class DefaultPlanner implements Planner {
     private final Date date;

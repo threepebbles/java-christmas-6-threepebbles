@@ -1,8 +1,8 @@
-package christmas.model;
+package christmas.domain;
 
 import christmas.constant.Menu;
 import christmas.constant.MenuType;
-import christmas.model.validator.OrderValidator;
+import christmas.domain.validator.OrderValidator;
 
 public class Order {
     private final Menu menu;
@@ -11,7 +11,7 @@ public class Order {
     public Order(Menu menu, int count) {
         this.menu = menu;
         this.count = count;
-        
+
         OrderValidator.getInstance().validateOrder(this);
     }
 

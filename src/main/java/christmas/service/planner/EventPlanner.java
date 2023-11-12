@@ -2,10 +2,10 @@ package christmas.service.planner;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
-import christmas.model.Date;
-import christmas.model.DiscountDetails;
-import christmas.model.DiscountResult;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.DiscountDetails;
+import christmas.domain.DiscountResult;
+import christmas.domain.Orders;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain;
 
 import christmas.constant.EventType;
 import java.util.ArrayList;

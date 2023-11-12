@@ -2,10 +2,10 @@ package christmas.view.output;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;
-import christmas.model.Date;
-import christmas.model.DiscountDetails;
-import christmas.model.EventPlan;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.DiscountDetails;
+import christmas.domain.EventPlan;
+import christmas.domain.Orders;
 
 public class OutputView {
     private final OutputPresenter outputPresenter;

@@ -1,7 +1,7 @@
-package christmas.model;
+package christmas.domain;
 
 import christmas.constant.MenuType;
-import christmas.model.validator.OrdersValidator;
+import christmas.domain.validator.OrdersValidator;
 import java.util.Comparator;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Orders {
         this.orders = orders.stream()
                 .sorted(Comparator.comparing(Order::getMenuName))
                 .toList();
-        
+
         OrdersValidator.getInstance().validateOrders(this);
     }
 

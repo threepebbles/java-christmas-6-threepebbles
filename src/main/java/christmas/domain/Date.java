@@ -1,6 +1,6 @@
-package christmas.model;
+package christmas.domain;
 
-import christmas.model.validator.DateValidator;
+import christmas.domain.validator.DateValidator;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

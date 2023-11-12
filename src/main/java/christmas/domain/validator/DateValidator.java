@@ -1,8 +1,8 @@
-package christmas.model.validator;
+package christmas.domain.validator;
 
 import christmas.constant.ErrorMessage;
 import christmas.constant.EventConstant;
-import christmas.model.Date;
+import christmas.domain.Date;
 
 public class DateValidator {
     private static DateValidator dateValidator;

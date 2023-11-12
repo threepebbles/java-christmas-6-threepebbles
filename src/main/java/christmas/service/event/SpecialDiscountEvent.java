@@ -1,8 +1,8 @@
 package christmas.service.event;
 
 import christmas.constant.EventType;
-import christmas.model.Date;
-import christmas.model.DiscountResult;
+import christmas.domain.Date;
+import christmas.domain.DiscountResult;
 import java.util.List;
 
 public class SpecialDiscountEvent {

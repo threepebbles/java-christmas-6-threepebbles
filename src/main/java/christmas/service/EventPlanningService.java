@@ -1,8 +1,8 @@
 package christmas.service;
 
-import christmas.model.Date;
-import christmas.model.EventPlan;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.EventPlan;
+import christmas.domain.Orders;
 import christmas.service.planner.DefaultPlanner;
 import christmas.service.planner.EventPlanner;
 import christmas.service.planner.Planner;

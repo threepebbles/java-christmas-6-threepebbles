@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain;
 
 import christmas.constant.EventBadge;
 import christmas.constant.Gift;

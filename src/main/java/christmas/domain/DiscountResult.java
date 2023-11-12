@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.domain;
 
 import christmas.constant.EventType;
 
@@ -10,7 +10,7 @@ public class DiscountResult {
         this.eventType = eventType;
         this.amount = amount;
     }
-    
+
     public int getPriority() {
         return eventType.getPriority();
     }

@@ -2,9 +2,9 @@ package christmas.service.event;
 
 import christmas.constant.EventType;
 import christmas.constant.MenuType;
-import christmas.model.Date;
-import christmas.model.DiscountResult;
-import christmas.model.Orders;
+import christmas.domain.Date;
+import christmas.domain.DiscountResult;
+import christmas.domain.Orders;
 
 public class WeekendDiscountEvent {
     private final int UNIT = 2023;
