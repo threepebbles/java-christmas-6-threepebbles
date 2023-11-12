@@ -1,4 +1,4 @@
-package christmas.model.discount;
+package christmas.model.event;
 
 import christmas.constant.DiscountType;
 

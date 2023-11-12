@@ -24,7 +24,7 @@ public class OrdersInputValidatorTest {
     void 주문_목록_입력_검증_테스트(String orderInput) {
         // when & then
         assertThatCode(() ->
-                inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
+                inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
                         .validate(orderInput)).doesNotThrowAnyException();
     }
 
@@ -34,7 +34,7 @@ public class OrdersInputValidatorTest {
     void 주문_목록_입력_검증_예외_테스트_올바르지_않은_주문_포맷(String orderInput) {
         // when & then
         assertThatThrownBy(() ->
-                inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
+                inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
                         .validate(orderInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ORDER_INPUT_ERROR_MESSAGE);
@@ -46,7 +46,7 @@ public class OrdersInputValidatorTest {
     void 주문_목록_입력_검증_예외_테스트_주문_개수가_정수가_아닌_경우(String orderInput) {
         // when & then
         assertThatThrownBy(() ->
-                inputValidatorFinder.findValidatorByInputType(InputType.ORDER)
+                inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
                         .validate(orderInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ORDER_INPUT_ERROR_MESSAGE);

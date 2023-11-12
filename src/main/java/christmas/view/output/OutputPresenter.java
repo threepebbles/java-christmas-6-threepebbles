@@ -6,7 +6,7 @@ import christmas.constant.Menu;
 import christmas.model.Date;
 import christmas.model.Order;
 import christmas.model.Orders;
-import christmas.model.discount.DiscountEvent;
+import christmas.model.event.DiscountEvent;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

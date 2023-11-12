@@ -1,12 +1,12 @@
 package christmas.model;
 
 import christmas.constant.DiscountType;
-import christmas.model.discount.ChristmasDDayDiscountEvent;
-import christmas.model.discount.DiscountEvent;
-import christmas.model.discount.GiftDiscountEvent;
-import christmas.model.discount.SpecialDiscountEvent;
-import christmas.model.discount.WeekdayDiscountEvent;
-import christmas.model.discount.WeekendDiscountEvent;
+import christmas.model.event.ChristmasDDayDiscountEvent;
+import christmas.model.event.DiscountEvent;
+import christmas.model.event.GiftDiscountEvent;
+import christmas.model.event.SpecialDiscountEvent;
+import christmas.model.event.WeekdayDiscountEvent;
+import christmas.model.event.WeekendDiscountEvent;
 import java.util.ArrayList;
 import java.util.List;
 

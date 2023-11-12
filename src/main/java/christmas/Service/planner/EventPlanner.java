@@ -5,7 +5,7 @@ import christmas.constant.Gift;
 import christmas.model.Date;
 import christmas.model.DiscountDetails;
 import christmas.model.Orders;
-import christmas.model.discount.GiftDiscountEvent;
+import christmas.model.event.GiftDiscountEvent;
 
 public class EventPlanner implements Planner {
     public static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;

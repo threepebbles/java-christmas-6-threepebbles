@@ -10,7 +10,7 @@ import christmas.model.Date;
 import christmas.model.DiscountDetails;
 import christmas.model.Order;
 import christmas.model.Orders;
-import christmas.model.discount.Discount;
+import christmas.model.event.DiscountEvent;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
@@ -138,12 +138,12 @@ public class OutputViewTest {
     @Test
     void 혜택_내역_있는_경우_출력_테스트() {
         // given
-        List<Discount> discounts = new ArrayList<>() {{
-            add(new Discount(DiscountType.CHRISTMAS_D_DAY, 1010));
-            add(new Discount(DiscountType.SPECIAL, 2020));
-            add(new Discount(DiscountType.GIFT, 3030));
+        List<DiscountEvent> discountEvents = new ArrayList<>() {{
+            add(new DiscountEvent(DiscountType.CHRISTMAS_D_DAY, 1010));
+            add(new DiscountEvent(DiscountType.SPECIAL, 2020));
+            add(new DiscountEvent(DiscountType.GIFT, 3030));
         }};
-        DiscountDetails discountDetails = new DiscountDetails(discounts);
+        DiscountDetails discountDetails = new DiscountDetails(discountEvents);
         String expected = "<혜택 내역>" + LINE_SEPARATOR
                 + "크리스마스 디데이 할인: -1,010원" + LINE_SEPARATOR
                 + "특별 할인: -2,020원" + LINE_SEPARATOR
