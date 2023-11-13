@@ -1,8 +1,8 @@
 package christmas.service.event;
 
-import christmas.constant.EventType;
 import christmas.domain.Date;
 import christmas.domain.DiscountResult;
+import christmas.domain.constant.EventType;
 
 public class ChristmasDDayDiscountEvent {
     public static final int DEAD_LINE_DAY = 25;

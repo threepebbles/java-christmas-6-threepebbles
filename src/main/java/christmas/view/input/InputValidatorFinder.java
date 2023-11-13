@@ -1,6 +1,6 @@
 package christmas.view.input;
 
-import christmas.constant.InputType;
+import christmas.view.input.constant.InputType;
 import christmas.view.input.validator.DayOfVisitInputValidator;
 import christmas.view.input.validator.InputValidator;
 import christmas.view.input.validator.OrderInputValidator;

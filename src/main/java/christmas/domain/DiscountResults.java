@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.constant.EventType;
 import christmas.controller.dto.DiscountResultsDTO;
+import christmas.domain.constant.EventType;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

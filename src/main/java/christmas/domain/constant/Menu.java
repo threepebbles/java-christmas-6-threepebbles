@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.domain.constant;
 
 public enum Menu {
     MUSHROOM_SOUP(MenuType.APPETIZER, "양송이수프", 6000),

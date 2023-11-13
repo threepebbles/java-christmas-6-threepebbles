@@ -1,8 +1,8 @@
 package christmas.domain;
 
-import christmas.constant.EventBadge;
-import christmas.constant.Gift;
 import christmas.controller.dto.EventPlanDTO;
+import christmas.domain.constant.EventBadge;
+import christmas.domain.constant.Gift;
 
 public class EventPlan {
     private Date date;

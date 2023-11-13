@@ -1,8 +1,8 @@
 package christmas.domain.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.Menu;
 import christmas.domain.Order;
+import christmas.domain.constant.Menu;
 
 public class OrderValidator {
     private static OrderValidator orderValidator;

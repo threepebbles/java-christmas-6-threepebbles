@@ -1,9 +1,9 @@
 package christmas.service.event;
 
-import christmas.constant.EventType;
-import christmas.constant.Gift;
 import christmas.domain.DiscountResult;
 import christmas.domain.Orders;
+import christmas.domain.constant.EventType;
+import christmas.domain.constant.Gift;
 
 public class GiftEvent {
     private final int MINIMUM_AMOUNT_TO_RECEIVE_GIFT = 120000;

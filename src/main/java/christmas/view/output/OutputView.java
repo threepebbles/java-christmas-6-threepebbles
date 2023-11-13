@@ -4,6 +4,7 @@ import christmas.controller.dto.DiscountResultsDTO;
 import christmas.controller.dto.EventPlanDTO;
 import christmas.controller.dto.GiftDTO;
 import christmas.controller.dto.OrdersDTO;
+import christmas.view.output.constant.OutputViewFormat;
 import java.time.LocalDate;
 
 public class OutputView {

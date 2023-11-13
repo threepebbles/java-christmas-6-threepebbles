@@ -1,9 +1,9 @@
 package christmas.domain.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.MenuType;
-import christmas.domain.Orders;
 import christmas.domain.Order;
+import christmas.domain.Orders;
+import christmas.domain.constant.MenuType;
 import java.util.List;
 
 public class OrdersValidator {

@@ -2,15 +2,15 @@ package christmas.view.output;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.constant.EventBadge;
-import christmas.constant.EventType;
-import christmas.constant.Gift;
-import christmas.constant.Menu;
 import christmas.domain.Date;
 import christmas.domain.DiscountResult;
 import christmas.domain.DiscountResults;
 import christmas.domain.Order;
 import christmas.domain.Orders;
+import christmas.domain.constant.EventBadge;
+import christmas.domain.constant.EventType;
+import christmas.domain.constant.Gift;
+import christmas.domain.constant.Menu;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;

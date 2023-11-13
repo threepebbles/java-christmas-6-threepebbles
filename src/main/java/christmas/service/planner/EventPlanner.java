@@ -1,11 +1,11 @@
 package christmas.service.planner;
 
-import christmas.constant.EventBadge;
-import christmas.constant.Gift;
 import christmas.domain.Date;
 import christmas.domain.DiscountResult;
 import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
+import christmas.domain.constant.EventBadge;
+import christmas.domain.constant.Gift;
 import java.util.ArrayList;
 import java.util.List;
 

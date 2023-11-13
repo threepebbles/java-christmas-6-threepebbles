@@ -1,10 +1,10 @@
 package christmas.view.input;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.Menu;
 import christmas.domain.Date;
 import christmas.domain.Order;
 import christmas.domain.Orders;
+import christmas.domain.constant.Menu;
 import christmas.utils.Parser;
 import java.time.DateTimeException;
 import java.time.LocalDate;

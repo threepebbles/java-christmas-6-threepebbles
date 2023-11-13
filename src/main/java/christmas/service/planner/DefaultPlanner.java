@@ -1,10 +1,10 @@
 package christmas.service.planner;
 
-import christmas.constant.EventBadge;
-import christmas.constant.Gift;
 import christmas.domain.Date;
 import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
+import christmas.domain.constant.EventBadge;
+import christmas.domain.constant.Gift;
 
 public class DefaultPlanner implements Planner {
     private final Date date;

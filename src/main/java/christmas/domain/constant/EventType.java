@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.domain.constant;
 
 public enum EventType {
     CHRISTMAS_D_DAY_DISCOUNT(1, "크리스마스 디데이 할인"),

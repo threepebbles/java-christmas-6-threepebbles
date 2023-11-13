@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.domain.constant;
 
 import christmas.controller.dto.GiftDTO;
 

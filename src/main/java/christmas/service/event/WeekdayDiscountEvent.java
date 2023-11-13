@@ -1,10 +1,10 @@
 package christmas.service.event;
 
-import christmas.constant.EventType;
-import christmas.constant.MenuType;
 import christmas.domain.Date;
 import christmas.domain.DiscountResult;
 import christmas.domain.Orders;
+import christmas.domain.constant.EventType;
+import christmas.domain.constant.MenuType;
 
 public class WeekdayDiscountEvent {
     private final int UNIT = 2023;

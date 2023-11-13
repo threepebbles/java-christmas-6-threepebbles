@@ -1,4 +1,4 @@
-package christmas.view.output;
+package christmas.view.output.constant;
 
 public class OutputViewFormat {
     public static final String LINE_SEPARATOR = System.lineSeparator();

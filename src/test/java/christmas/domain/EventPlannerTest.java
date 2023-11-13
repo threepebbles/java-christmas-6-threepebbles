@@ -3,10 +3,10 @@ package christmas.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-import christmas.constant.EventBadge;
-import christmas.constant.EventType;
-import christmas.constant.Gift;
-import christmas.constant.Menu;
+import christmas.domain.constant.EventBadge;
+import christmas.domain.constant.EventType;
+import christmas.domain.constant.Gift;
+import christmas.domain.constant.Menu;
 import christmas.service.planner.EventPlanner;
 import java.time.LocalDate;
 import java.util.List;
