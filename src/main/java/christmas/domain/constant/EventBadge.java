@@ -26,8 +26,4 @@ public enum EventBadge {
     public String getName() {
         return name;
     }
-
-    public int getThreshold() {
-        return threshold;
-    }
 }

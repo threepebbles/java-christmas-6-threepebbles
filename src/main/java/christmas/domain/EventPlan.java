@@ -38,36 +38,4 @@ public class EventPlan {
                 expectedAmountAfterDiscount,
                 eventBadge.getName());
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public Orders getOrders() {
-        return orders;
-    }
-
-    public int getTotalPriceBeforeDiscount() {
-        return totalPriceBeforeDiscount;
-    }
-
-    public Gift getGift() {
-        return gift;
-    }
-
-    public DiscountResults getDiscountResults() {
-        return discountResults;
-    }
-
-    public int getTotalDiscount() {
-        return totalDiscount;
-    }
-
-    public int getExpectedAmountAfterDiscount() {
-        return expectedAmountAfterDiscount;
-    }
-
-    public EventBadge getEventBadge() {
-        return eventBadge;
-    }
 }

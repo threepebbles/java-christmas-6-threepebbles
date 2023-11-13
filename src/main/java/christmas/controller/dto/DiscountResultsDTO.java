@@ -11,10 +11,6 @@ public class DiscountResultsDTO implements Iterable<DiscountResultDTO> {
         this.discountResults = discountResults;
     }
 
-    public List<DiscountResultDTO> getDiscountResults() {
-        return discountResults;
-    }
-
     public boolean isEmpty() {
         return discountResults.isEmpty();
     }
