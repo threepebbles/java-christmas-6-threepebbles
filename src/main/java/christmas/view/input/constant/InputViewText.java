@@ -1,4 +1,4 @@
-package christmas.view.input;
+package christmas.view.input.constant;
 
 public class InputViewText {
     public static final String LINE_SEPARATOR = System.lineSeparator();

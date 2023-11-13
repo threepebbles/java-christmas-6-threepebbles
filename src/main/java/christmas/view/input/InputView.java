@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.Date;
 import christmas.domain.Orders;
 import christmas.view.input.constant.InputType;
+import christmas.view.input.constant.InputViewText;
 import java.util.function.Function;
 
 public class InputView {
