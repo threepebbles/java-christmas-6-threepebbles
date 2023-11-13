@@ -28,16 +28,15 @@ public class EventPlan {
     }
 
     public EventPlanDTO toDTO() {
-        EventPlanDTO eventPlanDTO = new EventPlanDTO();
-        eventPlanDTO.setLocalDate(date.getLocalDate());
-        eventPlanDTO.setOrders(orders.toDTO());
-        eventPlanDTO.setTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
-        eventPlanDTO.setGift(gift.toDTO());
-        eventPlanDTO.setDiscountResults(discountResults.toDTO());
-        eventPlanDTO.setTotalDiscount(totalDiscount);
-        eventPlanDTO.setExpectedAmountAfterDiscount(expectedAmountAfterDiscount);
-        eventPlanDTO.setEventBadgeName(eventBadge.getName());
-        return eventPlanDTO;
+        return new EventPlanDTO(
+                date.getLocalDate(),
+                orders.toDTO(),
+                totalPriceBeforeDiscount,
+                gift.toDTO(),
+                discountResults.toDTO(),
+                totalDiscount,
+                expectedAmountAfterDiscount,
+                eventBadge.getName());
     }
 
     public Date getDate() {
