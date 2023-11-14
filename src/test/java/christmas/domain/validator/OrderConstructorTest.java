@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class OrderConstructorTest {
-    @DisplayName("메뉴 이름이 주문할 수 없는 메뉴인 경우")
+    @DisplayName("메뉴 이름이 주문할 수 없는 메뉴인 경우 예외가 발생해야 한다.")
     @ParameterizedTest
     @ValueSource(strings = {"펩시", "백숙"})
     void 메뉴_이름_예외_테스트(String menuName) {
@@ -24,7 +24,7 @@ public class OrderConstructorTest {
     }
 
 
-    @DisplayName("개수가 양수가 아닌 경우")
+    @DisplayName("개수가 양수가 아닌 경우 예외가 발생해야 한다.")
     @ParameterizedTest
     @ValueSource(ints = {-1, 0})
     void 개수_예외_테스트(int count) {
