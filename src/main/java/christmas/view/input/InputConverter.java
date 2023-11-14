@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputConverter {
-    public static final String COMMA = ",";
-    public static final String HYPHEN = "-";
+    private static final String COMMA = ",";
+    private static final String HYPHEN = "-";
 
     public DateInputDTO createDateInputDTO(String userInput) {
         LocalDate localDate = convertToLocalDate(userInput);
