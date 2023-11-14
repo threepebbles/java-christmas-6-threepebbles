@@ -1,6 +1,7 @@
 package christmas.domain;
 
-import christmas.controller.dto.OrdersDTO;
+import christmas.controller.dto.input.OrdersInputDTO;
+import christmas.controller.dto.output.OrdersDTO;
 import christmas.domain.constant.MenuType;
 import christmas.domain.validator.OrdersValidator;
 import java.util.Comparator;
@@ -15,6 +16,13 @@ public class Orders {
                 .toList();
 
         OrdersValidator.getInstance().validateOrders(this);
+    }
+
+    public static Orders createOrders(OrdersInputDTO ordersInputDTO) {
+        List<Order> orders = ordersInputDTO.getOrders().stream()
+                .map(Order::createOrder)
+                .toList();
+        return new Orders(orders);
     }
 
     public OrdersDTO toDTO() {

@@ -6,6 +6,7 @@ import christmas.domain.Orders;
 import christmas.service.EventPlanningService;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
+import java.util.function.Function;
 
 public class MainController {
     private final InputView inputView;
@@ -19,11 +20,33 @@ public class MainController {
     }
 
     public void run() {
-        Date date = inputView.askDate();
-        Orders orders = inputView.askOrders();
+        Date date = askDate();
+        Orders orders = askOrders();
 
         EventPlan eventPlan = eventPlanningService.createEventPlan(date, orders);
         outputView.updateEventPlanView(eventPlan.toDTO());
         outputView.renderEventPlanView();
+    }
+
+    private Date askDate() {
+        return (Date) retryUntilSuccess(inputView,
+                inputView -> Date.createDate(inputView.askDateDTO())
+        );
+    }
+
+    private Orders askOrders() {
+        return (Orders) retryUntilSuccess(inputView,
+                inputView1 -> Orders.createOrders(inputView.askOrdersDTO())
+        );
+    }
+
+    private Object retryUntilSuccess(InputView inputView, Function<InputView, Object> function) {
+        while (true) {
+            try {
+                return function.apply(inputView);
+            } catch (IllegalArgumentException e) {
+                inputView.printMessage(e.getMessage());
+            }
+        }
     }
 }

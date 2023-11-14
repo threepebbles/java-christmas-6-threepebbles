@@ -1,9 +1,9 @@
 package christmas.view.output;
 
-import christmas.controller.dto.DiscountResultsDTO;
-import christmas.controller.dto.EventPlanDTO;
-import christmas.controller.dto.GiftDTO;
-import christmas.controller.dto.OrdersDTO;
+import christmas.controller.dto.output.DiscountResultsDTO;
+import christmas.controller.dto.output.EventPlanDTO;
+import christmas.controller.dto.output.GiftDTO;
+import christmas.controller.dto.output.OrdersDTO;
 import christmas.view.output.constant.OutputViewFormat;
 import java.time.LocalDate;
 

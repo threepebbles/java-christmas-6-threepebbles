@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.controller.dto.EventPlanDTO;
+import christmas.controller.dto.output.EventPlanDTO;
 import christmas.domain.constant.EventBadge;
 import christmas.domain.constant.Gift;
 

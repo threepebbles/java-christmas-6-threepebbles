@@ -1,8 +1,8 @@
 package christmas.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.Date;
-import christmas.domain.Orders;
+import christmas.controller.dto.input.DateInputDTO;
+import christmas.controller.dto.input.OrdersInputDTO;
 import christmas.view.input.constant.InputType;
 import christmas.view.input.constant.InputViewText;
 import java.util.function.Function;
@@ -16,13 +16,13 @@ public class InputView {
         this.inputConverter = inputConverter;
     }
 
-    public Date askDate() {
-        return (Date) retryUntilSuccess(
+    public DateInputDTO askDateDTO() {
+        return (DateInputDTO) retryUntilSuccess(
                 inputView -> {
                     String day = scanDayOfVisit();
                     inputValidatorFinder.findValidatorByInputType(InputType.DAY_OF_VISIT)
                             .validate(day);
-                    return inputConverter.createDate(day);
+                    return inputConverter.createDateDTO(day);
                 });
     }
 
@@ -31,13 +31,13 @@ public class InputView {
         return Console.readLine();
     }
 
-    public Orders askOrders() {
-        return (Orders) retryUntilSuccess(
+    public OrdersInputDTO askOrdersDTO() {
+        return (OrdersInputDTO) retryUntilSuccess(
                 inputView -> {
                     String orders = inputView.scanOrders();
                     inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
                             .validate(orders);
-                    return inputConverter.createOrders(orders);
+                    return inputConverter.createOrdersDTO(orders);
                 });
     }
 
@@ -46,7 +46,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    private void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.println(message);
     }
 

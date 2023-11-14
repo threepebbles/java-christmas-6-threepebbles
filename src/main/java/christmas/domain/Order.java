@@ -1,6 +1,7 @@
 package christmas.domain;
 
-import christmas.controller.dto.OrderDTO;
+import christmas.controller.dto.input.OrderInputDTO;
+import christmas.controller.dto.output.OrderDTO;
 import christmas.domain.constant.Menu;
 import christmas.domain.constant.MenuType;
 import christmas.domain.validator.OrderValidator;
@@ -14,6 +15,12 @@ public class Order {
         this.count = count;
 
         OrderValidator.getInstance().validateOrder(this);
+    }
+
+    public static Order createOrder(OrderInputDTO orderInputDTO) {
+        Menu menu = Menu.findMenuByName(orderInputDTO.getMenuName());
+        int count = orderInputDTO.getCount();
+        return new Order(menu, count);
     }
 
     public OrderDTO toDTO() {

@@ -1,10 +1,9 @@
 package christmas.view.input;
 
 import christmas.constant.ErrorMessage;
-import christmas.domain.Date;
-import christmas.domain.Order;
-import christmas.domain.Orders;
-import christmas.domain.constant.Menu;
+import christmas.controller.dto.input.DateInputDTO;
+import christmas.controller.dto.input.OrderInputDTO;
+import christmas.controller.dto.input.OrdersInputDTO;
 import christmas.utils.Parser;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -15,9 +14,9 @@ public class InputConverter {
     public static final String COMMA = ",";
     public static final String HYPHEN = "-";
 
-    public Date createDate(String userInput) {
+    public DateInputDTO createDateDTO(String userInput) {
         LocalDate localDate = convertToLocalDate(userInput);
-        return new Date(localDate);
+        return new DateInputDTO(localDate);
     }
 
     private LocalDate convertToLocalDate(String day) {
@@ -30,19 +29,19 @@ public class InputConverter {
         }
     }
 
-    public Orders createOrders(String userInput) {
-        List<Order> orders = new ArrayList<>();
+    public OrdersInputDTO createOrdersDTO(String userInput) {
+        List<OrderInputDTO> orders = new ArrayList<>();
         List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, COMMA);
         menuCountFormats.forEach(menuCountFormat -> {
-            orders.add(convertToOrder(menuCountFormat));
+            orders.add(convertToOrderDTO(menuCountFormat));
         });
-        return new Orders(orders);
+        return new OrdersInputDTO(orders);
     }
 
-    private Order convertToOrder(String menuCountFormat) {
+    private OrderInputDTO convertToOrderDTO(String menuCountFormat) {
         List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
-        Menu menu = Menu.findMenuByName(menuCountBundle.get(0));
+        String menuName = menuCountBundle.get(0);
         int count = Integer.parseInt(menuCountBundle.get(1));
-        return new Order(menu, count);
+        return new OrderInputDTO(menuName, count);
     }
 }

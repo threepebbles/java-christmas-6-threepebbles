@@ -1,4 +1,4 @@
-package christmas.controller.dto;
+package christmas.controller.dto.output;
 
 public class DiscountResultDTO {
     private String eventName;

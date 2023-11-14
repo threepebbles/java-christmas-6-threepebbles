@@ -1,4 +1,4 @@
-package christmas.controller.dto;
+package christmas.controller.dto.output;
 
 import java.util.Iterator;
 import java.util.List;

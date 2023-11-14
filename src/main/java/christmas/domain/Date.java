@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.controller.dto.input.DateInputDTO;
 import christmas.domain.validator.DateValidator;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -10,6 +11,10 @@ public class Date {
     public Date(LocalDate localDate) {
         this.localDate = localDate;
         DateValidator.getInstance().validate(this);
+    }
+
+    public static Date createDate(DateInputDTO dateInputDTO) {
+        return new Date(dateInputDTO.getLocalDate());
     }
 
     public boolean isWeekDay() {
