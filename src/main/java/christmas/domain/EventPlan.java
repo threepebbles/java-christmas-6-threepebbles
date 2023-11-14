@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import christmas.domain.constant.EventBadge;
-import christmas.domain.constant.Gift;
 import christmas.domain.dto.output.EventPlanDTO;
 
 public class EventPlan {

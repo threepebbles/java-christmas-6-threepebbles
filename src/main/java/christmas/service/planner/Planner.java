@@ -2,9 +2,9 @@ package christmas.service.planner;
 
 import christmas.domain.Date;
 import christmas.domain.DiscountResults;
+import christmas.domain.EventBadge;
+import christmas.domain.Gift;
 import christmas.domain.Orders;
-import christmas.domain.constant.EventBadge;
-import christmas.domain.constant.Gift;
 
 public interface Planner {
     int calculateTotalPriceBeforeDiscount();

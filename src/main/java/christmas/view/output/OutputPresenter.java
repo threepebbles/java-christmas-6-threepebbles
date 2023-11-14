@@ -4,7 +4,6 @@ import christmas.domain.dto.output.DiscountResultsDTO;
 import christmas.domain.dto.output.GiftDTO;
 import christmas.domain.dto.output.OrderDTO;
 import christmas.domain.dto.output.OrdersDTO;
-import christmas.domain.constant.Menu;
 import christmas.utils.Converter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -58,9 +57,8 @@ public class OutputPresenter {
     }
 
     public String createExpectedPriceAfterDiscountText(int expectedPriceAfterDiscount) {
-        return String.format("%s%s",
-                Converter.intToLocaleString(expectedPriceAfterDiscount),
-                Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
+        return String.format("%s원",
+                Converter.intToLocaleString(expectedPriceAfterDiscount)) + LINE_SEPARATOR;
     }
 
     public String createEventBadgeText(String eventBadgeName) {

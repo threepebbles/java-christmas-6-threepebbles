@@ -1,4 +1,4 @@
-package christmas.domain.constant;
+package christmas.domain;
 
 import christmas.domain.dto.output.GiftDTO;
 

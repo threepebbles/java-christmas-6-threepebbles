@@ -2,8 +2,6 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.constant.Gift;
-import christmas.domain.constant.Menu;
 import christmas.domain.event.GiftEvent;
 import java.util.ArrayList;
 import java.util.List;

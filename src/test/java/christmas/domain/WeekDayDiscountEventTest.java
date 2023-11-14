@@ -2,7 +2,6 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.constant.Menu;
 import christmas.domain.event.WeekdayDiscountEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package christmas.domain.constant;
+package christmas.domain;
 
 public enum EventBadge {
     SANTA("산타", 20000),
