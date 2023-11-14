@@ -1,18 +1,18 @@
 package christmas.domain;
 
-import christmas.domain.dto.output.EventPlanDTO;
 import christmas.domain.constant.EventBadge;
 import christmas.domain.constant.Gift;
+import christmas.domain.dto.output.EventPlanDTO;
 
 public class EventPlan {
-    private Date date;
-    private Orders orders;
-    private int totalPriceBeforeDiscount;
-    private Gift gift;
-    private DiscountResults discountResults;
-    private int totalDiscount;
-    private int expectedPriceAfterDiscount;
-    private EventBadge eventBadge;
+    private final Date date;
+    private final Orders orders;
+    private final int totalPriceBeforeDiscount;
+    private final Gift gift;
+    private final DiscountResults discountResults;
+    private final int totalDiscount;
+    private final int expectedPriceAfterDiscount;
+    private final EventBadge eventBadge;
 
     public EventPlan(Date date, Orders orders, int totalPriceBeforeDiscount, Gift gift,
                      DiscountResults discountResults,

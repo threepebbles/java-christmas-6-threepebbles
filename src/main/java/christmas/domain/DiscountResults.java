@@ -1,13 +1,13 @@
 package christmas.domain;
 
-import christmas.domain.dto.output.DiscountResultsDTO;
 import christmas.domain.constant.EventType;
+import christmas.domain.dto.output.DiscountResultsDTO;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class DiscountResults {
-    List<DiscountResult> discountResults;
+    private final List<DiscountResult> discountResults;
 
     public DiscountResults(List<DiscountResult> discountResults) {
         this.discountResults = discountResults.stream()
