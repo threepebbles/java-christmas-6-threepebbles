@@ -30,8 +30,17 @@ public class OrderInputValidator implements InputValidator {
         if (menuCount.size() != 2) {
             throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
         }
+        String menuName = menuCount.get(0);
         String count = menuCount.get(1);
+        validateBlank(menuName);
+        validateBlank(count);
         validateInteger(count);
+    }
+
+    private void validateBlank(String target) {
+        if (target.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_ORDER.getMessage());
+        }
     }
 
     private void validateInteger(String count) {

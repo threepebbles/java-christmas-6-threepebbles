@@ -51,4 +51,28 @@ public class OrdersInputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ORDER_INPUT_ERROR_MESSAGE);
     }
+
+    @DisplayName("메뉴 이름이 공백이면 예외가 발생해야 합니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"-1,레드와인-2", "양송이수프-3,-3"})
+    void 메뉴_이름_공백_예외_테스트(String orderInput) {
+        // when & then
+        assertThatThrownBy(() ->
+                inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
+                        .validate(orderInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ORDER_INPUT_ERROR_MESSAGE);
+    }
+
+    @DisplayName("주문 개수가 공백이면 예외가 발생해야 합니다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"양송이수프-,레드와인-2", "레드와인-3,양송이수프-"})
+    void 주문_개수_공백_예외_테스트(String orderInput) {
+        // when & then
+        assertThatThrownBy(() ->
+                inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
+                        .validate(orderInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ORDER_INPUT_ERROR_MESSAGE);
+    }
 }

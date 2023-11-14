@@ -17,7 +17,14 @@ public class DayOfVisitInputValidator implements InputValidator {
 
     @Override
     public void validate(String target) {
+        validateBlank(target);
         validateInteger(target);
+    }
+
+    private void validateBlank(String target) {
+        if (target.isBlank()) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_PROPER_DAY.getMessage());
+        }
     }
 
     private void validateInteger(String target) {
