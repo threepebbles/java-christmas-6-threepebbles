@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class WeekDayDiscountEventTest {
     @DisplayName("주말(금요일, 토요일)을 제외한 평일 할인 가격 계산 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {3, 4, 10, 11, 17, 24, 31})
+    @ValueSource(ints = {3, 4, 10, 11, 17, 18, 24, 31})
     void 평일_할인가_계산_테스트(int day) {
         // given
         Date date = new Date(LocalDate.of(2023, 12, day));
