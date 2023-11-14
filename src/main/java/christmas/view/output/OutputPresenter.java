@@ -2,7 +2,6 @@ package christmas.view.output;
 
 import christmas.domain.dto.output.DiscountResultsDTO;
 import christmas.domain.dto.output.GiftDTO;
-import christmas.domain.dto.output.OrderDTO;
 import christmas.domain.dto.output.OrdersDTO;
 import christmas.utils.Converter;
 import java.time.LocalDate;
@@ -19,10 +18,10 @@ public class OutputPresenter {
 
     public String createOrdersText(OrdersDTO ordersDTO) {
         StringBuilder sb = new StringBuilder();
-        for (OrderDTO orderDTO : ordersDTO) {
-            sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
-                    .append(LINE_SEPARATOR);
-        }
+        ordersDTO.forEach(orderDTO ->
+                sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
+                        .append(LINE_SEPARATOR)
+        );
         return sb.toString();
     }
 

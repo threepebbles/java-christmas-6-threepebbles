@@ -11,10 +11,6 @@ public class OrdersDTO implements Iterable<OrderDTO> {
         this.orders = orders;
     }
 
-    public List<OrderDTO> getOrders() {
-        return orders;
-    }
-
     @Override
     public Iterator<OrderDTO> iterator() {
         return orders.iterator();
