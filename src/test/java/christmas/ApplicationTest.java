@@ -36,15 +36,20 @@ class ApplicationTest extends NsTest {
     @Test
     void 날짜_예외_테스트() {
         assertSimpleTest(() -> {
-            runException("a");
+            runException("", "0", "32", "first", "1일", "이십일");
             assertThat(output()).contains("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         });
     }
 
     @Test
     void 주문_예외_테스트() {
+        String day = "1";
         assertSimpleTest(() -> {
-            runException("3", "제로콜라-a");
+            runException(day, "",
+                    day, "제로콜라:일",
+                    day, "제로콜라-하나",
+                    day, "제로콜라1",
+                    day, "제로콜라-1,제로콜라-3");
             assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         });
     }
