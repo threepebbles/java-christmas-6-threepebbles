@@ -39,4 +39,16 @@ public class DayOfVisitInputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @DisplayName("방문 날짜에 공백이 입력된 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "\t "})
+    void 방문_날짜_공백_예외_테스트_(String dayOfVisitInput) {
+        // when & then
+        assertThatThrownBy(() ->
+                inputValidatorFinder.findValidatorByInputType(InputType.DAY_OF_VISIT)
+                        .validate(dayOfVisitInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
 }
