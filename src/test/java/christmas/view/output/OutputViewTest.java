@@ -74,8 +74,8 @@ public class OutputViewTest {
                 + "티본스테이크 2개" + LINE_SEPARATOR;
 
         // when
-        outputView.updateOrderScreen(orders.toDTO());
-        outputView.renderOrderScreen();
+        outputView.updateOrdersScreen(orders.toDTO());
+        outputView.renderOrdersScreen();
         String actual = output.toString();
 
         // then

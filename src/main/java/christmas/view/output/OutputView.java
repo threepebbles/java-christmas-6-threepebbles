@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class OutputView {
     private final OutputPresenter outputPresenter;
     private String eventPlanHeaderScreen;
-    private String orderScreen;
+    private String ordersScreen;
     private String totalPriceBeforeDiscountScreen;
     private String giftScreen;
     private String discountResultsScreen;
@@ -26,7 +26,7 @@ public class OutputView {
     public void init() {
         // default screen
         eventPlanHeaderScreen = OutputViewFormat.EVENT_PLAN_HEADER_FORMAT;
-        orderScreen = OutputViewFormat.ORDER_FORMAT;
+        ordersScreen = OutputViewFormat.ORDERS_FORMAT;
         totalPriceBeforeDiscountScreen = OutputViewFormat.TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT;
         giftScreen = OutputViewFormat.GIFT_FORMAT;
         discountResultsScreen = OutputViewFormat.DISCOUNT_DETAILS_FORMAT;
@@ -38,7 +38,7 @@ public class OutputView {
     // 이벤트 플랜 화면 전체 업데이트
     public void updateEventPlanView(EventPlanDTO eventPlanDTO) {
         updateEventPlanHeaderScreen(eventPlanDTO.getLocalDate());
-        updateOrderScreen(eventPlanDTO.getOrders());
+        updateOrdersScreen(eventPlanDTO.getOrders());
         updateTotalPriceBeforeDiscountScreen(eventPlanDTO.getTotalPriceBeforeDiscount());
         updateGiftScreen(eventPlanDTO.getGift());
         updateDiscountResultsScreen(eventPlanDTO.getDiscountResults());
@@ -50,7 +50,7 @@ public class OutputView {
     // 이벤트 플랜 화면 전체 출력
     public void renderEventPlanView() {
         renderWithLineSeparator(this::renderEventPlanHeaderScreen, 1);
-        renderWithLineSeparator(this::renderOrderScreen, 1);
+        renderWithLineSeparator(this::renderOrdersScreen, 1);
         renderWithLineSeparator(this::renderTotalPriceBeforeDiscountScreen, 1);
         renderWithLineSeparator(this::renderGiftScreen, 1);
         renderWithLineSeparator(this::renderDiscountResultsScreen, 1);
@@ -71,15 +71,15 @@ public class OutputView {
     }
 
     // <주문 메뉴> 화면 업데이트 및 출력
-    public void updateOrderScreen(OrdersDTO ordersDTO) {
-        orderScreen = String.format(
-                OutputViewFormat.ORDER_FORMAT,
-                outputPresenter.createOrderText(ordersDTO)
+    public void updateOrdersScreen(OrdersDTO ordersDTO) {
+        ordersScreen = String.format(
+                OutputViewFormat.ORDERS_FORMAT,
+                outputPresenter.createOrdersText(ordersDTO)
         );
     }
 
-    public void renderOrderScreen() {
-        System.out.print(orderScreen);
+    public void renderOrdersScreen() {
+        System.out.print(ordersScreen);
     }
 
     // <할인 전 총주문 금액> 화면 업데이트 및 출력

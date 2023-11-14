@@ -18,7 +18,7 @@ public class OutputPresenter {
         return localDate.format(dateTimeFormatter);
     }
 
-    public String createOrderText(OrdersDTO ordersDTO) {
+    public String createOrdersText(OrdersDTO ordersDTO) {
         StringBuilder sb = new StringBuilder();
         for (OrderDTO orderDTO : ordersDTO) {
             sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
