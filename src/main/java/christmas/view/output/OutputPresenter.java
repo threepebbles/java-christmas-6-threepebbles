@@ -1,7 +1,9 @@
 package christmas.view.output;
 
+import christmas.domain.dto.output.DiscountResultDTO;
 import christmas.domain.dto.output.DiscountResultsDTO;
 import christmas.domain.dto.output.GiftDTO;
+import christmas.domain.dto.output.OrderDTO;
 import christmas.domain.dto.output.OrdersDTO;
 import christmas.utils.Converter;
 import java.time.LocalDate;
@@ -18,10 +20,10 @@ public class OutputPresenter {
 
     public String createOrdersText(OrdersDTO ordersDTO) {
         StringBuilder sb = new StringBuilder();
-        ordersDTO.forEach(orderDTO ->
-                sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
-                        .append(LINE_SEPARATOR)
-        );
+        for (OrderDTO orderDTO : ordersDTO.getOrders()) {
+            sb.append(String.format("%s %d개", orderDTO.getMenuName(), orderDTO.getCount()))
+                    .append(LINE_SEPARATOR);
+        }
         return sb.toString();
     }
 
@@ -38,15 +40,16 @@ public class OutputPresenter {
     }
 
     public String createDiscountResultsText(DiscountResultsDTO discountResultsDTO) {
-        if (discountResultsDTO.isEmpty()) {
+        if (discountResultsDTO.getDiscountResults().isEmpty()) {
             return NOTHING + LINE_SEPARATOR;
         }
         StringBuilder sb = new StringBuilder();
-        discountResultsDTO.forEach(discountResultDTO ->
-                sb.append(String.format("%s: -%s원",
-                                discountResultDTO.getEventName(),
-                                Converter.intToLocaleString(discountResultDTO.getAmount())))
-                        .append(LINE_SEPARATOR));
+        for (DiscountResultDTO discountResultDTO : discountResultsDTO.getDiscountResults()) {
+            sb.append(String.format("%s: -%s원",
+                            discountResultDTO.getEventName(),
+                            Converter.intToLocaleString(discountResultDTO.getAmount())))
+                    .append(LINE_SEPARATOR);
+        }
         return sb.toString();
     }
 

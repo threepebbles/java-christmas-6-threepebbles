@@ -1,23 +1,15 @@
 package christmas.domain.dto.output;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class OrdersDTO implements Iterable<OrderDTO> {
+public class OrdersDTO {
     private final List<OrderDTO> orders;
 
     public OrdersDTO(List<OrderDTO> orders) {
         this.orders = orders;
     }
 
-    @Override
-    public Iterator<OrderDTO> iterator() {
-        return orders.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super OrderDTO> action) {
-        orders.forEach(action);
+    public List<OrderDTO> getOrders() {
+        return orders;
     }
 }
