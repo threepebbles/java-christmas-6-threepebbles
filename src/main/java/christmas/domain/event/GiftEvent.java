@@ -23,8 +23,8 @@ public class GiftEvent implements DiscountableEvent {
         return new DiscountResult(EventType.GIFT, amount);
     }
 
-    public Gift requestGift(int totalPriceBeforeDiscount) {
-        if (isEnoughAmount(totalPriceBeforeDiscount)) {
+    public Gift requestGift() {
+        if (isEnoughAmount(orders.calculateTotalPrice())) {
             return gift;
         }
         return Gift.NOTHING;

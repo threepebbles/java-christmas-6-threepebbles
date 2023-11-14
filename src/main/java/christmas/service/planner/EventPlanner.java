@@ -50,7 +50,7 @@ public class EventPlanner implements Planner {
 
     @Override
     public Gift requestGift() {
-        return giftEvent.requestGift(orders.calculateTotalPrice());
+        return giftEvent.requestGift();
 
     }
 
