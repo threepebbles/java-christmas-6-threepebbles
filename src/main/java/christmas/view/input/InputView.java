@@ -16,13 +16,13 @@ public class InputView {
         this.inputConverter = inputConverter;
     }
 
-    public DateInputDTO askDateDTO() {
+    public DateInputDTO askDateInputDTO() {
         return (DateInputDTO) retryUntilSuccess(
                 inputView -> {
                     String day = scanDayOfVisit();
                     inputValidatorFinder.findValidatorByInputType(InputType.DAY_OF_VISIT)
                             .validate(day);
-                    return inputConverter.createDateDTO(day);
+                    return inputConverter.createDateInputDTO(day);
                 });
     }
 
@@ -31,13 +31,13 @@ public class InputView {
         return Console.readLine();
     }
 
-    public OrdersInputDTO askOrdersDTO() {
+    public OrdersInputDTO askOrdersInputDTO() {
         return (OrdersInputDTO) retryUntilSuccess(
                 inputView -> {
                     String orders = inputView.scanOrders();
                     inputValidatorFinder.findValidatorByInputType(InputType.ORDERS)
                             .validate(orders);
-                    return inputConverter.createOrdersDTO(orders);
+                    return inputConverter.createOrdersInputDTO(orders);
                 });
     }
 

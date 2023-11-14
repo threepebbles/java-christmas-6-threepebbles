@@ -24,7 +24,7 @@ public class UserInputToModelTest {
     @ValueSource(strings = {"1", "10", "31"})
     void 방문_날짜_정상_입력_테스트(String day) {
         // when & then
-        assertThatCode(() -> Date.createDate(inputConverter.createDateDTO(day)))
+        assertThatCode(() -> Date.createDate(inputConverter.createDateInputDTO(day)))
                 .doesNotThrowAnyException();
     }
 
@@ -33,7 +33,7 @@ public class UserInputToModelTest {
     @ValueSource(strings = {"-11", "0", "32"})
     void 방문_날짜_비정상_입력_테스트(String day) {
         // when & then
-        assertThatThrownBy(() -> Date.createDate(inputConverter.createDateDTO(day)))
+        assertThatThrownBy(() -> Date.createDate(inputConverter.createDateInputDTO(day)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -46,7 +46,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         assertThatCode(() -> {
-            Orders.createOrders(inputConverter.createOrdersDTO(input));
+            Orders.createOrders(inputConverter.createOrdersInputDTO(input));
         }).doesNotThrowAnyException();
     }
 
@@ -58,7 +58,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersDTO(input)))
+        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersInputDTO(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -70,7 +70,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersDTO(input)))
+        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersInputDTO(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -82,7 +82,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersDTO(input)))
+        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersInputDTO(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -94,7 +94,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersDTO(input)))
+        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersInputDTO(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -106,7 +106,7 @@ public class UserInputToModelTest {
         InputConverter inputConverter = new InputConverter();
 
         // when & then
-        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersDTO(input)))
+        assertThatThrownBy(() -> Orders.createOrders(inputConverter.createOrdersInputDTO(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

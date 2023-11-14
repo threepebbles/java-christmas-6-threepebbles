@@ -30,13 +30,13 @@ public class MainController {
 
     private Date askDate() {
         return (Date) retryUntilSuccess(inputView,
-                inputView -> Date.createDate(inputView.askDateDTO())
+                inputView -> Date.createDate(inputView.askDateInputDTO())
         );
     }
 
     private Orders askOrders() {
         return (Orders) retryUntilSuccess(inputView,
-                inputView -> Orders.createOrders(inputView.askOrdersDTO())
+                inputView -> Orders.createOrders(inputView.askOrdersInputDTO())
         );
     }
 

@@ -14,7 +14,7 @@ public class InputConverter {
     public static final String COMMA = ",";
     public static final String HYPHEN = "-";
 
-    public DateInputDTO createDateDTO(String userInput) {
+    public DateInputDTO createDateInputDTO(String userInput) {
         LocalDate localDate = convertToLocalDate(userInput);
         return new DateInputDTO(localDate);
     }
@@ -29,16 +29,16 @@ public class InputConverter {
         }
     }
 
-    public OrdersInputDTO createOrdersDTO(String userInput) {
+    public OrdersInputDTO createOrdersInputDTO(String userInput) {
         List<OrderInputDTO> orders = new ArrayList<>();
         List<String> menuCountFormats = Parser.parseWithDelimiter(userInput, COMMA);
         menuCountFormats.forEach(menuCountFormat -> {
-            orders.add(convertToOrderDTO(menuCountFormat));
+            orders.add(convertToOrderInputDTO(menuCountFormat));
         });
         return new OrdersInputDTO(orders);
     }
 
-    private OrderInputDTO convertToOrderDTO(String menuCountFormat) {
+    private OrderInputDTO convertToOrderInputDTO(String menuCountFormat) {
         List<String> menuCountBundle = Parser.parseWithDelimiter(menuCountFormat, HYPHEN);
         String menuName = menuCountBundle.get(0);
         int count = Integer.parseInt(menuCountBundle.get(1));
