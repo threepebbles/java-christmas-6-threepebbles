@@ -26,7 +26,7 @@ public interface Planner {
 
     int calculateTotalDiscount();
 
-    int calculateExpectedAmountAfterDiscount();
+    int calculateExpectedPriceAfterDiscount();
 
     EventBadge requestEventBadge();
 

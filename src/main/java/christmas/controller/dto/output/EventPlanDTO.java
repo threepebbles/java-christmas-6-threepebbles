@@ -9,11 +9,11 @@ public class EventPlanDTO {
     private GiftDTO gift;
     private DiscountResultsDTO DiscountResults;
     private int totalDiscount;
-    private int expectedAmountAfterDiscount;
+    private int expectedPriceAfterDiscount;
     private String eventBadgeName;
 
     public EventPlanDTO(LocalDate localDate, OrdersDTO orders, int totalPriceBeforeDiscount, GiftDTO gift,
-                        DiscountResultsDTO discountResults, int totalDiscount, int expectedAmountAfterDiscount,
+                        DiscountResultsDTO discountResults, int totalDiscount, int expectedPriceAfterDiscount,
                         String eventBadgeName) {
         this.localDate = localDate;
         this.orders = orders;
@@ -21,7 +21,7 @@ public class EventPlanDTO {
         this.gift = gift;
         DiscountResults = discountResults;
         this.totalDiscount = totalDiscount;
-        this.expectedAmountAfterDiscount = expectedAmountAfterDiscount;
+        this.expectedPriceAfterDiscount = expectedPriceAfterDiscount;
         this.eventBadgeName = eventBadgeName;
     }
 
@@ -49,8 +49,8 @@ public class EventPlanDTO {
         return totalDiscount;
     }
 
-    public int getExpectedAmountAfterDiscount() {
-        return expectedAmountAfterDiscount;
+    public int getExpectedPriceAfterDiscount() {
+        return expectedPriceAfterDiscount;
     }
 
     public String getEventBadgeName() {

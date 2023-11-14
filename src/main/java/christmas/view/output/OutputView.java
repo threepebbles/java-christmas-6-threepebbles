@@ -15,7 +15,7 @@ public class OutputView {
     private String giftScreen;
     private String discountResultsScreen;
     private String totalDiscountScreen;
-    private String expectedAmountAfterDiscountScreen;
+    private String expectedPriceAfterDiscountScreen;
     private String eventBadgeScreen;
 
     public OutputView(OutputPresenter outputPresenter) {
@@ -31,7 +31,7 @@ public class OutputView {
         giftScreen = OutputViewFormat.GIFT_FORMAT;
         discountResultsScreen = OutputViewFormat.DISCOUNT_DETAILS_FORMAT;
         totalDiscountScreen = OutputViewFormat.TOTAL_DISCOUNT_FORMAT;
-        expectedAmountAfterDiscountScreen = OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT;
+        expectedPriceAfterDiscountScreen = OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT;
         eventBadgeScreen = OutputViewFormat.EVENT_BADGE_FORMAT;
     }
 
@@ -43,7 +43,7 @@ public class OutputView {
         updateGiftScreen(eventPlanDTO.getGift());
         updateDiscountResultsScreen(eventPlanDTO.getDiscountResults());
         updateTotalDiscountScreen(eventPlanDTO.getTotalDiscount());
-        updateExpectedAmountAfterDiscountScreen(eventPlanDTO.getExpectedAmountAfterDiscount());
+        updateExpectedPriceAfterDiscountScreen(eventPlanDTO.getExpectedPriceAfterDiscount());
         updateEventBadgeScreen(eventPlanDTO.getEventBadgeName());
     }
 
@@ -55,7 +55,7 @@ public class OutputView {
         renderWithLineSeparator(this::renderGiftScreen, 1);
         renderWithLineSeparator(this::renderDiscountResultsScreen, 1);
         renderWithLineSeparator(this::renderTotalDiscountScreen, 1);
-        renderWithLineSeparator(this::renderExpectedAmountAfterDiscountScreen, 1);
+        renderWithLineSeparator(this::renderExpectedPriceAfterDiscountScreen, 1);
         renderEventBadgeScreen();
     }
 
@@ -122,13 +122,13 @@ public class OutputView {
     }
 
     // <할인 후 예상 결제 금액> 화면 업데이트 및 출력
-    public void updateExpectedAmountAfterDiscountScreen(int expectedPay) {
-        expectedAmountAfterDiscountScreen = String.format(OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT,
-                outputPresenter.createExpectedAmountAfterDiscountText(expectedPay));
+    public void updateExpectedPriceAfterDiscountScreen(int expectedPay) {
+        expectedPriceAfterDiscountScreen = String.format(OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT,
+                outputPresenter.createExpectedPriceAfterDiscountText(expectedPay));
     }
 
-    public void renderExpectedAmountAfterDiscountScreen() {
-        System.out.print(expectedAmountAfterDiscountScreen);
+    public void renderExpectedPriceAfterDiscountScreen() {
+        System.out.print(expectedPriceAfterDiscountScreen);
     }
 
     // <12월 이벤트 배지> 화면 업데이트 및 출력

@@ -120,7 +120,7 @@ public class EventPlannerTest {
     void 할인_후_예상_결제_금액_계산_테스트() {
         int expected = 139600;
         //when
-        int actual = eventPlanner.calculateExpectedAmountAfterDiscount();
+        int actual = eventPlanner.calculateExpectedPriceAfterDiscount();
         // then
         assertThat(actual).isEqualTo(expected);
     }

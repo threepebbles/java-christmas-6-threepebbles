@@ -57,9 +57,9 @@ public class OutputPresenter {
                 Converter.intToLocaleString(-totalDiscount)) + LINE_SEPARATOR;
     }
 
-    public String createExpectedAmountAfterDiscountText(int expectedAmountAfterDiscount) {
+    public String createExpectedPriceAfterDiscountText(int expectedPriceAfterDiscount) {
         return String.format("%s%s",
-                Converter.intToLocaleString(expectedAmountAfterDiscount),
+                Converter.intToLocaleString(expectedPriceAfterDiscount),
                 Menu.CURRENCY_UNIT) + LINE_SEPARATOR;
     }
 

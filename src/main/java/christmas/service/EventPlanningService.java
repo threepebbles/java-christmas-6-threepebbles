@@ -17,7 +17,7 @@ public class EventPlanningService {
                 planner.requestGift(),
                 planner.calculateDiscountResults(),
                 planner.calculateTotalDiscount(),
-                planner.calculateExpectedAmountAfterDiscount(),
+                planner.calculateExpectedPriceAfterDiscount(),
                 planner.requestEventBadge());
     }
 

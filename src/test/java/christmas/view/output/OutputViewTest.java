@@ -178,13 +178,13 @@ public class OutputViewTest {
     @Test
     void 할인_후_예상_결제_금액_출력_테스트() {
         // given
-        int expectedAmount = 52000;
+        int expectedPrice = 52000;
         String expected = "<할인 후 예상 결제 금액>" + LINE_SEPARATOR
                 + "52,000원" + LINE_SEPARATOR;
 
         // when
-        outputView.updateExpectedAmountAfterDiscountScreen(expectedAmount);
-        outputView.renderExpectedAmountAfterDiscountScreen();
+        outputView.updateExpectedPriceAfterDiscountScreen(expectedPrice);
+        outputView.renderExpectedPriceAfterDiscountScreen();
         String actual = output.toString();
 
         // then

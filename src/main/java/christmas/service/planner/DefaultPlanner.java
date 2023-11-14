@@ -36,7 +36,7 @@ public class DefaultPlanner implements Planner {
     }
 
     @Override
-    public int calculateExpectedAmountAfterDiscount() {
+    public int calculateExpectedPriceAfterDiscount() {
         return orders.calculateTotalPrice();
     }
 

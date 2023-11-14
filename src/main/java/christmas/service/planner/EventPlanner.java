@@ -55,7 +55,7 @@ public class EventPlanner implements Planner {
     }
 
     @Override
-    public int calculateExpectedAmountAfterDiscount() {
+    public int calculateExpectedPriceAfterDiscount() {
         int totalPriceBeforeDiscount = calculateTotalPriceBeforeDiscount();
         DiscountResults discountResults = calculateDiscountResults();
         return Math.max(totalPriceBeforeDiscount - discountResults.calculateTotalDiscountWithoutGift(), 0);
