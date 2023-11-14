@@ -42,11 +42,6 @@ public enum Menu {
         return NOTHING;
     }
 
-    @Override
-    public String toString() {
-        return getName();
-    }
-
     public MenuType getMenuType() {
         return menuType;
     }
