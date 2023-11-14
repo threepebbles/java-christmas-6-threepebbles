@@ -15,7 +15,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -137,12 +136,13 @@ public class OutputViewTest {
     @Test
     void 혜택_내역_있는_경우_출력_테스트() {
         // given
-        List<DiscountResult> discountResultList = new ArrayList<>() {{
-            add(new DiscountResult(EventType.CHRISTMAS_D_DAY_DISCOUNT, 1010));
-            add(new DiscountResult(EventType.SPECIAL_DISCOUNT, 2020));
-            add(new DiscountResult(EventType.GIFT, 3030));
-        }};
-        DiscountResults discountResults = new DiscountResults(discountResultList);
+        DiscountResults discountResults = new DiscountResults(
+                new ArrayList<>() {{
+                    add(new DiscountResult(EventType.CHRISTMAS_D_DAY_DISCOUNT, 1010));
+                    add(new DiscountResult(EventType.SPECIAL_DISCOUNT, 2020));
+                    add(new DiscountResult(EventType.GIFT, 3030));
+                }}
+        );
         String expected = "<혜택 내역>" + LINE_SEPARATOR
                 + "크리스마스 디데이 할인: -1,010원" + LINE_SEPARATOR
                 + "특별 할인: -2,020원" + LINE_SEPARATOR
