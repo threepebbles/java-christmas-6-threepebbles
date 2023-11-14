@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class OrdersDTO implements Iterable<OrderDTO> {
-    private List<OrderDTO> orders;
+    private final List<OrderDTO> orders;
 
     public OrdersDTO(List<OrderDTO> orders) {
         this.orders = orders;

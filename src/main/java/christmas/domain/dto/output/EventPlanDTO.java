@@ -3,14 +3,14 @@ package christmas.domain.dto.output;
 import java.time.LocalDate;
 
 public class EventPlanDTO {
-    private LocalDate localDate;
-    private OrdersDTO orders;
-    private int totalPriceBeforeDiscount;
-    private GiftDTO gift;
-    private DiscountResultsDTO DiscountResults;
-    private int totalDiscount;
-    private int expectedPriceAfterDiscount;
-    private String eventBadgeName;
+    private final LocalDate localDate;
+    private final OrdersDTO orders;
+    private final int totalPriceBeforeDiscount;
+    private final GiftDTO gift;
+    private final DiscountResultsDTO DiscountResults;
+    private final int totalDiscount;
+    private final int expectedPriceAfterDiscount;
+    private final String eventBadgeName;
 
     public EventPlanDTO(LocalDate localDate, OrdersDTO orders, int totalPriceBeforeDiscount, GiftDTO gift,
                         DiscountResultsDTO discountResults, int totalDiscount, int expectedPriceAfterDiscount,

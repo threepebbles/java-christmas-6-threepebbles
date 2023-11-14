@@ -1,8 +1,8 @@
 package christmas.domain.dto.input;
 
 public class OrderInputDTO {
-    private String menuName;
-    private int count;
+    private final String menuName;
+    private final int count;
 
     public OrderInputDTO(String menuName, int count) {
         this.menuName = menuName;

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class DiscountResultsDTO implements Iterable<DiscountResultDTO> {
-    List<DiscountResultDTO> discountResults;
+    private final List<DiscountResultDTO> discountResults;
 
     public DiscountResultsDTO(List<DiscountResultDTO> discountResults) {
         this.discountResults = discountResults;

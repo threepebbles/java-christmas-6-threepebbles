@@ -1,8 +1,8 @@
 package christmas.domain.dto.output;
 
 public class DiscountResultDTO {
-    private String eventName;
-    private int amount;
+    private final String eventName;
+    private final int amount;
 
     public DiscountResultDTO(String eventName, int amount) {
         this.eventName = eventName;

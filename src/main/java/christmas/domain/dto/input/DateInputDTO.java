@@ -3,7 +3,7 @@ package christmas.domain.dto.input;
 import java.time.LocalDate;
 
 public class DateInputDTO {
-    private LocalDate localDate;
+    private final LocalDate localDate;
 
     public DateInputDTO(LocalDate localDate) {
         this.localDate = localDate;

@@ -1,8 +1,8 @@
 package christmas.domain.dto.output;
 
 public class GiftDTO {
-    private String giftName;
-    private int count;
+    private final String giftName;
+    private final int count;
 
     public GiftDTO(String giftName, int count) {
         this.giftName = giftName;
