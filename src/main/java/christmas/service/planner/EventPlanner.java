@@ -6,17 +6,37 @@ import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
 import christmas.domain.constant.EventBadge;
 import christmas.domain.constant.Gift;
+import christmas.domain.event.ChristmasDDayDiscountEvent;
+import christmas.domain.event.DiscountableEvent;
+import christmas.domain.event.GiftEvent;
+import christmas.domain.event.SpecialDiscountEvent;
+import christmas.domain.event.WeekdayDiscountEvent;
+import christmas.domain.event.WeekendDiscountEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventPlanner implements Planner {
-    public static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
+    private static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
     private final Date date;
     private final Orders orders;
+    private GiftEvent giftEvent;
+    private List<DiscountableEvent> discountableEvents;
 
     public EventPlanner(Date date, Orders orders) {
+        init(date, orders);
         this.date = date;
         this.orders = orders;
+    }
+
+    private void init(Date date, Orders orders) {
+        giftEvent = new GiftEvent(orders);
+        discountableEvents = new ArrayList<>() {{
+            add(new ChristmasDDayDiscountEvent(date));
+            add(new WeekdayDiscountEvent(date, orders));
+            add(new WeekendDiscountEvent(date, orders));
+            add(new SpecialDiscountEvent(date));
+            add(new GiftEvent(orders));
+        }};
     }
 
     public boolean isEnoughAmount(int totalPrice) {
@@ -36,13 +56,10 @@ public class EventPlanner implements Planner {
 
     @Override
     public DiscountResults calculateDiscountResults() {
-        List<DiscountResult> discountResults = new ArrayList<>() {{
-            add(christmasDDayDiscountEvent.calculateDiscountResult(date));
-            add(weekdayDiscountEvent.calculateDiscountResult(date, orders));
-            add(weekendDiscountEvent.calculateDiscountResult(date, orders));
-            add(specialDiscountEvent.calculateDiscountResult(date));
-            add(giftEvent.calculateAmount(orders));
-        }};
+        List<DiscountResult> discountResults = discountableEvents.stream()
+                .map(DiscountableEvent::calculateDiscountResult)
+                .toList();
+
         return new DiscountResults(discountResults.stream()
                 .filter(discountResult -> discountResult.getAmount() != 0)
                 .toList());

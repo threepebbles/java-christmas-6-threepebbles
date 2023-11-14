@@ -22,7 +22,7 @@ public class DefaultPlanner implements Planner {
 
     @Override
     public Gift requestGift() {
-        return giftEvent.requestGift(orders.calculateTotalPrice());
+        return Gift.NOTHING;
     }
 
     @Override
