@@ -1,6 +1,6 @@
 package christmas.domain.constant;
 
-import christmas.controller.dto.output.GiftDTO;
+import christmas.domain.dto.output.GiftDTO;
 
 public enum Gift {
     CHAMPAGNE("샴페인", 25000),

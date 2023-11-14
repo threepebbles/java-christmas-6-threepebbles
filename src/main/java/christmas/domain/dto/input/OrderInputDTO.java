@@ -1,10 +1,10 @@
-package christmas.controller.dto.output;
+package christmas.domain.dto.input;
 
-public class OrderDTO {
+public class OrderInputDTO {
     private String menuName;
     private int count;
 
-    public OrderDTO(String menuName, int count) {
+    public OrderInputDTO(String menuName, int count) {
         this.menuName = menuName;
         this.count = count;
     }

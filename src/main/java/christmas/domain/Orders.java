@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.controller.dto.input.OrdersInputDTO;
-import christmas.controller.dto.output.OrdersDTO;
+import christmas.domain.dto.input.OrdersInputDTO;
+import christmas.domain.dto.output.OrdersDTO;
 import christmas.domain.constant.MenuType;
 import christmas.domain.validator.OrdersValidator;
 import java.util.Comparator;

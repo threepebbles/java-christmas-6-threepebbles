@@ -1,4 +1,4 @@
-package christmas.controller.dto.input;
+package christmas.domain.dto.input;
 
 import java.util.List;
 

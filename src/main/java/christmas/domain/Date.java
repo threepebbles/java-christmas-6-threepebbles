@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.controller.dto.input.DateInputDTO;
+import christmas.domain.dto.input.DateInputDTO;
 import christmas.domain.validator.DateValidator;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

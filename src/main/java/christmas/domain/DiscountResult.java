@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.controller.dto.output.DiscountResultDTO;
+import christmas.domain.dto.output.DiscountResultDTO;
 import christmas.domain.constant.EventType;
 
 public class DiscountResult {

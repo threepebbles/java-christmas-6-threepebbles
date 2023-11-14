@@ -5,11 +5,11 @@ import christmas.domain.DiscountResults;
 import christmas.domain.Orders;
 import christmas.domain.constant.EventBadge;
 import christmas.domain.constant.Gift;
-import christmas.service.event.ChristmasDDayDiscountEvent;
-import christmas.service.event.GiftEvent;
-import christmas.service.event.SpecialDiscountEvent;
-import christmas.service.event.WeekdayDiscountEvent;
-import christmas.service.event.WeekendDiscountEvent;
+import christmas.domain.event.ChristmasDDayDiscountEvent;
+import christmas.domain.event.GiftEvent;
+import christmas.domain.event.SpecialDiscountEvent;
+import christmas.domain.event.WeekdayDiscountEvent;
+import christmas.domain.event.WeekendDiscountEvent;
 
 public interface Planner {
     ChristmasDDayDiscountEvent christmasDDayDiscountEvent = new ChristmasDDayDiscountEvent();

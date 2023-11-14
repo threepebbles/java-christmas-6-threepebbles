@@ -1,8 +1,8 @@
 package christmas.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.controller.dto.input.DateInputDTO;
-import christmas.controller.dto.input.OrdersInputDTO;
+import christmas.domain.dto.input.DateInputDTO;
+import christmas.domain.dto.input.OrdersInputDTO;
 import christmas.view.input.constant.InputType;
 import christmas.view.input.constant.InputViewText;
 import java.util.function.Function;

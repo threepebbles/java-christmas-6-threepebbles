@@ -1,7 +1,7 @@
 package christmas.domain;
 
-import christmas.controller.dto.input.OrderInputDTO;
-import christmas.controller.dto.output.OrderDTO;
+import christmas.domain.dto.input.OrderInputDTO;
+import christmas.domain.dto.output.OrderDTO;
 import christmas.domain.constant.Menu;
 import christmas.domain.constant.MenuType;
 import christmas.domain.validator.OrderValidator;
