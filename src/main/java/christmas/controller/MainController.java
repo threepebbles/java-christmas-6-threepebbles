@@ -11,7 +11,7 @@ import java.util.function.Function;
 public class MainController {
     private final InputView inputView;
     private final OutputView outputView;
-    EventPlanningService eventPlanningService;
+    private final EventPlanningService eventPlanningService;
 
     public MainController(InputView inputView, OutputView outputView, EventPlanningService eventPlanningService) {
         this.inputView = inputView;
@@ -36,7 +36,7 @@ public class MainController {
 
     private Orders askOrders() {
         return (Orders) retryUntilSuccess(inputView,
-                inputView1 -> Orders.createOrders(inputView.askOrdersDTO())
+                inputView -> Orders.createOrders(inputView.askOrdersDTO())
         );
     }
 
