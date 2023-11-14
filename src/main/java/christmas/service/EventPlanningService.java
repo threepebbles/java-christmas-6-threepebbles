@@ -8,6 +8,8 @@ import christmas.service.planner.EventPlanner;
 import christmas.service.planner.Planner;
 
 public class EventPlanningService {
+    private static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
+
     public EventPlan createEventPlan(Date date, Orders orders) {
         Planner planner = matchPlanner(date, orders);
         return new EventPlan(
@@ -23,7 +25,7 @@ public class EventPlanningService {
 
     private Planner matchPlanner(Date date, Orders orders) {
         EventPlanner eventPlanner = new EventPlanner(date, orders);
-        if (eventPlanner.isEnoughAmount(orders.calculateTotalPrice())) {
+        if (orders.calculateTotalPrice() >= MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS) {
             return eventPlanner;
         }
         return new DefaultPlanner(date, orders);

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventPlanner implements Planner {
-    private static final int MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS = 10000;
     private final Date date;
     private final Orders orders;
     private GiftEvent giftEvent;
@@ -37,10 +36,6 @@ public class EventPlanner implements Planner {
             add(new SpecialDiscountEvent(date));
             add(new GiftEvent(orders));
         }};
-    }
-
-    public boolean isEnoughAmount(int totalPrice) {
-        return totalPrice >= MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS;
     }
 
     @Override
