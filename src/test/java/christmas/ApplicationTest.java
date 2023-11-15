@@ -62,7 +62,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 주문_목록_입력_예외_테스트() {
+    void 주문_목록_입력_예외_반복_테스트() {
         String day = "1";
         assertSimpleTest(() -> {
             runException(day, "",
@@ -75,7 +75,6 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    // 추가 테스트
     @Test
     void 증정_메뉴_없음_출력_테스트() {
         assertSimpleTest(() -> {
