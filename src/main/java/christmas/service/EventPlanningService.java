@@ -24,9 +24,8 @@ public class EventPlanningService {
     }
 
     private Planner matchPlanner(Date date, Orders orders) {
-        EventPlanner eventPlanner = new EventPlanner(date, orders);
         if (orders.calculateTotalPrice() >= MINIMUM_REQUIRED_AMOUNT_TO_APPLY_EVENTS) {
-            return eventPlanner;
+            return new EventPlanner(date, orders);
         }
         return new DefaultPlanner(date, orders);
     }
