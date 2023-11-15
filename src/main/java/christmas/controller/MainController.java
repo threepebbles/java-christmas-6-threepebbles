@@ -25,6 +25,7 @@ public class MainController {
         Orders orders = askOrders();
 
         EventPlan eventPlan = eventPlanningService.createEventPlan(date, orders);
+        
         outputView.updateEventPlanView(eventPlan.toDTO());
         outputView.renderEventPlanView();
     }
