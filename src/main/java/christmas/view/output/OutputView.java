@@ -24,7 +24,6 @@ public class OutputView {
     }
 
     public void init() {
-        // default screen
         eventPlanHeaderScreen = OutputViewFormat.EVENT_PLAN_HEADER_FORMAT;
         ordersScreen = OutputViewFormat.ORDERS_FORMAT;
         totalPriceBeforeDiscountScreen = OutputViewFormat.TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT;
@@ -35,7 +34,6 @@ public class OutputView {
         eventBadgeScreen = OutputViewFormat.EVENT_BADGE_FORMAT;
     }
 
-    // 이벤트 플랜 화면 전체 업데이트
     public void updateEventPlanView(EventPlanDTO eventPlanDTO) {
         updateEventPlanHeaderScreen(eventPlanDTO.getLocalDate());
         updateOrdersScreen(eventPlanDTO.getOrders());
@@ -47,7 +45,6 @@ public class OutputView {
         updateEventBadgeScreen(eventPlanDTO.getEventBadgeName());
     }
 
-    // 이벤트 플랜 화면 전체 출력
     public void renderEventPlanView() {
         renderWithLineSeparator(this::renderEventPlanHeaderScreen, 1);
         renderWithLineSeparator(this::renderOrdersScreen, 1);
@@ -59,7 +56,6 @@ public class OutputView {
         renderEventBadgeScreen();
     }
 
-    // 헤더 메세지 화면 업데이트 및 출력
     public void updateEventPlanHeaderScreen(LocalDate localDate) {
         eventPlanHeaderScreen = String.format(
                 OutputViewFormat.EVENT_PLAN_HEADER_FORMAT,
@@ -70,7 +66,6 @@ public class OutputView {
         System.out.print(eventPlanHeaderScreen);
     }
 
-    // <주문 메뉴> 화면 업데이트 및 출력
     public void updateOrdersScreen(OrdersDTO ordersDTO) {
         ordersScreen = String.format(
                 OutputViewFormat.ORDERS_FORMAT,
@@ -82,7 +77,6 @@ public class OutputView {
         System.out.print(ordersScreen);
     }
 
-    // <할인 전 총주문 금액> 화면 업데이트 및 출력
     public void updateTotalPriceBeforeDiscountScreen(int amount) {
         String amountText = outputPresenter.createTotalPriceBeforeDiscountText(amount);
         totalPriceBeforeDiscountScreen = String.format(OutputViewFormat.TOTAL_PRICE_BEFORE_DISCOUNT_FORMAT, amountText);
@@ -92,7 +86,6 @@ public class OutputView {
         System.out.print(totalPriceBeforeDiscountScreen);
     }
 
-    // <증정 메뉴> 화면 업데이트 및 출력
     public void updateGiftScreen(GiftDTO giftDTO) {
         giftScreen = String.format(OutputViewFormat.GIFT_FORMAT, outputPresenter.createGiftText(giftDTO));
     }
@@ -101,7 +94,6 @@ public class OutputView {
         System.out.print(giftScreen);
     }
 
-    // <혜택 내역> 화면 업데이트 및 출력
     public void updateDiscountResultsScreen(DiscountResultsDTO discountResultsDTO) {
         discountResultsScreen = String.format(OutputViewFormat.DISCOUNT_DETAILS_FORMAT,
                 outputPresenter.createDiscountResultsText(discountResultsDTO));
@@ -111,7 +103,6 @@ public class OutputView {
         System.out.print(discountResultsScreen);
     }
 
-    // <총혜택 금액> 화면 업데이트 및 출력
     public void updateTotalDiscountScreen(int totalDiscount) {
         totalDiscountScreen = String.format(OutputViewFormat.TOTAL_DISCOUNT_FORMAT,
                 outputPresenter.createTotalDiscountText(totalDiscount));
@@ -121,7 +112,6 @@ public class OutputView {
         System.out.print(totalDiscountScreen);
     }
 
-    // <할인 후 예상 결제 금액> 화면 업데이트 및 출력
     public void updateExpectedPriceAfterDiscountScreen(int expectedPay) {
         expectedPriceAfterDiscountScreen = String.format(OutputViewFormat.EXPECTED_PAY_AFTER_DISCOUNT_FORMAT,
                 outputPresenter.createExpectedPriceAfterDiscountText(expectedPay));
@@ -131,7 +121,6 @@ public class OutputView {
         System.out.print(expectedPriceAfterDiscountScreen);
     }
 
-    // <12월 이벤트 배지> 화면 업데이트 및 출력
     public void updateEventBadgeScreen(String eventBadgeName) {
         eventBadgeScreen = String.format(OutputViewFormat.EVENT_BADGE_FORMAT,
                 outputPresenter.createEventBadgeText(eventBadgeName));
