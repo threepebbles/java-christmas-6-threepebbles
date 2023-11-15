@@ -1,10 +1,11 @@
-package christmas.view.input;
+package christmas.controller;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.domain.Date;
 import christmas.domain.Orders;
+import christmas.view.input.InputConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
